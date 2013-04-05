@@ -23,14 +23,14 @@ author = 'W Augustine Dunn'
 copyright = '2013, ' + author         
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://127.0.0.1/blog/html/'                              
+website = 'http://movingthelamppost.com'                              
 
 # **************************************************************
 # More tweaks you can do
 # **************************************************************
 
 # Add your Disqus shortname to enable comments powered by Disqus
-disqus_shortname = None                                   
+disqus_shortname = 'movingthelamppost'
 
 # Change your favicon (new favicon goes in _static directory)
 html_favicon = 'tinkerer.ico'           
