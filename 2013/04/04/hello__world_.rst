@@ -1,15 +1,7 @@
 Hello, World!
 =============
 
-Hello everyone.  Here is a random code include.
-
-
-
-This is test of code include
------------------------------
-
-.. literalinclude:: ../../../../gFunc/src/gfunc/stats.py
-   :language: python
+Hello everyone.  This is a test.  Soon this post will be an introduction and explanation of what I hope this blog to be.
 
 
 
