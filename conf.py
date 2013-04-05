@@ -11,7 +11,7 @@ import tinkerer.paths
 project = "moving the lamppost"                   
 
 # Change this to the tagline of your blog
-tagline = 'random musings of a molecular biologist turned code jockey.'                  
+tagline = 'random musings of a molecular biologist turned code jockey in the era of big data and open science.'                  
 
 # Change this to the description of your blog
 description = tagline

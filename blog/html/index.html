@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="random musings of a molecular biologist turned code jockey.">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
         <meta name="viewport" content="width=device-width">
         <title>Home &mdash; moving the lamppost</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
@@ -64,7 +64,7 @@
       <div id="container"><header>
             <hgroup>
               <h1><a href="#">moving the lamppost</a></h1>
-              <h2>random musings of a molecular biologist turned code jockey.</h2>
+              <h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2>
             </hgroup>
           </header>
       <nav>
@@ -82,6 +82,212 @@
         </div>
         <div class="section" id="hello-world">
 <h1><a href="2013/04/04/hello__world_.html">Hello, World!</a></h1>
+<p>Hello everyone.  Here is a random code include.</p>
+<div class="section" id="this-is-test-of-code-include">
+<h2>This is test of code include</h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">####################</span>
+<span class="sd">stats.py</span>
+<span class="sd">####################</span>
+<span class="sd">Code supporting calculations of statistical probabilities for gfunc.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">operator</span> <span class="kn">as</span> <span class="nn">o</span>
+<span class="c"># see bottom for conditional import of &quot;bestChoose&quot; </span>
+
+
+
+<span class="k">def</span> <span class="nf">basic_bootstrap_est</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="n">reps</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *GIVEN:*</span>
+<span class="sd">        * ``vec`` = vector of sample values</span>
+<span class="sd">        * ``reps`` = number of resampling reps</span>
+<span class="sd">    </span>
+<span class="sd">    *DOES:*</span>
+<span class="sd">        * Resample w/ replacement ``reps`` times and record the medians</span>
+<span class="sd">        * Calculate stdv of resampled medians which should approach</span>
+<span class="sd">          the actual SE as ``reps`` approaches ``inf``.</span>
+<span class="sd">        * Calculate the 95% CI bounds.</span>
+<span class="sd">       </span>
+<span class="sd">       </span>
+<span class="sd">    </span>
+<span class="sd">    *RETURNS:*</span>
+<span class="sd">        * tuple([*median of resampled medians*, *SE est*, *loBound*, *hiBound*])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">reSampledMeds</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sampleSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">reps</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">draw</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sampleSize</span><span class="p">):</span>
+            <span class="n">randIndex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">sampleSize</span><span class="p">)</span>
+            <span class="n">sample</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="n">randIndex</span><span class="p">])</span>
+        <span class="n">reSampledMeds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+        
+    <span class="n">seEstimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">reSampledMeds</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">medOfMeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">reSampledMeds</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">medOfMeds</span><span class="p">,</span>
+            <span class="n">seEstimate</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">reSampledMeds</span><span class="p">,</span><span class="mf">2.5</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">reSampledMeds</span><span class="p">,</span><span class="mf">97.5</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">benjHochFDR</span><span class="p">(</span><span class="n">table</span><span class="p">,</span><span class="n">pValColumn</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *GIVEN:*</span>
+<span class="sd">        * ``table``: 2D list(*hypothesis*,*p-value*) hypothesis could = *geneName* tested for enrichment</span>
+<span class="sd">        * ``pValColumn``: integer of column index containing the *p-value*.</span>
+<span class="sd">    *DOES:*</span>
+<span class="sd">        * Calculates the Benjamini-Hochberg adjusted *p-values*</span>
+<span class="sd">    *RETURNS:*</span>
+<span class="sd">        * a new version of ``table`` with an extra column added to the end representing the BH corrected *p-values*</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">pValColumn</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>\
+           <span class="s">&quot;ERROR: pValColumn must be int type!&quot;</span>
+    <span class="c"># Sort table from highest to lowest after converting them all to floats.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)):</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">pValColumn</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">pValColumn</span><span class="p">])</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">pValColumn</span><span class="p">])</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    
+    <span class="n">lastPval</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">pValColumn</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)):</span>
+        <span class="n">p</span>    <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">pValColumn</span><span class="p">]</span>
+        <span class="n">adj</span>  <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">adjP</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">adj</span>
+        <span class="n">miN</span>  <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">adjP</span><span class="p">,</span><span class="n">lastPval</span><span class="p">)</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">miN</span><span class="p">)</span>
+        <span class="n">lastPval</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">table</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">table</span>
+
+
+
+
+<span class="k">def</span> <span class="nf">binComb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *GIVEN:*</span>
+<span class="sd">        * ``n``</span>
+<span class="sd">        * ``k``</span>
+<span class="sd">    *DOES:*</span>
+<span class="sd">        * Computes ``n`` *choose* ``k``. </span>
+<span class="sd">    *RETURNS:*</span>
+<span class="sd">        * The number of ways ``k`` objects can be sampled from a population of size ``n``.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">rv</span> <span class="o">*=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">j</span>
+        <span class="n">rv</span> <span class="o">/=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">rv</span>
+
+
+<span class="k">def</span> <span class="nf">choose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">ntok</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">)):</span>
+        <span class="n">ntok</span> <span class="o">=</span> <span class="n">ntok</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">//</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ntok</span>
+
+<span class="c"># determine whether we can use gmpy and set &quot;bestChoose&quot; to that or the standby.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">gmpy</span> <span class="kn">import</span> <span class="n">comb</span> <span class="k">as</span> <span class="n">bestChoose</span> <span class="c">#timeit says gmpy.comb is 10 times faster than choose!</span>
+    <span class="k">print</span> <span class="s">&quot;bestChoose is 'comb' from 'gmpy'.&quot;</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">bestChoose</span> <span class="o">=</span> <span class="n">choose</span> <span class="c"># timeit says that choose is 7% faster than binComb</span>
+    <span class="k">print</span> <span class="s">&quot;bestChoose is 'choose' from 'rSeq'.&quot;</span>
+    
+    
+
+<span class="k">def</span> <span class="nf">hypergeoP</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | Calculates the non-cumulative hypergeometric *p-value* for variables:</span>
+<span class="sd">    | </span>
+<span class="sd">    | ``n`` = number of positives in population</span>
+<span class="sd">    | ``i`` = number of positives in sample</span>
+<span class="sd">    | ``m`` = number of negatives in population</span>
+<span class="sd">    | ``N`` = sample size</span>
+<span class="sd">    | </span>
+<span class="sd">    | *P(x=i) = (choose(n,i)choose(m,N-i))/choose(n+m,N)*</span>
+<span class="sd">    | </span>
+<span class="sd">    | For more details -&gt; http://mathworld.wolfram.com/HypergeometricDistribution.html</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">bestChoose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">bestChoose</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="n">i</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">bestChoose</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+
+
+
+
+<span class="k">def</span> <span class="nf">cumHypergeoP</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | Calculates the cumulative hypergeometric *p-value* for variables:</span>
+<span class="sd">    | </span>
+<span class="sd">    | ``n`` = number of positives in population</span>
+<span class="sd">    | ``i`` = number of positives in sample</span>
+<span class="sd">    | ``m`` = number of negatives in population</span>
+<span class="sd">    | ``N`` = sample size</span>
+<span class="sd">    | </span>
+<span class="sd">    | *P(i) = sum([as i-&gt;N] (choose(n,i)choose(m,N-i))/choose(n+m,N))*</span>
+<span class="sd">    | </span>
+<span class="sd">    | For more details -&gt; http://mathworld.wolfram.com/HypergeometricDistribution.html</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cumPVal</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">cumPVal</span> <span class="o">=</span> <span class="n">cumPVal</span> <span class="o">+</span> <span class="n">hypergeoP</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cumPVal</span>
+
+
+<span class="k">def</span> <span class="nf">binomialPval</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *RETURNS:* </span>
+<span class="sd">        * exact binomial P-value.</span>
+<span class="sd">    </span>
+<span class="sd">    | ``n`` = number of trials</span>
+<span class="sd">    | ``k`` = number of successes</span>
+<span class="sd">    | ``p`` = probability of a success</span>
+<span class="sd">    | </span>
+<span class="sd">    | *P(k succeses in n trials) = choose(n,k) (p^k) ((1-p)^(n-k))*</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">bestChoose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">**</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">binomialPval_gte</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *RETURNS:* </span>
+<span class="sd">        * binomial *p-value* of ``k`` or greater successes in ``n`` trials with probability of success for each trial ``p``.</span>
+<span class="sd">    </span>
+<span class="sd">    | ``n`` = number of trials</span>
+<span class="sd">    | ``k`` = number of successes</span>
+<span class="sd">    | ``p`` = probability of a success</span>
+<span class="sd">    | </span>
+<span class="sd">    | *sum( choose(n,k) (p^k) ( (1-p)^(n-k) ) )* as ``k`` goes from ``k`` to ``n``</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="n">cumPVal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">cumPVal</span> <span class="o">=</span> <span class="n">cumPVal</span> <span class="o">+</span> <span class="n">binomialPval</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cumPVal</span>
+</pre></div>
+</div>
+</div>
 </div>
         <div class="postmeta">
         <div class="author">
