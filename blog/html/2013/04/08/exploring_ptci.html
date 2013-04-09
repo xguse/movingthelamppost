@@ -15,27 +15,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
         <meta name="viewport" content="width=device-width">
-        <title>Home &mdash; moving the lamppost</title>
-            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
-            <link rel="stylesheet" href="_static/main.css" type="text/css">
-            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
-            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
-        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <title>Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index) &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="_static/plugins.js"></script>
-        <script src="_static/main.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Hello, World!" href="../04/hello__world_.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '../../../',
         VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -63,25 +63,28 @@
 
       <div id="container"><header>
             <hgroup>
-              <h1><a href="#">moving the lamppost</a></h1>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1>
               <h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2>
             </hgroup>
           </header>
       <nav>
             <ul><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-                  <a href="#">Home</a>
+                  <a href="../../../index.html">Home</a>
                 </li>
               <li class="main-nav">
-                  <a href="pages/about.html">About</a>
+                  <a href="../../../pages/about.html">About</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../04/hello__world_.html">Hello, World!</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
             <span>April 08, 2013</span>
         </div>
-        <div class="section" id="exploring-various-ways-to-combine-transcription-profile-correlation-r-confidence-in-that-correlation-p-value-associated-with-r-and-phylogenetic-distance-w-d-between-species-into-a-useful-ptc-index-phylogenetic-transcription-conservation-index">
-<h1><a href="2013/04/08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a></h1>
+    <div class="section" id="exploring-various-ways-to-combine-transcription-profile-correlation-r-confidence-in-that-correlation-p-value-associated-with-r-and-phylogenetic-distance-w-d-between-species-into-a-useful-ptc-index-phylogenetic-transcription-conservation-index">
+<h1>Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</h1>
 <div class="section" id="original-solution">
 <h2>Original solution</h2>
 <p><span class="formula"><i>PTCI</i> = <i>r</i>⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
@@ -93,7 +96,7 @@ among other options (see below).</p>
 <h3>Original Results</h3>
 <p>This is a histogram of the three way mean PTCIs using the original
 solution. Blue=Real data. Grey=Randomizations that obolish the three way
-orthology relationships. The ‘Null’ distribution [grey] is significantly
+orthology relationships. The &#8216;Null&#8217; distribution [grey] is significantly
 different from the real data [blue] but has significant structure that
 is not what one would predict (resembl a normal dist). Notably, there is
 a large concentration around -0.5 that I can not explain.</p>
@@ -114,7 +117,7 @@ a large concentration around -0.5 that I can not explain.</p>
 </li>
 </ul>
 </li>
-<li>‘fiddle’ with it till the null distribution makes sense...</li>
+<li>&#8216;fiddle&#8217; with it till the null distribution makes sense...</li>
 </ol>
 </div>
 <div class="section" id="distributions-of-r-and-1-p">
@@ -122,7 +125,7 @@ a large concentration around -0.5 that I can not explain.</p>
 <p>I will now plot the distributions of the separate variables in the PTCI
 to determine if they help explain the structure seen above.</p>
 <p>In[1]:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># run gfunc_build_n_way_one2one script and capture output in variable 'trap'</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># run gfunc_build_n_way_one2one script and capture output in variable &#39;trap&#39;</span>
 <span class="c"># NOTE: for syntax highlighting to work on this blog post, I had to comment out the ipython magic command below:</span>
 
 <span class="c"># %run -i gfunc_build_n_way_one2one.py gfunc/Aa_Ag_Cq_sort_pci.conf</span>
@@ -142,14 +145,14 @@ to determine if they help explain the structure seen above.</p>
 main() completed.</pre>
 </div>
 <div class="section" id="here-i-define-a-function-edge-correlation-to-calculate-and-return-r-and-its-p">
-<h4>Here I define a function ‘<span class="docutils literal"><span class="pre">edge_correlation()</span></span>‘ to calculate and return <em>r</em> and its <em>p</em></h4>
+<h4>Here I define a function &#8216;<span class="docutils literal"><span class="pre">edge_correlation()</span></span>&#8216; to calculate and return <em>r</em> and its <em>p</em></h4>
 <p>In[2]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">sp_stats</span>
 
 <span class="k">def</span> <span class="nf">edge_correlation</span><span class="p">(</span><span class="n">gFunc_edge</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the pearson r value and corresponding p-value</span>
-<span class="sd">    for a given edge's nodes.</span>
+<span class="sd">    for a given edge&#39;s nodes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">node1</span><span class="p">,</span><span class="n">node2</span> <span class="o">=</span> <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">nodes</span>
     <span class="k">try</span><span class="p">:</span>
@@ -160,7 +163,7 @@ main() completed.</pre>
             <span class="k">return</span> <span class="n">r_val</span><span class="p">,</span><span class="n">p_val</span>
 
     <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s">&quot;&quot;&quot;'Bunch' object has no attribute&quot;&quot;&quot;</span> <span class="ow">in</span> <span class="n">err</span><span class="o">.</span><span class="n">message</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">&quot;&quot;&quot;&#39;Bunch&#39; object has no attribute&quot;&quot;&quot;</span> <span class="ow">in</span> <span class="n">err</span><span class="o">.</span><span class="n">message</span><span class="p">:</span>
             <span class="c"># if this executes then one of the nodes did not have an expression_vector which means no r is possible</span>
             <span class="c"># in this case return None</span>
             <span class="k">return</span> <span class="bp">None</span>
@@ -183,63 +186,63 @@ main() completed.</pre>
 <p>In[4]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge_r_and_p_values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_r_and_p_values</span><span class="p">))]</span>
 
-<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'correlation values'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'r values for pairwise edge comparisons'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;correlation values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of edges in each bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;r values for pairwise edge comparisons&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Out[4]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3861e950&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_00.png" src="_images/Exploring_PTCI_fig_00.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_00.png" src="../../../_images/Exploring_PTCI_fig_00.png" />
 </div>
 <div class="section" id="and-now-of-the-1-p-values">
 <h4>And now of the (1 - p_values)</h4>
 <p>In[5]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge_r_and_p_values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_r_and_p_values</span><span class="p">))]</span>
 <span class="n">one_minus_pvals</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values</span><span class="p">]</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">one_minus_pvals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'g'</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'1-p'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'(1-p) for pairwise edge correlations'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">one_minus_pvals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;1-p&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of edges in each bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;(1-p) for pairwise edge correlations&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Out[5]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3ac69b50&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_01.png" src="_images/Exploring_PTCI_fig_01.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_01.png" src="../../../_images/Exploring_PTCI_fig_01.png" />
 </div>
 <div class="section" id="now-the-combined-r-cdot-1-p">
 <h4>Now the combined <span class="formula"><i>r</i>⋅(1 − <i>p</i>)</span>
 </h4>
 <p>In[6]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_by_1minusP</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_values</span><span class="p">))]</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">r_by_1minusP</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'r * (1-p)'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'r * (1-p) for pairwise edge correlations'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">r_by_1minusP</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;r * (1-p)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of edges in each bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;r * (1-p) for pairwise edge correlations&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Out[6]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x40ea4090&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_02.png" src="_images/Exploring_PTCI_fig_02.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_02.png" src="../../../_images/Exploring_PTCI_fig_02.png" />
 <p>In[7]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist2d</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">p_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">colorbar</span><span class="p">()</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;r values&quot;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;p-values&quot;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'2D histogram of r and p-value pairs'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;2D histogram of r and p-value pairs&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Out[7]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3862f1d0&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_03.png" src="_images/Exploring_PTCI_fig_03.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_03.png" src="../../../_images/Exploring_PTCI_fig_03.png" />
 <p>The 2D histogram above shows that as expected the p-values track mostly
 but not completly with the r values. Generally, a more extreme r value
-will also come with a “better” p-value, but this is not absolute which
+will also come with a &#8220;better&#8221; p-value, but this is not absolute which
 warrants keeping the p-value variable in the PTCI in some capacity.
 Also, this plot illustrates that the most populated bins are those with
 positive r values close to +1.</p>
@@ -270,7 +273,7 @@ positive r values close to +1.</p>
             <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">PTCI</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="k">return</span> <span class="bp">None</span>
     <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;'NoneType' object is not iterable&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;&#39;NoneType&#39; object is not iterable&quot;</span><span class="p">:</span>
             <span class="c"># If we get an invalid ptci, store it and return it as None</span>
             <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">PTCI</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="k">return</span> <span class="bp">None</span>
@@ -286,16 +289,16 @@ positive r values close to +1.</p>
 </pre></div>
 </div>
 <p>In[10]:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'ptci'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'ptci for pairwise edge correlations'</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;ptci&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of edges in each bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;ptci for pairwise edge correlations&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Out[10]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x476b5110&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_04.png" src="_images/Exploring_PTCI_fig_04.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_04.png" src="../../../_images/Exploring_PTCI_fig_04.png" />
 </div>
 </div>
 </div>
@@ -334,28 +337,28 @@ positive r values close to +1.</p>
 <h3>Graph the Null distributions</h3>
 <p>In[12]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Show what the actual data looks like for comparison</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Real Data'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Real Data&#39;</span><span class="p">)</span>
 
 <span class="c"># Graph null distributions as grey slightly transparent histograms</span>
-<span class="n">null_label</span> <span class="o">=</span> <span class="s">'Null Data'</span>
+<span class="n">null_label</span> <span class="o">=</span> <span class="s">&#39;Null Data&#39;</span>
 
 <span class="k">for</span> <span class="n">null_dist</span> <span class="ow">in</span> <span class="n">null_paired_ptci_distributions</span><span class="p">:</span>
-    <span class="n">hist</span><span class="p">(</span><span class="n">null_dist</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'step'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">null_label</span><span class="p">)</span>
+    <span class="n">hist</span><span class="p">(</span><span class="n">null_dist</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;step&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">null_label</span><span class="p">)</span>
     <span class="n">null_label</span> <span class="o">=</span> <span class="bp">None</span>
 
 
 
 
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'ptci'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'null distributions for pairwise edge correlations (</span><span class="si">%s</span><span class="s"> reps)'</span> <span class="o">%</span> <span class="p">(</span><span class="n">reps</span><span class="p">))</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;ptci&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of edges in each bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;null distributions for pairwise edge correlations (</span><span class="si">%s</span><span class="s"> reps)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">reps</span><span class="p">))</span>
 <span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Out[12]:</p>
 <div class="highlight-python"><pre>&lt;matplotlib.legend.Legend at 0x35fad690&gt;</pre>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_05.png" src="_images/Exploring_PTCI_fig_05.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_05.png" src="../../../_images/Exploring_PTCI_fig_05.png" />
 </div>
 <div class="section" id="observations-and-discussions">
 <h3>Observations and Discussions:</h3>
@@ -374,8 +377,8 @@ distributions of the 3-way comparisons at the start of this document.</li>
 conversions on any of the PTCI variables??<ul>
 <li><strong>ACTUALLY:</strong> this is not totally true, although it will might
 <strong>not</strong> fix the shape problem, as the z-score distributions will
-all have the same “shape” as the un-converted distributions</li>
-<li><strong>BUT:</strong> since the z-score distributions are x-shifted so that “0”
+all have the same &#8220;shape&#8221; as the un-converted distributions</li>
+<li><strong>BUT:</strong> since the z-score distributions are x-shifted so that &#8220;0&#8221;
 lies at the mean (<em>or alternately: median if I wanted to do it
 that way</em>), z-converting the <strong>r values</strong> may still be a good way
 to highlight those pairs that are most likely to be positively
@@ -416,25 +419,25 @@ maybe not?</li>
 
 <span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
 
-<span class="n">vert_line_color</span> <span class="o">=</span> <span class="s">'0.75'</span>
+<span class="n">vert_line_color</span> <span class="o">=</span> <span class="s">&#39;0.75&#39;</span>
 
-<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">axvline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vert_line_color</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'r values'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'edges per bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'r values for edges BEFORE z-convertion'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;r values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;edges per bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;r values for edges BEFORE z-convertion&#39;</span><span class="p">)</span>
 
 <span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">z_r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">z_r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">axvline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vert_line_color</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">'r values'</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">'edges per bin'</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">'r values for edges AFTER z-convertion'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;r values&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;edges per bin&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;r values for edges AFTER z-convertion&#39;</span><span class="p">)</span>
 
 <span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../../_images/Exploring_PTCI_fig_06.png" src="_images/Exploring_PTCI_fig_06.png"/>
+<img alt="../../../_images/Exploring_PTCI_fig_06.png" src="../../../_images/Exploring_PTCI_fig_06.png" />
 </div>
 <div class="section" id="next-actions">
 <h3>Next Actions:</h3>
@@ -531,7 +534,8 @@ ImportError: No module named connected</pre>
 </div>
 </div>
 </div>
-        <div class="postmeta">
+
+    <div class="postmeta">
         <div class="author">
             <span>Posted by W Augustine Dunn</span>
         </div>
@@ -539,81 +543,23 @@ ImportError: No module named connected</pre>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/open_science.html">open science</a>, <a href="tags/research.html">research</a></span>
+                <a href="../../../tags/open_science.html">open science</a>, <a href="../../../tags/research.html">research</a></span>
         </div>
-        <div class="comments">
-            <a href="http://movingthelamppost.com/2013/04/08/exploring_ptci.html#disqus_thread" data-disqus-identifier="2013/04/08/exploring_ptci">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>April 04, 2013</span>
         </div>
-        <div class="section" id="hello-world">
-<h1><a href="2013/04/04/hello__world_.html">Hello, World!</a></h1>
-<p>I have recently joined the trend of taking my blog ‘static’ rather than using a
-more complicated database driven solution like Wordpress.  One major reason for
-me is that I like to write content in abstraction.  I love LaTeX for this reason
-and I love Sphinx for the same reason.  I chose Tinkerer as my static engine
-because it is actually built from Sphinx and it is written in my favorite
-language (Python).  Sphinx is a code documentation framework originally built
-for python.  I use it to generate my documentation using reStructuredText
-markup. I figured since I am more-or-less used to the way Sphinx does its
-markup, I would choose a blog engine that worked the same way.  So far, I
-like it.  It is a bit less mature than some of the other static engines out
-there (Octopress being a VERY popular one) but I think it will grow nicely.</p>
-<div class="section" id="the-name-moving-the-lamppost">
-<h2>The name <em>“Moving The Lamppost”</em></h2>
-<p><em>Moving The Lamppost</em> is a reference to <a class="reference external" href="http://en.wikipedia.org/wiki/Streetlight_effect">the streetlight
-effect</a>.  I first heard the
-parable from a professor in my Probabilistic Modeling of Biological Data
-course.  It goes something like this:</p>
-<blockquote>
-<div>A police officer encounters a drunk fumbling around under a streetlight late
-at night and asks him what he is doing.  The drunk responds that he is looking
-for his keys.  The officer asks where he lost them. The drunk says he
-lost them across the street in the Park. Exasperated, the officer asks him why
-on earth he is looking for them over here. “Because this is where the light
-is,” responds the drunk.</div></blockquote>
-<p>In one sense this is something of a metaphor for some situations that we find ourselves in
-as scientists.  We have a question we want to explore.  An important one.  But
-there are times when the tools available to us, or some critical idea or model
-related to our problem has yet to be created/formulated.  So we go to work with
-the tools we have.  This can cause much wasted time and money, however.  So we
-must always have a couple questions in the back of our mind as we pursue our
-questions:</p>
-<ol class="arabic simple">
-<li>“Am I looking where the answer is actually likely to be or simply where the light is?”</li>
-<li>“If I am stuck under a lamppost, is there a way to extend the reach of the light so that it includes the answer?” (Can I move this lamppost)</li>
-</ol>
-<p>From another angle <em>Moving The Lamppost</em> can represent the most basic goal of science: to extend the edges of what is known.</p>
-</div>
-<div class="section" id="the-purpose-of-this-blog">
-<h2>The purpose of this blog</h2>
-<p>My main goal for <em>Moving The Lamppost</em> is to serve as a place for me to record random thoughts about my work and what is going on in science at large in such a way that I can engage in dialog with others about it.
-Relating to that goal is my desire to foster relationships with other scientists or informed hobbyists that can approach what is termed <a class="reference external" href="http://en.wikipedia.org/wiki/Open_science">Open Science</a>.
-I hope to make this my home base for sharing what I am interested in as well as what I am actually working on: including data and figures.</p>
-<p>For a nice introduction to the ideals of Open Science take a look at <a class="reference external" href="http://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html">the excellent blog series</a> by <a class="reference external" href="http://www.davidketcheson.info">David Ketcheson</a> over at <a class="reference external" href="http://scienceinthesands.blogspot.co.uk">Science in the Sands</a></p>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by W Augustine Dunn</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://movingthelamppost.com/2013/04/04/hello__world_.html#disqus_thread" data-disqus-identifier="2013/04/04/hello__world_">Leave a comment</a>
-        </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
-    </div></article><aside class="sidebar"><section><div class="widget">
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/04/08/exploring_ptci";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../04/hello__world_.html">Hello, World!</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2013/04/08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a>
+            <a href="#">Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a>
         </li><li>
-            <a href="2013/04/04/hello__world_.html">Hello, World!</a>
+            <a href="../04/hello__world_.html">Hello, World!</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
-    <form action="search.html" method="get">
+    <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
@@ -621,7 +567,7 @@ I hope to make this my home base for sharing what I am interested in as well as 
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
-      </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    disqus_count();</script><!--[if lt IE 7 ]>
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->

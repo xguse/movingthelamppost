@@ -5,15 +5,516 @@
         <link>http://movingthelamppost.com/</link>
         <description>random musings of a molecular biologist turned code jockey in the era of big data and open science.</description>
         <language>en-us</language>
-        <pubDate>Thu, 04 Apr 2013 00:00:00 -0700</pubDate>
+        <pubDate>Mon, 08 Apr 2013 00:00:00 -0700</pubDate>
         
+        <item>
+            <link>http://movingthelamppost.com/2013/04/08/exploring_ptci.html</link>
+            <guid>http://movingthelamppost.com/2013/04/08/exploring_ptci.html</guid>
+            <title><![CDATA[Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)]]></title>
+            <description><![CDATA[<div class="section" id="exploring-various-ways-to-combine-transcription-profile-correlation-r-confidence-in-that-correlation-p-value-associated-with-r-and-phylogenetic-distance-w-d-between-species-into-a-useful-ptc-index-phylogenetic-transcription-conservation-index">
+<h1>Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</h1>
+<div class="section" id="original-solution">
+<h2>Original solution</h2>
+<p><span class="formula"><i>PTCI</i> = <i>r</i>⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
+</p>
+<p>Xiaohui objected that <em>1-p</em> is not optimal because the <em>1-p</em> will likely
+have a distribution skewed toward <em>1</em>. He suggested loging the variable,
+among other options (see below).</p>
+<div class="section" id="original-results">
+<h3>Original Results</h3>
+<p>This is a histogram of the three way mean PTCIs using the original
+solution. Blue=Real data. Grey=Randomizations that obolish the three way
+orthology relationships. The ‘Null’ distribution [grey] is significantly
+different from the real data [blue] but has significant structure that
+is not what one would predict (resembl a normal dist). Notably, there is
+a large concentration around -0.5 that I can not explain.</p>
+</div>
+<div class="section" id="suggested-alterations">
+<h3>Suggested alterations</h3>
+<ol class="arabic simple">
+<li>log the 1-p value</li>
+<li>convert to Z scores<ul>
+<li>not sure exactly what he meant here</li>
+<li>*<span class="formula"><i>z</i>(<i>r</i>)⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
+</li>
+<li><span class="formula"><i>r</i>⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
+</li>
+<li><span class="formula"><i>z</i>(<i>r</i>)⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
+</li>
+<li><span class="formula"><i>z</i>(<i>r</i>⋅(1 − <i>p</i>))⋅<i>w</i>(<i>d</i>)</span>
+</li>
+</ul>
+</li>
+<li>‘fiddle’ with it till the null distribution makes sense...</li>
+</ol>
+</div>
+<div class="section" id="distributions-of-r-and-1-p">
+<h3>Distributions of <em>r</em> and <em>1-p</em></h3>
+<p>I will now plot the distributions of the separate variables in the PTCI
+to determine if they help explain the structure seen above.</p>
+<p>In[1]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># run gfunc_build_n_way_one2one script and capture output in variable 'trap'</span>
+<span class="c"># NOTE: for syntax highlighting to work on this blog post, I had to comment out the ipython magic command below:</span>
+
+<span class="c"># %run -i gfunc_build_n_way_one2one.py gfunc/Aa_Ag_Cq_sort_pci.conf</span>
+
+<span class="n">graphHandler</span><span class="p">,</span><span class="n">graphBuilder</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">ortho_parser</span> <span class="o">=</span> <span class="n">trap</span>
+
+<span class="c"># extract edge data from the graphs</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+
+<span class="c"># save original graphHandler in case we alter it and then want to use the original later</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="n">original_graphHandler</span> <span class="o">=</span>  <span class="n">deepcopy</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>bestChoose is 'comb' from 'gmpy'.
+main() completed.</pre>
+</div>
+<div class="section" id="here-i-define-a-function-edge-correlation-to-calculate-and-return-r-and-its-p">
+<h4>Here I define a function ‘<span class="docutils literal"><span class="pre">edge_correlation()</span></span>‘ to calculate and return <em>r</em> and its <em>p</em></h4>
+<p>In[2]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">sp_stats</span>
+
+<span class="k">def</span> <span class="nf">edge_correlation</span><span class="p">(</span><span class="n">gFunc_edge</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the pearson r value and corresponding p-value</span>
+<span class="sd">    for a given edge's nodes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">node1</span><span class="p">,</span><span class="n">node2</span> <span class="o">=</span> <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">nodes</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r_val</span><span class="p">,</span><span class="n">p_val</span> <span class="o">=</span> <span class="n">sp_stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">node1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">expression_vector</span><span class="p">,</span> <span class="n">node2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">expression_vector</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">r_val</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">r_val</span><span class="p">,</span><span class="n">p_val</span>
+
+    <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">&quot;&quot;&quot;'Bunch' object has no attribute&quot;&quot;&quot;</span> <span class="ow">in</span> <span class="n">err</span><span class="o">.</span><span class="n">message</span><span class="p">:</span>
+            <span class="c"># if this executes then one of the nodes did not have an expression_vector which means no r is possible</span>
+            <span class="c"># in this case return None</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># if this executes then something ELSE went wrong: thus I will fail.</span>
+            <span class="k">raise</span> <span class="n">err</span>
+</pre></div>
+</div>
+<p>In[3]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># collect all the results using edge_correlation()</span>
+<span class="n">edge_r_and_p_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge_correlation</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">]</span>
+
+<span class="c"># get rid of any results that equal None</span>
+<span class="n">edge_r_and_p_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">edge_r_and_p_values</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="now-we-plot-a-histogram-of-the-r-values">
+<h4>Now we plot a histogram of the r values</h4>
+<p>In[4]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge_r_and_p_values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_r_and_p_values</span><span class="p">))]</span>
+
+<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'correlation values'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'r values for pairwise edge comparisons'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Out[4]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3861e950&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_00.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_00.png"/>
+</div>
+<div class="section" id="and-now-of-the-1-p-values">
+<h4>And now of the (1 - p_values)</h4>
+<p>In[5]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge_r_and_p_values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_r_and_p_values</span><span class="p">))]</span>
+<span class="n">one_minus_pvals</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_values</span><span class="p">]</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">one_minus_pvals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'g'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'1-p'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'(1-p) for pairwise edge correlations'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Out[5]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3ac69b50&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_01.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_01.png"/>
+</div>
+<div class="section" id="now-the-combined-r-cdot-1-p">
+<h4>Now the combined <span class="formula"><i>r</i>⋅(1 − <i>p</i>)</span>
+</h4>
+<p>In[6]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_by_1minusP</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_values</span><span class="p">))]</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">r_by_1minusP</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'r * (1-p)'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'r * (1-p) for pairwise edge correlations'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Out[6]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x40ea4090&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_02.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_02.png"/>
+<p>In[7]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist2d</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">p_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">colorbar</span><span class="p">()</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;r values&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;p-values&quot;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'2D histogram of r and p-value pairs'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Out[7]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3862f1d0&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_03.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_03.png"/>
+<p>The 2D histogram above shows that as expected the p-values track mostly
+but not completly with the r values. Generally, a more extreme r value
+will also come with a “better” p-value, but this is not absolute which
+warrants keeping the p-value variable in the PTCI in some capacity.
+Also, this plot illustrates that the most populated bins are those with
+positive r values close to +1.</p>
+</div>
+<div class="section" id="now-the-full-ptci">
+<h4>Now the full PTCI</h4>
+<p>In[8]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># define function to calculate the PTCI</span>
+<span class="kn">from</span> <span class="nn">gfunc.maths</span> <span class="kn">import</span> <span class="n">weight_d_for_ptci</span> <span class="k">as</span> <span class="n">scale_the_d</span>
+
+<span class="k">def</span> <span class="nf">calc_ptci</span><span class="p">(</span><span class="n">gFunc_edge</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    calculate the PTCI</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r_val</span><span class="p">,</span><span class="n">p_val</span> <span class="o">=</span> <span class="n">edge_correlation</span><span class="p">(</span><span class="n">gFunc_edge</span><span class="p">)</span>
+
+        <span class="n">d_val</span><span class="p">,</span><span class="n">d_min</span><span class="p">,</span><span class="n">d_max</span> <span class="o">=</span> <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">divergence</span>
+
+        <span class="n">ptci</span> <span class="o">=</span> <span class="n">r_val</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p_val</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_the_d</span><span class="p">(</span><span class="n">d_val</span><span class="p">,</span><span class="n">d_min</span><span class="p">,</span><span class="n">d_max</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ptci</span><span class="p">):</span>
+            <span class="c"># If we get a valid ptci store the value in the gFunc_edge object and also return it</span>
+            <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">PTCI</span> <span class="o">=</span> <span class="n">ptci</span>
+            <span class="k">return</span> <span class="n">ptci</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># If we get an invalid ptci, store it and return it as None</span>
+            <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">PTCI</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;'NoneType' object is not iterable&quot;</span><span class="p">:</span>
+            <span class="c"># If we get an invalid ptci, store it and return it as None</span>
+            <span class="n">gFunc_edge</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">PTCI</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span>
+</pre></div>
+</div>
+<p>In[9]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">pairwise_ptci_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">]</span>
+
+<span class="c"># remove any None values</span>
+<span class="n">pairwise_ptci_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">ptci</span> <span class="k">for</span> <span class="n">ptci</span> <span class="ow">in</span> <span class="n">pairwise_ptci_vals</span> <span class="k">if</span> <span class="n">ptci</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In[10]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'ptci'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'ptci for pairwise edge correlations'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Out[10]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x476b5110&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_04.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_04.png"/>
+</div>
+</div>
+</div>
+<div class="section" id="explore-null-distributions-for-pairwise-edge-relationships-randomized-orthology-assignments">
+<h2>Explore Null distributions for pairwise edge relationships (randomized orthology assignments)</h2>
+<div class="section" id="generate-the-null-distributions">
+<h3>Generate the Null distributions</h3>
+<p>In[11]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># import edge randomizer function</span>
+<span class="kn">from</span> <span class="nn">gfunc.scripts.gfunc_build_n_way_one2one</span> <span class="kn">import</span> <span class="n">reset_random_edges</span>
+
+<span class="c"># Scramble the edges many times and collect the pairwise ptci distributions</span>
+
+<span class="n">reps</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">null_paired_ptci_distributions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">reps</span><span class="p">):</span>
+    <span class="c"># scramble edges for this rep and set new r&amp;p vals</span>
+    <span class="n">reset_random_edges</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">graphBuilder</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">ortho_parser</span><span class="p">)</span>
+    <span class="n">graphHandler</span><span class="o">.</span><span class="n">measure_relations</span><span class="p">()</span>
+
+    <span class="c"># calculate null ptci vals</span>
+    <span class="n">null_edges</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="n">null_pairwise_ptci_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">null_edges</span><span class="p">]</span>
+
+    <span class="c"># remove any None values</span>
+    <span class="n">null_pairwise_ptci_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">ptci</span> <span class="k">for</span> <span class="n">ptci</span> <span class="ow">in</span> <span class="n">null_pairwise_ptci_vals</span> <span class="k">if</span> <span class="n">ptci</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">]</span>
+
+    <span class="c"># collect null ptci distribution</span>
+    <span class="n">null_paired_ptci_distributions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_pairwise_ptci_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graph-the-null-distributions">
+<h3>Graph the Null distributions</h3>
+<p>In[12]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Show what the actual data looks like for comparison</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">pairwise_ptci_vals</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Real Data'</span><span class="p">)</span>
+
+<span class="c"># Graph null distributions as grey slightly transparent histograms</span>
+<span class="n">null_label</span> <span class="o">=</span> <span class="s">'Null Data'</span>
+
+<span class="k">for</span> <span class="n">null_dist</span> <span class="ow">in</span> <span class="n">null_paired_ptci_distributions</span><span class="p">:</span>
+    <span class="n">hist</span><span class="p">(</span><span class="n">null_dist</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'step'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">null_label</span><span class="p">)</span>
+    <span class="n">null_label</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+
+
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'ptci'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of edges in each bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'null distributions for pairwise edge correlations (</span><span class="si">%s</span><span class="s"> reps)'</span> <span class="o">%</span> <span class="p">(</span><span class="n">reps</span><span class="p">))</span>
+<span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Out[12]:</p>
+<div class="highlight-python"><pre>&lt;matplotlib.legend.Legend at 0x35fad690&gt;</pre>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_05.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_05.png"/>
+</div>
+<div class="section" id="observations-and-discussions">
+<h3>Observations and Discussions:</h3>
+<ol class="arabic simple">
+<li>The structure of the null distributions in the pairwise cases are
+what I would have predicted<ul>
+<li>most pairs show no correlation</li>
+<li>there is no bias in either the strong negative or strong positive
+correlation zones (near -1 or +1)</li>
+</ul>
+</li>
+<li>[ <strong>QUESTION:</strong> ] It seems that the PTCI math itself is not the
+ultimate cause of the strange structure found in the null
+distributions of the 3-way comparisons at the start of this document.</li>
+<li>[ <strong>QUESTION:</strong> ] This seems to negate the need to use z-score
+conversions on any of the PTCI variables??<ul>
+<li><strong>ACTUALLY:</strong> this is not totally true, although it will might
+<strong>not</strong> fix the shape problem, as the z-score distributions will
+all have the same “shape” as the un-converted distributions</li>
+<li><strong>BUT:</strong> since the z-score distributions are x-shifted so that “0”
+lies at the mean (<em>or alternately: median if I wanted to do it
+that way</em>), z-converting the <strong>r values</strong> may still be a good way
+to highlight those pairs that are most likely to be positively
+correlated? (see figure below)</li>
+</ul>
+</li>
+<li>[ <strong>QUESTION:</strong> ] Would this also suggest that the <strong>shape</strong> of the
+p-value distribution is not a primary problem either (that taking the
+log of the p-values would not help the shape of the 3-way null
+distrbutions)</li>
+<li>[ <strong>PROPOSITION:</strong> ] Perhaps I made a mistake in the way that I
+calculated the mean 3-way PTCI values for the null distributions?</li>
+<li>[ <strong>PROPOSITION:</strong> ] Perhaps I should exclude any mean PTCI info from
+a 3-way ortholog triplicate if any pairwise PTCI is missing (usualy
+due to one of the orthologs being undetected). Currently, if one
+ortholog expression vector is missing (undetected) I simply take the
+mean of the remaining two pairwise comparisons. Maybe this is
+introducing strange structural elements in the distribution depending
+on which species is missing data?<ul>
+<li>I <strong>thought</strong> that the branch length data should correct this but
+maybe not?</li>
+</ul>
+</li>
+</ol>
+<p>In[13]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">convert_to_z_scores</span><span class="p">(</span><span class="n">data_vector</span><span class="p">):</span>
+    <span class="n">vec_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data_vector</span><span class="p">)</span>
+    <span class="n">vec_median</span> <span class="o">=</span> <span class="n">median</span><span class="p">(</span><span class="n">data_vector</span><span class="p">)</span>
+    <span class="n">vec_stdev</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">data_vector</span><span class="p">)</span>
+
+    <span class="n">z_vector</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_vector</span> <span class="o">-</span> <span class="n">vec_median</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">vec_stdev</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z_vector</span>
+</pre></div>
+</div>
+<p>In[14]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">z_r_values</span> <span class="o">=</span> <span class="n">convert_to_z_scores</span><span class="p">(</span><span class="n">r_values</span><span class="p">)</span>
+
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+
+<span class="n">vert_line_color</span> <span class="o">=</span> <span class="s">'0.75'</span>
+
+<span class="n">hist</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
+<span class="n">axvline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vert_line_color</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'r values'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'edges per bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'r values for edges BEFORE z-convertion'</span><span class="p">)</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">z_r_values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
+<span class="n">axvline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vert_line_color</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'r values'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'edges per bin'</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">'r values for edges AFTER z-convertion'</span><span class="p">)</span>
+
+<span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../../_images/Exploring_PTCI_fig_06.png" src="http://movingthelamppost.com/_images/Exploring_PTCI_fig_06.png"/>
+</div>
+<div class="section" id="next-actions">
+<h3>Next Actions:</h3>
+<ol class="arabic simple">
+<li>Re try calculating the 3-way null distributions: using new code or
+code from this notebook rather than gFunc code to see if I simply
+made a mistake.</li>
+<li>Replot pairwise distribution using z-converted r values.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="recalculate-null-3-way-scores">
+<h2>Recalculate null 3-way scores</h2>
+<p>In[15]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># perform some set up to facilitate calculations:</span>
+
+<span class="kn">import</span> <span class="nn">networkx.connected</span>
+
+<span class="kn">from</span> <span class="nn">gfunc.xpermutations</span> <span class="kn">import</span> <span class="n">xuniqueCombinations</span>
+
+<span class="c"># ensure that the original graphHandler is different than the current graphHandler bc the current one has been randomized</span>
+<span class="k">if</span> <span class="n">original_graphHandler</span> <span class="o">==</span> <span class="n">graphHandler</span><span class="p">:</span>
+     <span class="k">print</span> <span class="s">&quot;Warning: your original data may have been overwritten by randomized data.&quot;</span>
+
+<span class="n">graphHandler</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">original_graphHandler</span><span class="p">)</span>
+
+<span class="c"># dictionary of nodes/edges indexed by gene names</span>
+<span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
+<span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
+
+<span class="c"># define function to average the 3-way PTCI values, but ONLY those that have PTCIs for all 3 edges</span>
+<span class="k">def</span> <span class="nf">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">node_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if</span>
+<span class="sd">    all edges successfully generated non-None value PTCI results.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># reinstantiate node/edge dicts inside the function to ensure they are up-to-date</span>
+    <span class="c"># dictionary of nodes/edges indexed by gene names</span>
+    <span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
+    <span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">graph</span>
+
+    <span class="n">mean_ptcis</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># calculate all pairwise combinations of indexes</span>
+    <span class="c"># so that each ortho-edge of n-way orthos are obtained</span>
+
+    <span class="n">index_combos</span> <span class="o">=</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">node_list</span> <span class="ow">in</span> <span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+        <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">ortho_edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_combos</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ortho_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">ptcis</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">ortho_edges</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mean_ptci</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">ptcis</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mean_ptci</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">nan</span><span class="p">:</span>
+                <span class="n">mean_ptcis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_ptci</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">mean_ptcis</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+&lt;ipython-input-15-602c54350363&gt; in &lt;module&gt;()
+      1 # perform some set up to facilitate calculations:
+      2
+----&gt; 3 import networkx.connected
+      4
+      5 from gfunc.xpermutations import xuniqueCombinations
+
+ImportError: No module named connected</pre>
+</div>
+<p>In[ ]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># calculate actual mean_ptci distribution</span>
+<span class="n">mean_ptcis</span> <span class="o">=</span> <span class="n">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">node_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In[ ]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c">#subgraphs = networkx.connected_component_subgraphs(graphHandler.graph)</span>
+</pre></div>
+</div>
+</div>
+</div>]]></description>
+             <pubDate>Mon, 08 Apr 2013 00:00:00 -0700</pubDate>
+        </item>
+    
         <item>
             <link>http://movingthelamppost.com/2013/04/04/hello__world_.html</link>
             <guid>http://movingthelamppost.com/2013/04/04/hello__world_.html</guid>
             <title><![CDATA[Hello, World!]]></title>
             <description><![CDATA[<div class="section" id="hello-world">
 <h1>Hello, World!</h1>
-<p>Hello everyone.  This is a test.  Soon this post will be an introduction and explanation of what I hope this blog to be.</p>
+<p>I have recently joined the trend of taking my blog ‘static’ rather than using a
+more complicated database driven solution like Wordpress.  One major reason for
+me is that I like to write content in abstraction.  I love LaTeX for this reason
+and I love Sphinx for the same reason.  I chose Tinkerer as my static engine
+because it is actually built from Sphinx and it is written in my favorite
+language (Python).  Sphinx is a code documentation framework originally built
+for python.  I use it to generate my documentation using reStructuredText
+markup. I figured since I am more-or-less used to the way Sphinx does its
+markup, I would choose a blog engine that worked the same way.  So far, I
+like it.  It is a bit less mature than some of the other static engines out
+there (Octopress being a VERY popular one) but I think it will grow nicely.</p>
+<div class="section" id="the-name-moving-the-lamppost">
+<h2>The name <em>“Moving The Lamppost”</em></h2>
+<p><em>Moving The Lamppost</em> is a reference to <a class="reference external" href="http://en.wikipedia.org/wiki/Streetlight_effect">the streetlight
+effect</a>.  I first heard the
+parable from a professor in my Probabilistic Modeling of Biological Data
+course.  It goes something like this:</p>
+<blockquote>
+<div>A police officer encounters a drunk fumbling around under a streetlight late
+at night and asks him what he is doing.  The drunk responds that he is looking
+for his keys.  The officer asks where he lost them. The drunk says he
+lost them across the street in the Park. Exasperated, the officer asks him why
+on earth he is looking for them over here. “Because this is where the light
+is,” responds the drunk.</div></blockquote>
+<p>In one sense this is something of a metaphor for some situations that we find ourselves in
+as scientists.  We have a question we want to explore.  An important one.  But
+there are times when the tools available to us, or some critical idea or model
+related to our problem has yet to be created/formulated.  So we go to work with
+the tools we have.  This can cause much wasted time and money, however.  So we
+must always have a couple questions in the back of our mind as we pursue our
+questions:</p>
+<ol class="arabic simple">
+<li>“Am I looking where the answer is actually likely to be or simply where the light is?”</li>
+<li>“If I am stuck under a lamppost, is there a way to extend the reach of the light so that it includes the answer?” (Can I move this lamppost)</li>
+</ol>
+<p>From another angle <em>Moving The Lamppost</em> can represent the most basic goal of science: to extend the edges of what is known.</p>
+</div>
+<div class="section" id="the-purpose-of-this-blog">
+<h2>The purpose of this blog</h2>
+<p>My main goal for <em>Moving The Lamppost</em> is to serve as a place for me to record random thoughts about my work and what is going on in science at large in such a way that I can engage in dialog with others about it.
+Relating to that goal is my desire to foster relationships with other scientists or informed hobbyists that can approach what is termed <a class="reference external" href="http://en.wikipedia.org/wiki/Open_science">Open Science</a>.
+I hope to make this my home base for sharing what I am interested in as well as what I am actually working on: including data and figures.</p>
+<p>For a nice introduction to the ideals of Open Science take a look at <a class="reference external" href="http://scienceinthesands.blogspot.co.uk/2012/07/7-habits-of-open-scientist.html">the excellent blog series</a> by <a class="reference external" href="http://www.davidketcheson.info">David Ketcheson</a> over at <a class="reference external" href="http://scienceinthesands.blogspot.co.uk">Science in the Sands</a></p>
+</div>
 </div>]]></description>
              <pubDate>Thu, 04 Apr 2013 00:00:00 -0700</pubDate>
         </item>
