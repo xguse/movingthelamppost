@@ -43,7 +43,7 @@ html_theme_options = { }
 
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
-rss_service = None
+rss_service = "http://feeds.feedburner.com/MovingTheLamppost"
 
 # Number of blog posts per page
 posts_per_page = 10
