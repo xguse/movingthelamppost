@@ -2,18 +2,17 @@ Hello, World!
 =============
 
 I have recently joined the trend of taking my blog 'static' rather than using a
-more complicated database driven solution like Wordpress.  One major reason for
-me is that I like to write content in abstraction.  I love LaTeX for this reason
-and I love Sphinx for the same reason.  I chose Tinkerer as my static engine
-because it is actually built from Sphinx and it is written in my favorite
-language (Python).  Sphinx is a code documentation framework originally built
+more complicated database driven solution like `Wordpress <http://wordpress.com>`_.  One major reason for
+me is that I like to write content in abstraction.  I love `LaTeX <http://en.wikipedia.org/wiki/LaTeX>`_ for this reason
+and I love Sphinx for the same reason.  I chose `Tinkerer <http://www.tinkerer.me/>`_ as my static engine
+because it is actually built from `Sphinx <http://sphinx-doc.org/>`_ and it is written in my favorite
+language (`Python <http://www.python.org/>`_).  Sphinx is a code documentation framework originally built
 for python.  I use it to generate my documentation using reStructuredText
 markup. I figured since I am more-or-less used to the way Sphinx does its
 markup, I would choose a blog engine that worked the same way.  So far, I
 like it.  It is a bit less mature than some of the other static engines out
-there (Octopress being a VERY popular one) but I think it will grow nicely.
+there (`Octopress <http://octopress.org/>`_ being a VERY popular one) but I think it will grow nicely.
 
-.. more::
 
 The name *"Moving The Lamppost"*
 --------------------------------
@@ -22,6 +21,7 @@ The name *"Moving The Lamppost"*
 effect <http://en.wikipedia.org/wiki/Streetlight_effect>`_.  I first heard the
 parable from a professor in my Probabilistic Modeling of Biological Data
 course.  It goes something like this:
+.. more::
 
   A police officer encounters a drunk fumbling around under a streetlight late
   at night and asks him what he is doing.  The drunk responds that he is looking
@@ -54,8 +54,7 @@ For a nice introduction to the ideals of Open Science take a look at `the excell
 
 
 
-
 .. author:: default
 .. categories:: none
-.. tags:: none
+.. tags:: tinkerer, open science, blogging
 .. comments::
