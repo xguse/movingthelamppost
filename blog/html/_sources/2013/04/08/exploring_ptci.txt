@@ -24,7 +24,7 @@ different from the real data [blue] but has significant structure that
 is not what one would predict (resemble a normal dist). Notably, there is
 a large concentration around -0.5 that I can not explain.
 
-
+.. more::
 
 Suggested alterations
 ~~~~~~~~~~~~~~~~~~~~~

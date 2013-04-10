@@ -13,6 +13,8 @@ markup, I would choose a blog engine that worked the same way.  So far, I
 like it.  It is a bit less mature than some of the other static engines out
 there (Octopress being a VERY popular one) but I think it will grow nicely.
 
+.. more::
+
 The name *"Moving The Lamppost"*
 --------------------------------
 
