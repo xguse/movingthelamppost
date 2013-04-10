@@ -87,8 +87,7 @@
 <h1>Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</h1>
 <div class="section" id="original-solution">
 <h2>Original solution</h2>
-<p><span class="math">
-\(PTCI = r \cdot (1-p) \cdot w(d)\)</span>
+<p><span class="formula"><i>PTCI</i> = <i>r</i>⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
 </p>
 <p>Xiaohui objected that <em>1-p</em> is not optimal because the <em>1-p</em> will likely
 have a distribution skewed toward <em>1</em>. He suggested loging the variable,
@@ -109,17 +108,13 @@ a large concentration around -0.5 that I can not explain.</p>
 <li>log the 1-p value</li>
 <li>convert to Z scores<ul>
 <li>not sure exactly what he meant here</li>
-<li>*<span class="math">
-\(z(r) \cdot (1-p) \cdot w(d)\)</span>
+<li>*<span class="formula"><i>z</i>(<i>r</i>)⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
 </li>
-<li><span class="math">
-\(r \cdot z(1-p) \cdot w(d)\)</span>
+<li><span class="formula"><i>r</i>⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
 </li>
-<li><span class="math">
-\(z(r) \cdot z(1-p) \cdot w(d)\)</span>
+<li><span class="formula"><i>z</i>(<i>r</i>)⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
 </li>
-<li><span class="math">
-\(z(r \cdot (1-p)) \cdot w(d)\)</span>
+<li><span class="formula"><i>z</i>(<i>r</i>⋅(1 − <i>p</i>))⋅<i>w</i>(<i>d</i>)</span>
 </li>
 </ul>
 </li>
@@ -220,8 +215,7 @@ main() completed.</pre>
 <img alt="../../../_images/Exploring_PTCI_fig_01.png" src="../../../_images/Exploring_PTCI_fig_01.png" />
 </div>
 <div class="section" id="now-the-combined-r-cdot-1-p">
-<h4>Now the combined <span class="math">
-\(r \cdot (1-p)\)</span>
+<h4>Now the combined <span class="formula"><i>r</i>⋅(1 − <i>p</i>)</span>
 </h4>
 <p>In[6]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_by_1minusP</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_values</span><span class="p">))]</span>
