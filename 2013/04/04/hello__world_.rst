@@ -20,8 +20,10 @@ The name *"Moving The Lamppost"*
 *Moving The Lamppost* is a reference to `the streetlight
 effect <http://en.wikipedia.org/wiki/Streetlight_effect>`_.  I first heard the
 parable from a professor in my Probabilistic Modeling of Biological Data
-course.  It goes something like this:
-.. more::
+course.  It goes something like this:  
+
+
+  .. more::
 
   A police officer encounters a drunk fumbling around under a streetlight late
   at night and asks him what he is doing.  The drunk responds that he is looking
