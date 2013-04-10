@@ -94,11 +94,12 @@ have a distribution skewed toward <em>1</em>. He suggested loging the variable,
 among other options (see below).</p>
 <div class="section" id="original-results">
 <h3>Original Results</h3>
+<img alt="../../../_images/Ag_Aa_Cq_3way_PTCI.png" src="../../../_images/Ag_Aa_Cq_3way_PTCI.png" style="width: 600px;" />
 <p>This is a histogram of the three way mean PTCIs using the original
-solution. Blue=Real data. Grey=Randomizations that obolish the three way
+solution. Blue=Real data. Grey=Randomizations that abolish the three way
 orthology relationships. The &#8216;Null&#8217; distribution [grey] is significantly
 different from the real data [blue] but has significant structure that
-is not what one would predict (resembl a normal dist). Notably, there is
+is not what one would predict (resemble a normal dist). Notably, there is
 a large concentration around -0.5 that I can not explain.</p>
 </div>
 <div class="section" id="suggested-alterations">
@@ -241,7 +242,7 @@ main() completed.</pre>
 </div>
 <img alt="../../../_images/Exploring_PTCI_fig_03.png" src="../../../_images/Exploring_PTCI_fig_03.png" />
 <p>The 2D histogram above shows that as expected the p-values track mostly
-but not completly with the r values. Generally, a more extreme r value
+but not completely with the r values. Generally, a more extreme r value
 will also come with a &#8220;better&#8221; p-value, but this is not absolute which
 warrants keeping the p-value variable in the PTCI in some capacity.
 Also, this plot illustrates that the most populated bins are those with
@@ -388,7 +389,7 @@ correlated? (see figure below)</li>
 <li>[ <strong>QUESTION:</strong> ] Would this also suggest that the <strong>shape</strong> of the
 p-value distribution is not a primary problem either (that taking the
 log of the p-values would not help the shape of the 3-way null
-distrbutions)</li>
+distributions)</li>
 <li>[ <strong>PROPOSITION:</strong> ] Perhaps I made a mistake in the way that I
 calculated the mean 3-way PTCI values for the null distributions?</li>
 <li>[ <strong>PROPOSITION:</strong> ] Perhaps I should exclude any mean PTCI info from
@@ -449,90 +450,6 @@ made a mistake.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="recalculate-null-3-way-scores">
-<h2>Recalculate null 3-way scores</h2>
-<p>In[15]:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># perform some set up to facilitate calculations:</span>
-
-<span class="kn">import</span> <span class="nn">networkx.connected</span>
-
-<span class="kn">from</span> <span class="nn">gfunc.xpermutations</span> <span class="kn">import</span> <span class="n">xuniqueCombinations</span>
-
-<span class="c"># ensure that the original graphHandler is different than the current graphHandler bc the current one has been randomized</span>
-<span class="k">if</span> <span class="n">original_graphHandler</span> <span class="o">==</span> <span class="n">graphHandler</span><span class="p">:</span>
-     <span class="k">print</span> <span class="s">&quot;Warning: your original data may have been overwritten by randomized data.&quot;</span>
-
-<span class="n">graphHandler</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">original_graphHandler</span><span class="p">)</span>
-
-<span class="c"># dictionary of nodes/edges indexed by gene names</span>
-<span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
-<span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
-
-<span class="c"># define function to average the 3-way PTCI values, but ONLY those that have PTCIs for all 3 edges</span>
-<span class="k">def</span> <span class="nf">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">node_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if</span>
-<span class="sd">    all edges successfully generated non-None value PTCI results.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># reinstantiate node/edge dicts inside the function to ensure they are up-to-date</span>
-    <span class="c"># dictionary of nodes/edges indexed by gene names</span>
-    <span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
-    <span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
-
-    <span class="n">graph</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">graph</span>
-
-    <span class="n">mean_ptcis</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="c"># calculate all pairwise combinations of indexes</span>
-    <span class="c"># so that each ortho-edge of n-way orthos are obtained</span>
-
-    <span class="n">index_combos</span> <span class="o">=</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">node_list</span> <span class="ow">in</span> <span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-        <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="n">ortho_edges</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_combos</span><span class="p">:</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]))</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">ortho_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">break</span>
-
-        <span class="n">ptcis</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">ortho_edges</span><span class="p">]</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">mean_ptci</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">ptcis</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">mean_ptci</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">nan</span><span class="p">:</span>
-                <span class="n">mean_ptcis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_ptci</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">pass</span>
-        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-    <span class="k">return</span> <span class="n">mean_ptcis</span>
-</pre></div>
-</div>
-<div class="highlight-python"><pre>---------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-&lt;ipython-input-15-602c54350363&gt; in &lt;module&gt;()
-      1 # perform some set up to facilitate calculations:
-      2
-----&gt; 3 import networkx.connected
-      4
-      5 from gfunc.xpermutations import xuniqueCombinations
-
-ImportError: No module named connected</pre>
-</div>
-<p>In[ ]:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># calculate actual mean_ptci distribution</span>
-<span class="n">mean_ptcis</span> <span class="o">=</span> <span class="n">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">,</span><span class="n">node_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In[ ]:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="c">#subgraphs = networkx.connected_component_subgraphs(graphHandler.graph)</span>
-</pre></div>
-</div>
-</div>
 </div>
 
     <div class="postmeta">
@@ -543,7 +460,7 @@ ImportError: No module named connected</pre>
         <div class="tags">
             <span>
                 Tags:
-                <a href="../../../tags/open_science.html">open science</a>, <a href="../../../tags/research.html">research</a></span>
+                <a href="../../../tags/open_science.html">open science</a>, <a href="../../../tags/research.html">research</a>, <a href="../../../tags/ipython.html">ipython</a></span>
         </div>
         </div>
     <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/04/08/exploring_ptci";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">

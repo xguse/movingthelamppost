@@ -14,12 +14,17 @@ among other options (see below).
 Original Results
 ~~~~~~~~~~~~~~~~
 
+.. image:: Exploring_PTCI_files/Ag_Aa_Cq_3way_PTCI.png
+  :width: 600 px
+
 This is a histogram of the three way mean PTCIs using the original
-solution. Blue=Real data. Grey=Randomizations that obolish the three way
+solution. Blue=Real data. Grey=Randomizations that abolish the three way
 orthology relationships. The 'Null' distribution [grey] is significantly
 different from the real data [blue] but has significant structure that
-is not what one would predict (resembl a normal dist). Notably, there is
+is not what one would predict (resemble a normal dist). Notably, there is
 a large concentration around -0.5 that I can not explain.
+
+
 
 Suggested alterations
 ~~~~~~~~~~~~~~~~~~~~~
@@ -200,7 +205,7 @@ Out[7]:
 .. image:: Exploring_PTCI_files/Exploring_PTCI_fig_03.png
 
 The 2D histogram above shows that as expected the p-values track mostly
-but not completly with the r values. Generally, a more extreme r value
+but not completely with the r values. Generally, a more extreme r value
 will also come with a "better" p-value, but this is not absolute which
 warrants keeping the p-value variable in the PTCI in some capacity.
 Also, this plot illustrates that the most populated bins are those with
@@ -373,7 +378,7 @@ Observations and Discussions:
 4. [ **QUESTION:** ] Would this also suggest that the **shape** of the
    p-value distribution is not a primary problem either (that taking the
    log of the p-values would not help the shape of the 3-way null
-   distrbutions)
+   distributions)
 
 5. [ **PROPOSITION:** ] Perhaps I made a mistake in the way that I
    calculated the mean 3-way PTCI values for the null distributions?
@@ -440,100 +445,7 @@ Next Actions:
 2. Replot pairwise distribution using z-converted r values.
 
 
-Recalculate null 3-way scores
------------------------------
 
-
-In[15]:
-
-.. code:: python
-
-    # perform some set up to facilitate calculations:
-    
-    import networkx.connected
-    
-    from gfunc.xpermutations import xuniqueCombinations
-    
-    # ensure that the original graphHandler is different than the current graphHandler bc the current one has been randomized
-    if original_graphHandler == graphHandler:
-         print "Warning: your original data may have been overwritten by randomized data."
-    
-    graphHandler = deepcopy(original_graphHandler)
-    
-    # dictionary of nodes/edges indexed by gene names
-    node_dict = graphHandler.node_dict
-    edge_dict = graphHandler.edge_dict
-        
-    # define function to average the 3-way PTCI values, but ONLY those that have PTCIs for all 3 edges 
-    def calc_mean_ptcis(graphHandler,n_way_ortho_table,node_dict):
-        """
-        returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if 
-        all edges successfully generated non-None value PTCI results.
-        """
-        # reinstantiate node/edge dicts inside the function to ensure they are up-to-date
-        # dictionary of nodes/edges indexed by gene names
-        node_dict = graphHandler.node_dict
-        edge_dict = graphHandler.edge_dict
-        
-        graph = graphHandler.graph 
-        
-        mean_ptcis = []
-        
-        # calculate all pairwise combinations of indexes
-        # so that each ortho-edge of n-way orthos are obtained
-        
-        index_combos = xuniqueCombinations(range(len(n_way_ortho_table.columns)),2)
-    
-        for node_list in n_way_ortho_table.itertuples():
-            node_list = node_list[1:]
-            ortho_edges = []
-            for i in index_combos:
-                key = tuple(sorted([node_list[i[0]],node_list[i[1]]]))
-                try:
-                    ortho_edges.append(edge_dict[key])
-                except KeyError:
-                    break
-                    
-            ptcis = [calc_ptci(edge) for edge in ortho_edges]
-            
-            try:
-                mean_ptci = mean(ptcis)
-                if mean_ptci is not nan:
-                    mean_ptcis.append(mean_ptci)
-                else:
-                    pass
-            except TypeError:
-                pass
-        
-        return mean_ptcis
-    
-        
-
-::
-
-    ---------------------------------------------------------------------------
-    ImportError                               Traceback (most recent call last)
-    <ipython-input-15-602c54350363> in <module>()
-          1 # perform some set up to facilitate calculations:
-          2 
-    ----> 3 import networkx.connected
-          4 
-          5 from gfunc.xpermutations import xuniqueCombinations
-    
-    ImportError: No module named connected
-
-In[ ]:
-
-.. code:: python
-
-    # calculate actual mean_ptci distribution
-    mean_ptcis = calc_mean_ptcis(graphHandler,n_way_ortho_table,node_dict)
-
-In[ ]:
-
-.. code:: python
-
-    #subgraphs = networkx.connected_component_subgraphs(graphHandler.graph)
     
     
     
@@ -542,5 +454,5 @@ In[ ]:
 
 .. author:: default
 .. categories:: none
-.. tags:: open science, research
+.. tags:: open science, research, ipython
 .. comments::
