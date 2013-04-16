@@ -18,9 +18,9 @@ I fall prey to avoiding such tried and true methods of addressing this as *write
 Blogging as document/idea development tool
 ------------------------------------------
 It's actually kind of a perfect device for me; I think.
-Blogs are naturally pretty bite-sized which removes the *"Holy FSM! I am **NEVER** going to be able to finish this!"* brake that is a personal favorite nightmare of mine.
+Blogs are naturally pretty bite-sized which removes the *"Holy FSM! I am* **NEVER** *going to be able to finish this!"* brake that is a personal favorite nightmare of mine.
 Because of this, I **should** be much more likely to write regularly.
-They are generally aimed at curious *non-experts* which silences the *"What if I show it to my adviser and he/she thinks **its so horrible** and tells me to **start over**?!"* demon.
+They are generally aimed at curious *non-experts* which silences the *"What if I show it to my adviser and he/she thinks* **its so horrible** *and tells me to* **start over**?!" demon.
 Blogs have built-in feedback mechanisms in their comments sections which allow input from people you may never have expected.
 This is great for two reasons:
 
