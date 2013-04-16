@@ -1,0 +1,185 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>Blogging my dissertation &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)" href="../08/exploring_ptci.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1>
+              <h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2>
+            </hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>April 15, 2013</span>
+        </div>
+    <div class="section" id="blogging-my-dissertation">
+<h1>Blogging my dissertation</h1>
+<p>I am not surprised or disappointed that <a class="reference external" href="http://chronicle.com/article/How-Blogging-Helped-Me-Write/136893/">this idea has already been done</a>.
+In fact, I am quite encouraged that I read that others that have done this so far have had such great experiences with it.
+I began to think about using my blog to help me get over my reluctance to simply sit down and write for quite a few years.
+However, I somehow never made the connection that I could also use it to help me actually write the documents themselves.
+It was only recently, after <a class="reference external" href="http://movingthelamppost.com/blog/html/2013/04/04/hello__world_.html">making a personal promise</a> to engage more frequently and vigorously in the <a class="reference external" href="http://en.wikipedia.org/wiki/Open_science">open science</a> endeavor, that I started to research how the idea had worked out for other people.</p>
+<div class="section" id="it-s-been-normalizing">
+<h2>It&#8217;s been normalizing</h2>
+<p>Gladly, I discover passages about many all-to-familiar feelings I have been having about writing that mystic tome that will represent the sum of my time as a graduate student, yet will most likely be read by <strong>maybe</strong> ten people...
+Like many other grad students, I find writing, along with the associated stresses and insecurities, quite intimidating.
+I fall prey to avoiding such tried and true methods of addressing this as <em>write everyday (even if for just 20 min)</em> because I can&#8217;t think of anything to write or because I convince myself that it would be a waste of my time or I feel like if it&#8217;s not perfect the first time out of my head then I am a failure or... <em>ad infinitum</em>.</p>
+</div>
+<div class="section" id="blogging-as-document-idea-development-tool">
+<h2>Blogging as document/idea development tool</h2>
+<p>It&#8217;s actually kind of a perfect device for me; I think.
+Blogs are naturally pretty bite-sized which removes the <em>&#8220;Holy FSM! I am **NEVER*</em> going to be able to finish this!&#8221;* brake that is a personal favorite nightmare of mine.
+Because of this, I <strong>should</strong> be much more likely to write regularly.
+They are generally aimed at curious <em>non-experts</em> which silences the <em>&#8220;What if I show it to my adviser and he/she thinks **its so horrible*</em> and tells me to <strong>start over</strong>?!&#8221;* demon.
+Blogs have built-in feedback mechanisms in their comments sections which allow input from people you may never have expected.
+This is great for two reasons:</p>
+<ol class="arabic">
+<li><p class="first">criticism from people you don&#8217;t know can be easier to recover from than from folks you feel like you <strong>need</strong> to impress</p>
+</li>
+<li><p class="first">it is exactly these people that a good scientist-communicator <strong>should</strong> be hearing from, and on a frequent basis</p>
+<blockquote>
+<div><ul class="simple">
+<li>shared jargon, background knowledge, etc makes it too easy to write for yourself or other experts in your tiny corner of the community if you truly want to improve your ability to communicate science.</li>
+<li>it can also be kind of dangerous: group-think is the enemy of innovation and you never know how well you communicated your ideas until you get questions/comments from non-experts.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>It&#8217;s not bad practice for grant writing either since you need to make sure that <strong>everyone</strong> on that study section has the best chance possible of understanding the purpose, approach, and <em>awesomeness</em> of your ideas regardless of the referee&#8217;s specialty.</p>
+</div>
+<div class="section" id="the-opposite-of-wasting-my-time">
+<h2>The opposite of wasting my time</h2>
+<p>I have been trying to figure out what to do with the many but <strong>short</strong> bits of time that I have to myself when I am being a full-time dad two and a half days a week while the little dude is or <strong>should</strong> be napping.
+I find that I can not code in that time because I will lose my place and spend half the time reminding myself what I was doing when I left off the last time.
+This way I am actually making progress towards my major goals and improving an essential skill for any scientist.
+Granted: I will not be able to simply cut and paste my work from here into submission formats for journals or my committee as a final dissertation.
+But my thoughts will have been laid out, organized, reworked, and hopefully tested through community involvement in the comments.</p>
+</div>
+<div class="section" id="what-are-your-thoughts-experiences-with-blogs-as-academic-tools">
+<h2>What are your thoughts/experiences with blogs as academic tools?</h2>
+<p>I would love to hear about your experiences with blogs in academia.
+Do you have any words of advice or warning?
+Do you have any favorite academics that you follow?
+Please comment below and give me your thoughts.</p>
+</div>
+<div class="section" id="follow-me">
+<h2>Follow me!</h2>
+<p>If you liked what you just read and want to read more as it comes out: <a class="reference external" href="http://feeds.feedburner.com/MovingTheLamppost">subscribe to the rss feed</a>!</p>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/my_dissertation.html">my dissertation</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/my_dissertation.html">my dissertation</a>, <a href="../../../tags/my_research.html">my research</a>, <a href="../../../tags/open_science.html">open science</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/04/15/blogging_my_dissertation";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="#">Blogging my dissertation</a>
+        </li><li>
+            <a href="../08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (r), confidence in that correlation (p value associated with r), and phylogenetic distance (w(d)) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a>
+        </li><li>
+            <a href="../04/hello__world_.html">Hello, World!</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
