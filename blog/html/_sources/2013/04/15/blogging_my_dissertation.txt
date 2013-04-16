@@ -7,6 +7,8 @@ I began to think about using my blog to help me get over my reluctance to simply
 However, I somehow never made the connection that I could also use it to help me actually write the documents themselves.
 It was only recently, after `making a personal promise <http://movingthelamppost.com/blog/html/2013/04/04/hello__world_.html>`_ to engage more frequently and vigorously in the `open science <http://en.wikipedia.org/wiki/Open_science>`_ endeavor, that I started to research how the idea had worked out for other people.
 
+.. more::
+
 It's been normalizing
 ---------------------
 Gladly, I discover passages about many all-to-familiar feelings I have been having about writing that mystic tome that will represent the sum of my time as a graduate student, yet will most likely be read by **maybe** ten people...
