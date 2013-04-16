@@ -68,6 +68,7 @@ The long term goal of my current lab is to produce genetically modified mosquito
 Links
 -----
 - `My about.me profile <http://about.me/wadunn>`_ (my homebase on the interwebs)
+- Tweetting at `@xguse <https://twitter.com/xguse>`_
 - `LinkedIn <http://www.linkedin.com/pub/augustine-dunn/3/658/7a>`_
 - `GitHub <https://github.com/xguse>`_
 - `Blacktie (streamlined interface to Tophat/Cufflinks workflow) <https://github.com/xguse/blacktie>`_  
