@@ -42,6 +42,19 @@ This way I am actually making progress towards my major goals and improving an e
 Granted: I will not be able to simply cut and paste my work from here into submission formats for journals or my committee as a final dissertation.
 But my thoughts will have been laid out, organized, reworked, and hopefully tested through community involvement in the comments.
 
+
+What's it about?
+----------------
+Thanks for asking!
+
+Here is a snippet explaining it:
+
+	**Comparative transcriptomics of bloodmeal regulated gene expression in mosquito midguts across 150 million years of divergence.**
+
+	Hematophagy (blood-feeding) is a trait believed to have been present in the common ancestor of modern mosquitoes.  The females of many mosquito species must obtain a suitable bloodmeal in order to become competent to mature the first clutch of fertilized eggs, a fact that drives the transmission of many tropical mosquito-borne diseases.  20-hydroxyecdysone (20E) is a well known steroid hormone that is involved in molting and other developmental switches across all of Arthropoda; it is also known to participate in the transcriptional control of bloodmeal regulated genes in mosquitoes.
+
+	This work aims to characterize the level of conservation of transcriptional patterns in genes of four mosquito species (*Anopheles gambiae, Anopheles stephensi, Aedes aegypti*, and *Culex quinquefasciatus*) as measured using RNA-seq.  It specifically aims to focus on genes that may be regulated by the early transcription factors in the 20E transcriptional program.  RNA was collected from midguts of mosquitoes 0, 4, 6, 8, and 10 hours post bloodmeal.  It represents an effort to combine multiple genome-scale data types including comparative transcriptomics, orthology, evolutionary tree branch lengths (divergence times as old as 150 million years), and putative transcription factor binding sites.
+
 What are your thoughts/experiences with blogs as academic tools?
 -----------------------------------------------------------------
 I would love to hear about your experiences with blogs in academia.
