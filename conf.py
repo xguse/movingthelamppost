@@ -69,8 +69,12 @@ exclude_patterns = ["drafts/*", "_templates/*"]
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
-	"**": ["email_subscribe.html","searchbox.html","recent.html","tags_cloud.html"]
+	"**": ["email_subscribe.html","searchbox.html","tags_cloud.html","categories.html"]
 }
+
+# choose which pygments style to use for code highlighting
+#pygments_style = 'solarlized'
+
 
 # **************************************************************
 # Do not modify below lines as the values are required by 
