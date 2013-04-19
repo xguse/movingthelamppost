@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/04/19/new_release__blacktie_v0_2_0rc1
    2013/04/16/vakhrusheva_et_al_gbe_2013
    2013/04/15/blogging_my_dissertation
    2013/04/08/exploring_ptci

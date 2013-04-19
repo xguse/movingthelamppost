@@ -35,7 +35,7 @@
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -76,6 +76,66 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>April 19, 2013</span>
+        </div>
+        <div class="section" id="new-release-blacktie-v0-2-0rc1">
+<h1><a href="2013/04/19/new_release__blacktie_v0_2_0rc1.html">NEW RELEASE: Blacktie v0.2.0rc1</a></h1>
+<p>I have released a new version of blacktie (0.2.0rc1) which has a number of minor fixes and new features.</p>
+<ul class="simple">
+<li>github repo: <a class="reference external" href="https://github.com/xguse/blacktie">https://github.com/xguse/blacktie</a></li>
+<li>documentation: <a class="reference external" href="http://xguse.github.io/blacktie">http://xguse.github.io/blacktie/</a></li>
+<li>issue tracking and feature requests: <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">One major gotcha will be that the yaml config file has been changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
+</div>
+<p>Thanks and <strong>please</strong> let me know what you think.  I need your input to make improvements.</p>
+<p>Gus</p>
+<hr class="docutils"/>
+<div class="section" id="news">
+<h2>News</h2>
+<div class="section" id="rc1">
+<h3>0.2.0rc1</h3>
+<p><em>Release date: 2013-04-19</em></p>
+<ul>
+<li><p class="first">git tag: ‘v0.2.0rc1’</p>
+</li>
+<li><p class="first">email_notification is now adjustable for other email servers</p>
+</li>
+<li><p class="first">Added support for handling biological replicates in cuffdiff runs.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Major changes to yaml config:</dt>
+<dd><ul class="first last simple">
+<li>condition_queue[index].group_id –&gt; condition_queue[index].experiment_id</li>
+<li>addition of condition_queue[index].replicate_id to track replicate data</li>
+<li>condition_queue[index].name now represents description of an ‘experimental condition’ and will be shared by replicates.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/my_code.html">My Code</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/new_release.html">new release</a>, <a href="tags/blacktie.html">blacktie</a>, <a href="tags/tophat.html">tophat</a>, <a href="tags/cufflinks.html">cufflinks</a>, <a href="tags/cuffmerge.html">cuffmerge</a>, <a href="tags/cuffdiff.html">cuffdiff</a>, <a href="tags/ngs.html">NGS</a>, <a href="tags/rna_seq.html">RNA-seq</a>, <a href="tags/python.html">python</a>, <a href="tags/open_source.html">open source</a>, <a href="tags/open_science.html">open science</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/04/19/new_release__blacktie_v0_2_0rc1.html#disqus_thread" data-disqus-identifier="2013/04/19/new_release__blacktie_v0_2_0rc1">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>April 16, 2013</span>
         </div>
         <div class="section" id="genome-level-analysis-of-selective-constraint-without-apparent-sequence-conservation">
@@ -99,14 +159,10 @@
 </div>
 <div class="section" id="main-hypotheses">
 <h3>Main Hypotheses</h3>
-<p><span class="formula"><i>H</i><sub>1</sub></span>
-: the presence of a ‘conserved’ segment between two less divergent species should <em>overall</em> predict the presence of corresponding conserved segments in a separate pair of similarly divergent species that together have a much larger pair-to-pair divergence distance (see <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f1"><em>Figure 1</em></a> for graphical representation). <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f2"><em>Figure 2</em></a> <strong>]</strong></p>
-<p><span class="formula"><i>H</i><sub>2</sub></span>
-: if <em>empirically validated</em> regulatory elements persist longer than the sequence similarity of the corresponding DNA segments, introns containing a regulatory element in pair 1 should carry a corresponding segment in pair 2 at rates higher than expected by chance. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f3"><em>Figure 3</em></a> <strong>]</strong></p>
-<p><span class="formula"><i>H</i><sub>3</sub></span>
-: presence of a functional element in an orthologous intron in one species pair should correlate with a reduced instance of intron loss when compared to an outgroup serving as a way to infer the presence/absence of the functional element in a distant common ancestor. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f4"><em>Figure 4</em></a> <strong>]</strong></p>
-<p><span class="formula"><i>H</i><sub>4</sub></span>
-: because others have already established that longer introns are more likely to carry a segment of conservation than short introns, a function conserved in all four species should be expected to be associated with larger intron length  when conserved in pair 1 <em>and</em> pair 2, compared with the introns lost in pair 2. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f5"><em>Figure 5</em></a> <strong>]</strong></p>
+<p><span class="math">\(H_1\)</span>: the presence of a ‘conserved’ segment between two less divergent species should <em>overall</em> predict the presence of corresponding conserved segments in a separate pair of similarly divergent species that together have a much larger pair-to-pair divergence distance (see <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f1"><em>Figure 1</em></a> for graphical representation). <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f2"><em>Figure 2</em></a> <strong>]</strong></p>
+<p><span class="math">\(H_2\)</span>: if <em>empirically validated</em> regulatory elements persist longer than the sequence similarity of the corresponding DNA segments, introns containing a regulatory element in pair 1 should carry a corresponding segment in pair 2 at rates higher than expected by chance. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f3"><em>Figure 3</em></a> <strong>]</strong></p>
+<p><span class="math">\(H_3\)</span>: presence of a functional element in an orthologous intron in one species pair should correlate with a reduced instance of intron loss when compared to an outgroup serving as a way to infer the presence/absence of the functional element in a distant common ancestor. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f4"><em>Figure 4</em></a> <strong>]</strong></p>
+<p><span class="math">\(H_4\)</span>: because others have already established that longer introns are more likely to carry a segment of conservation than short introns, a function conserved in all four species should be expected to be associated with larger intron length  when conserved in pair 1 <em>and</em> pair 2, compared with the introns lost in pair 2. <strong>[relevant figures:</strong> <a class="reference internal" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#f5"><em>Figure 5</em></a> <strong>]</strong></p>
 </div></div><p><a class="readmore" href="2013/04/16/vakhrusheva_et_al_gbe_2013.html#more">Read more...</a></p></div>
         <div class="postmeta">
         <div class="author">
@@ -158,8 +214,7 @@ It was only recently, after <a class="reference external" href="http://movingthe
 <h1><a href="2013/04/08/exploring_ptci.html">Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</a></h1>
 <div class="section" id="original-solution">
 <h2>Original solution</h2>
-<p><span class="formula"><i>PTCI</i> = <i>r</i>⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
-</p>
+<p><span class="math">\(PTCI = r \cdot (1-p) \cdot w(d)\)</span></p>
 <p>Xiaohui objected that <em>1-p</em> is not optimal because the <em>1-p</em> will likely
 have a distribution skewed toward <em>1</em>. He suggested loging the variable,
 among other options (see below).</p>
@@ -237,22 +292,32 @@ course.  It goes something like this:</p>
     </form>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
+      <a href="tags/blacktie.html" style="font-size: 8pt">blacktie</a>&nbsp;&nbsp;
       <a href="tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
       <a href="tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
       <a href="tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
       <a href="tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
       <a href="tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
       <a href="tags/my_dissertation.html" style="font-size: 8pt">my dissertation</a>&nbsp;&nbsp;
       <a href="tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
+      <a href="tags/ngs.html" style="font-size: 8pt">NGS</a>&nbsp;&nbsp;
       <a href="tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
       <a href="tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="tags/rna_seq.html" style="font-size: 8pt">RNA-seq</a>&nbsp;&nbsp;
       <a href="tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
-      <a href="tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>
+      <a href="tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="tags/tophat.html" style="font-size: 8pt">tophat</a>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_dissertation.html">my dissertation</a> (1)</li></ul>
+    <ul><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (1)</li><li><a href="categories/my_dissertation.html">my dissertation</a> (1)</li></ul>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->

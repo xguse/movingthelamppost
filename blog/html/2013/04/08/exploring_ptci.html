@@ -35,7 +35,7 @@
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -85,8 +85,7 @@
 <h1>Exploring Various ways to combine transcription profile correlation (<em>r</em>), confidence in that correlation (<em>p value</em> associated with <em>r</em>), and phylogenetic distance (<em>w(d)</em>) between species into a useful PTC index (Phylogenetic Transcription Conservation Index)</h1>
 <div class="section" id="original-solution">
 <h2>Original solution</h2>
-<p><span class="formula"><i>PTCI</i> = <i>r</i>⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
-</p>
+<p><span class="math">\(PTCI = r \cdot (1-p) \cdot w(d)\)</span></p>
 <p>Xiaohui objected that <em>1-p</em> is not optimal because the <em>1-p</em> will likely
 have a distribution skewed toward <em>1</em>. He suggested loging the variable,
 among other options (see below).</p>
@@ -106,14 +105,10 @@ a large concentration around -0.5 that I can not explain.</p>
 <li>log the 1-p value</li>
 <li>convert to Z scores<ul>
 <li>not sure exactly what he meant here</li>
-<li>*<span class="formula"><i>z</i>(<i>r</i>)⋅(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
-</li>
-<li><span class="formula"><i>r</i>⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
-</li>
-<li><span class="formula"><i>z</i>(<i>r</i>)⋅<i>z</i>(1 − <i>p</i>)⋅<i>w</i>(<i>d</i>)</span>
-</li>
-<li><span class="formula"><i>z</i>(<i>r</i>⋅(1 − <i>p</i>))⋅<i>w</i>(<i>d</i>)</span>
-</li>
+<li>*<span class="math">\(z(r) \cdot (1-p) \cdot w(d)\)</span></li>
+<li><span class="math">\(r \cdot z(1-p) \cdot w(d)\)</span></li>
+<li><span class="math">\(z(r) \cdot z(1-p) \cdot w(d)\)</span></li>
+<li><span class="math">\(z(r \cdot (1-p)) \cdot w(d)\)</span></li>
 </ul>
 </li>
 <li>&#8216;fiddle&#8217; with it till the null distribution makes sense...</li>
@@ -212,9 +207,8 @@ main() completed.</pre>
 </div>
 <img alt="../../../_images/Exploring_PTCI_fig_01.png" src="../../../_images/Exploring_PTCI_fig_01.png" />
 </div>
-<div class="section" id="now-the-combined-r-cdot-1-p">
-<h4>Now the combined <span class="formula"><i>r</i>⋅(1 − <i>p</i>)</span>
-</h4>
+<div class="section" id="now-the-combined">
+<h4>Now the combined <span class="math">\(r \cdot (1-p)\)</span></h4>
 <p>In[6]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">r_by_1minusP</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_values</span><span class="p">))]</span>
 <span class="n">hist</span><span class="p">(</span><span class="n">r_by_1minusP</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
@@ -478,22 +472,32 @@ made a mistake.</li>
     </form>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
+      <a href="../../../tags/blacktie.html" style="font-size: 8pt">blacktie</a>&nbsp;&nbsp;
       <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
       <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
       <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
       <a href="../../../tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
       <a href="../../../tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
       <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">my dissertation</a>&nbsp;&nbsp;
       <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 8pt">NGS</a>&nbsp;&nbsp;
       <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
       <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
       <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 8pt">RNA-seq</a>&nbsp;&nbsp;
       <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
-      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 8pt">tophat</a>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_dissertation.html">my dissertation</a> (1)</li></ul>
+    <ul><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (1)</li><li><a href="../../../categories/my_dissertation.html">my dissertation</a> (1)</li></ul>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
