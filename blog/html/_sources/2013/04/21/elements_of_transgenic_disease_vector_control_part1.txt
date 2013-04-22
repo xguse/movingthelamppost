@@ -15,6 +15,9 @@ All of my work should be interpreted in the scheme of aiding the lab's ability t
 This is part one of a few posts that will discuss the fundamental elements of transgenic disease-\ :term:`vector` control.
 It will set the scene by explaining what a disease-vector is and how our specific models of disease transmission influence how we can approach the problem of malaria and dengue fever by addressing the mosquitoes rather than treating the humans.
 
+
+.. more::
+
 Mosquito borne disease
 -----------------------
 
