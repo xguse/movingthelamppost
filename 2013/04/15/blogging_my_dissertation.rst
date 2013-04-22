@@ -5,7 +5,7 @@ I am not surprised or disappointed that `this idea has already been done <http:/
 In fact, I am quite encouraged that I read that others that have done this so far have had such great experiences with it.
 I began to think about using my blog to help me get over my reluctance to simply sit down and write for quite a few years.
 However, I somehow never made the connection that I could also use it to help me actually write the documents themselves.
-It was only recently, after `making a personal promise <http://movingthelamppost.com/blog/html/2013/04/04/hello__world_.html>`_ to engage more frequently and vigorously in the `open science <http://en.wikipedia.org/wiki/Open_science>`_ endeavor, that I started to research how the idea had worked out for other people.
+It was only recently, after `making a personal promise <http://movingthelamppost.com/blog/html/2013/04/04/hello__world_.html>`_ to engage more frequently and vigorously in the `open science <http://en.wikipedia.org/wiki/Open_science>`_ endeavor, that I started to research how the idea of blogging a :term:`dissertation` had worked out for other people.
 
 .. more::
 
@@ -67,6 +67,6 @@ Follow me!
 If you liked what you just read and want to read more as it comes out: `subscribe to the rss feed <http://feeds.feedburner.com/MovingTheLamppost>`_!
 
 .. author:: default
-.. categories:: my dissertation
-.. tags:: my dissertation, my research, open science
+.. categories:: My Dissertation
+.. tags:: My Dissertation, My Research, open science
 .. comments::

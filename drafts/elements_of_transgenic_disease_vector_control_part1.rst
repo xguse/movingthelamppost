@@ -3,6 +3,7 @@ Elements of transgenic disease-vector control (Part 1: setting the scene)
 
 Mosquito borne disease
 -----------------------
+- here is :term:`test`
 - many but we focus on Dengue Fever and Malaria
 - causative agents
 - people dont give people these two diseases
@@ -44,9 +45,6 @@ Transgenic options for the vectors
 - Vector population conversion
 
 
-Definition of Terms:
---------------------
-- terms
 
 
 
@@ -55,6 +53,6 @@ Definition of Terms:
 
 
 .. author:: default
-.. categories:: My Research
-.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, my research
+.. categories:: My Research, My Dissertation
+.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, 
 .. comments::

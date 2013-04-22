@@ -1,0 +1,328 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>Elements of transgenic disease-vector control (Part 1: setting the scene) &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="NEW RELEASE: Blacktie v0.2.0rc1" href="../19/new_release__blacktie_v0_2_0rc1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.1_wad',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../19/new_release__blacktie_v0_2_0rc1.html">NEW RELEASE: Blacktie v0.2.0rc1</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>April 21, 2013</span>
+        </div>
+    <div class="section" id="elements-of-transgenic-disease-vector-control-part-1-setting-the-scene">
+<h1>Elements of transgenic disease-vector control (Part 1: setting the scene)</h1>
+<div class="section" id="foreword">
+<h2>Foreword</h2>
+<p>This is the first installment in my endeavor to <a class="reference internal" href="../15/blogging_my_dissertation.html"><em>&#8220;Blog My Dissertation&#8221;</em></a>.
+I am afraid that I have not quite settled on a format for this project or even a solid governing theme on how to organize and execute the bloggification...
+So I ask you to please bear with me as I experiment with how technical to be; how polished; how formal/informal; and &#8220;dissertation-ready&#8221; to make the prose etc.</p>
+<p>This post will cover part of the dissertation&#8217;s first chapter (Introduction and Background).
+The long term goal of the Anthony James lab at UCI is to produce genetically modified mosquitoes that do not transmit <a class="reference internal" href="../../../pages/glossary.html#term-malaria"><em class="xref std std-term">malaria</em></a> or <a class="reference internal" href="../../../pages/glossary.html#term-dengue-fever"><em class="xref std std-term">dengue fever</em></a> and will spread this trait swiftly through local mosquito populations.
+In order to produce mosquitoes that will perform these functions, we use a process called <a class="reference internal" href="../../../pages/glossary.html#term-transgenesis"><em class="xref std std-term">transgenesis</em></a> that introduces a set of <a class="reference internal" href="../../../pages/glossary.html#term-exogenous"><em class="xref std std-term">exogenous</em></a> genes into the mosquitoes&#8217; <a class="reference internal" href="../../../pages/glossary.html#term-genome"><em class="xref std std-term">genome</em></a> and tells them when and where to be expressed.
+All of my work should be interpreted in the scheme of aiding the lab&#8217;s ability to improve this process; however, there is real basic science that it aims to further as well.</p>
+<p>This is part one of a few posts that will discuss the fundamental elements of transgenic disease-<a class="reference internal" href="../../../pages/glossary.html#term-vector"><em class="xref std std-term">vector</em></a> control.
+It will set the scene by explaining what a disease-vector is and how our specific models of disease transmission influence how we can approach the problem of malaria and dengue fever by addressing the mosquitoes rather than treating the humans.</p>
+</div>
+<div class="section" id="mosquito-borne-disease">
+<h2>Mosquito borne disease</h2>
+<div class="topic">
+<p class="topic-title first">TL;DR:</p>
+<ul class="simple">
+<li>there are many but we focus on Dengue Fever and Malaria</li>
+<li>causative agents are RNA viruses and Plasmodium protists, respectively</li>
+<li>people don&#8217;t give people these two diseases</li>
+<li>mosquitoes generally don&#8217;t give mosquitoes these diseases</li>
+</ul>
+</div>
+<p>There are many mosquito borne diseases that afflict the world&#8217;s population; however, the James Lab focuses on two of the major ones: dengue fever and malaria.
+The causative agents of these two diseases are a suite of four species of RNA viruses (<a class="reference external" href="http://en.wikipedia.org/wiki/Dengue_fever#Virology">Dengue Virus 1-4</a>) and a suite of five species of protist from the genus <a class="reference external" href="http://en.wikipedia.org/wiki/Plasmodium"><em>Plasmodium</em></a>, respectively.
+However, in any <strong>single</strong> location they are generally transmitted by a single species of mosquito:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="23%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Disease</th>
+<th class="head">Region</th>
+<th class="head">Mosquito Vector</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Dengue Viruses</td>
+<td>Worldwide</td>
+<td><em>Aedes aeygypti</em></td>
+</tr>
+<tr class="row-odd"><td rowspan="2">Human Malaria</td>
+<td>Africa</td>
+<td><em>Anopheles gambiae</em></td>
+</tr>
+<tr class="row-even"><td>Asia</td>
+<td><em>Anopheles stephensi</em></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The multiple species nature of these two diseases makes addressing the problem of preventing human disease caused by these pathogens quite difficult: especially when focusing on the human aspect.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Other posts will go into more detail on the specifics of the distribution and effects of the actual diseases on local populations. Once completed, they will be linked to from here.</p>
+</div>
+<p>Another very important aspect of both of these diseases is that people do not become infected through interaction with other people, and mosquitoes do not become infected through interaction with other mosquitoes.
+The <a class="reference internal" href="../../../pages/glossary.html#term-transmission-cycle"><em class="xref std std-term">transmission cycle</em></a> of both diseases requires that the pathogen be passed from human to mosquito or from mosquito to human.
+We will soon see that this pattern has <a class="reference internal" href="#pub-health"><em>important consequences that we can exploit</em></a> to prevent the transmission cycle from churning out infected individuals.</p>
+<div class="section" id="transmission-cycle">
+<h3>Transmission cycle</h3>
+<div class="topic">
+<p class="topic-title first">TL;DR:</p>
+<ol class="arabic simple">
+<li>a female mosquito bites infected person</li>
+<li>the pathogen is taken into mosquito midgut with bloodmeal</li>
+<li>the pathogen must escape the midgut and gain access to the mosquito&#8217;s circulatory system <em>(the animal is now</em> <strong>infected</strong><em>)</em></li>
+<li>the pathogen must gain access to the mosquito&#8217;s salivary glands <em>(the animal is now</em> <strong>infectious</strong><em>)</em></li>
+<li>the infectious female mosquito bites an uninfected human and pathogens in her saliva are introduced to the person&#8217;s body</li>
+</ol>
+</div>
+<p>While the specifics of how viruses and protists live and reproduce in mosquitoes and humans are quite different, the transmission cycles of dengue and malaria are very similar in their major events.
+The transmission of either pathogen from one infected human to another can both be summarized into five fundamental events.
+First, a female mosquito feeds on an infected human&#8217;s blood taking up the pathogen as well.
+The bloodmeal is digested in the mosquito&#8217;s <a class="reference internal" href="../../../pages/glossary.html#term-midgut"><em class="xref std std-term">midgut</em></a>, and as you might expect, the midgut is the first stop for the pathogen too.
+Escape of the midgut is the first critical step for the survival of the pathogen inside the mosquito.
+If it is trapped in the midgut, it will eventually be passed as waste after the bloodmeal is digested.
+If it manages to escape to the <a class="reference internal" href="../../../pages/glossary.html#term-hemolymph"><em class="xref std std-term">hemolymph</em></a>, the pathogen must gain access to the mosquito&#8217;s salivary glands if it is to infect another human.
+If this step is unsuccessful, then the mosquito, while itself <strong>infected</strong>, is not <strong>infectious</strong> to other humans.
+For this, the pathogen must be injected into the bloodstream of the next human along with the contents of the mosquito&#8217;s saliva.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/mosqXsection.png"><img alt="../../../_images/mosqXsection.png" src="../../../_images/mosqXsection.png" style="width: 585px;" /></a>
+<p class="caption"><strong>Cross section of female mosquito with tissues important to the transmission cycle highlighted.</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="public-health-multiple-targets">
+<span id="pub-health"></span><h2>Public health: <em>multiple targets</em></h2>
+<div class="topic">
+<p class="topic-title first">TL;DR:</p>
+<ul class="simple">
+<li>The specifics of the transmission cycle of these diseases provides multiple targets for public health interventions</li>
+<li>focus on the human</li>
+<li>focus on the vector</li>
+</ul>
+</div>
+<p>Because the arrow of transmission always<a class="footnote-reference" href="#nonhuman-transmission" id="id1">[1]</a> points from mosquito to human or from human to mosquito, if either of those arrows are broken, the cycle will collapse and the area would eventually be cleared of the pathogen provided the intervention is maintained.
+This model suggests that there are two primary targets for public health interventions aiming to reduce the <a class="reference internal" href="../../../pages/glossary.html#term-incidence"><em class="xref std std-term">incidence</em></a> (followed by <a class="reference internal" href="../../../pages/glossary.html#term-prevalence"><em class="xref std std-term">prevalence</em></a>) of infection in a population.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>prevent mosquitoes from infecting humans</li>
+<li>prevent humans from infecting mosquitoes</li>
+</ol>
+</div></blockquote>
+<p>However, many of the interventions can not be clearly divided into addressing purely the human or vector side of the cycle.
+For example, any efforts to reduce the number of bites that humans receive from mosquitoes affects both the probabilities of the vector <em>and</em> the human becoming infected.
+This is one reason that vector control rather than purely human-based interventions are almost always part of prevention strategies.
+For the purposes of this document, I will define human-based interventions to be those that are directly administered to the human&#8217;s body.
+Essentially: medical interventions.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It should be noted that in this respect, the long term goals of public health are more focused on prevention than the treatment of acute cases. Of course sick people need to be treated, and finding and clearing people who are infected is a part of preventing mosquitoes from acquiring the pathogen from people.  However, in the long game it is much more effective to prevent the infection .  These efforts are what we will focus on.</p>
+</div>
+<div class="section" id="options-for-the-humans">
+<h3>Options for the humans</h3>
+<p>Because of the definition of human-based interventions that I am using, there are relatively few effective options in this category for malaria and dengue fever.
+Normally, this section would include vaccines and swift, effective patient identification and treatment to clear the infection.
+For reasons that will be discussed in a later post, these interventions simply do not exist on the market or in a cost-effective form applicable to the isolated and impoverished areas that are most affected.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">This subject should also be given a deeper treatment in the future. Links to those posts will show up here.</p>
+</div>
+</div>
+<div class="section" id="conventional-options-for-the-vectors">
+<h3>Conventional options for the vectors</h3>
+<p>Because medical options are generally quite scarce, most attention in the field is directed toward controlling access of the vector populations to human contact.
+This can include removal of nearby mosquito breeding sites (usually standing water), spraying of insecticides, introduction of biological predators, and/or bed nets, etc.
+One fairly novel approach that has implications for the next post in this series is sterile insect technique.</p>
+<div class="topic">
+<p class="topic-title first">Sterile Insect Technique:</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Sterile_insect_technique">Sterile insect technique (SIT)</a> exploits a peculiar aspect of some insects&#8217; reproductive behavior.
+In many insects, it is only (or at least primarily) the first mating event that &#8220;matters&#8221;.
+Subsequent mating events contribute little to no genetic material to the females progeny, <strong>even when the first event involves a sterile male</strong>.
+This means that if massive numbers of sterilized males are introduced into a native population, any wild female that mates first with one of the sterile males will be effectively sterilized herself.
+This can have dramatic effects on the local population.
+For a famously effective SIT campaign, look up <a class="reference external" href="http://goo.gl/DF7bv">screwworm eradication</a> on google.</p>
+</div>
+</div>
+</div>
+<div class="section" id="transgenic-options-for-the-vectors">
+<h2>Transgenic options for the vectors</h2>
+<p>As you saw above, most conventional vector control strategies involve what might be termed <strong>vector population reduction</strong>.  As we get into what transgenics can do for vector control, we will see that in addition to population reduction we have a new strategy available which has quite exciting implications to the sustainability of the vector control aspect of public health interventions for dengue and malaria.
+This could be called <strong>vector population conversion</strong>.  Tune in next time to read all about it!</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p class="rubric"><strong>Footnotes:</strong></p>
+<table class="docutils footnote" frame="void" id="nonhuman-transmission" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>While some mosquito to non-human vertebrate transmission may occur, it is not thought to be sufficient to maintain the pathogen if the mosquito:human loop is broken.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/my_research.html">My Research</a>, <a href="../../../categories/my_dissertation.html">My Dissertation</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/mosquitoes.html">mosquitoes</a>, <a href="../../../tags/background.html">background</a>, <a href="../../../tags/vector_control.html">vector control</a>, <a href="../../../tags/transgenic_mosquitoes.html">transgenic mosquitoes</a>, <a href="../../../tags/gmo.html">GMO</a>, <a href="../../../tags/gmm.html">GMM</a>, <a href="../../../tags/dissertation__chapter_one__background_.html">Dissertation: Chapter One (Background)</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/04/21/elements_of_transgenic_disease_vector_control_part1";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../19/new_release__blacktie_v0_2_0rc1.html">NEW RELEASE: Blacktie v0.2.0rc1</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Don't use RSS aggregators?</h1>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">Subscribe via email</a>
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/background.html" style="font-size: 8pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 8pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 8pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 8pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 8pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 8pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 8pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 8pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 8pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 8pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 8pt">vector control</a>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (1)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (2)</li><li><a href="../../../categories/my_research.html">My Research</a> (1)</li></ul>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
