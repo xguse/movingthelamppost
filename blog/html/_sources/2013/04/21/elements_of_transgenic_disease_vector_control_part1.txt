@@ -1,6 +1,9 @@
 Elements of transgenic disease-vector control (Part 1: setting the scene)
 =========================================================================
 
+.. |TLDR| replace:: :abbr:`TL;DR (Too Long; Didn't Read)`
+
+
 Foreword
 --------
 This is the first installment in my endeavor to :doc:`"Blog My Dissertation" <../15/blogging_my_dissertation>`.  
@@ -21,7 +24,7 @@ It will set the scene by explaining what a disease-vector is and how our specifi
 Mosquito borne disease
 -----------------------
 
-.. topic:: TL;DR:
+.. topic:: |TLDR|:
 
 	- there are many but we focus on Dengue Fever and Malaria
 	- causative agents are RNA viruses and Plasmodium protists, respectively
@@ -60,7 +63,7 @@ We will soon see that this pattern has :ref:`important consequences that we can 
 Transmission cycle
 ^^^^^^^^^^^^^^^^^^
 
-.. topic:: TL;DR:
+.. topic:: |TLDR|:
 	
 	1. a female mosquito bites infected person
 	2. the pathogen is taken into mosquito midgut with bloodmeal
@@ -89,7 +92,7 @@ For this, the pathogen must be injected into the bloodstream of the next human a
 
 Public health: *multiple targets*
 ---------------------------------
-.. topic:: TL;DR:
+.. topic:: |TLDR|:
 
 	- The specifics of the transmission cycle of these diseases provides multiple targets for public health interventions
 	- focus on the human

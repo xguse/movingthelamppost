@@ -5,6 +5,11 @@ Glossary
 	:sorted:
 
 
+	RNA-seq
+		`RNA-seq, also called "Whole Transcriptome Shotgun Sequencing" ("WTSS"), refers to the use of high-throughput sequencing technologies to sequence cDNA in order to get information about a sample's RNA content. The technique has been adopted in studies of diseases like cancer. With deep coverage and base-level resolution, next-generation sequencing provides information on differential expression of genes, including gene alleles and differently spliced transcripts; non-coding RNAs; post-transcriptional mutations or editing; and gene fusions. <http://en.wikipedia.org/wiki/RNA-Seq>`_
+		
+	effector gene
+		in *this* sense: a gene that will cause the desired change in the environment of the mosquito or other vector.  An example might be a gene that codes for a protein that targets and destroys the pathogen.
 
 	prevalence
 		`the number or proportion of cases or events or attributes among a given population. <http://www.cdc.gov/excite/library/glossary.htm#prevalence>`_

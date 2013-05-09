@@ -14,20 +14,14 @@ The four fundamentals of transgenic vector control
 
 
 
--------------------
-Definition of terms
--------------------
-.. glossary:: 
-	:sorted:
 
-	**transgene**
-		a sequence of DNA that contains instructions for the controlled expression of a gene product (protein or functional RNA) that is meant to be inserted into an organism's genome for the purpose of allowing the gene product to be produced by the target organism.
+.. image:: onlyGoodMosq.png
+    :align: left
+    :width: 200px
 
-	**effector gene**
-		definition
 
-	**vector**
-		insect that transmits diseases
+
+
 
 
 

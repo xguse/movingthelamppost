@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/05/09/comparison_of_aedes_aegypti_and_anopheles_gambiae_midgut_expression_post_bloodmeal
    2013/04/21/elements_of_transgenic_disease_vector_control_part1
    2013/04/19/new_release__blacktie_v0_2_0rc1
    2013/04/16/vakhrusheva_et_al_gbe_2013
