@@ -23,7 +23,7 @@ Yay `Open Science <http://opensciencefederation.com/>`_!
 
 So far I REALLY like the presentations it produces, but it **IS** a little flashy, and I have found some differences in how it is displayed depending on the browser being used (so sorry if it sucks for you).
 The underlying technology behind the presentations is a combination of JavaScript and CSS3.
-Specifically an engine written by `Bartek Szopka <https://github.com/bartaz>`_ (hereafter referred to as his `GitHub <http://github.com>`_/coder handle: bartaz) called `impress.js <https://github.com/bartaz/impress.js>`_.
+Specifically, an engine written by `Bartek Szopka <https://github.com/bartaz>`_ (hereafter referred to as his `GitHub <http://github.com>`_/coder handle: bartaz) called `impress.js <https://github.com/bartaz/impress.js>`_.
 Here is his `introduction to it <http://bartaz.github.io/impress.js>`_, written **in** it.
 
 However, beware! 
