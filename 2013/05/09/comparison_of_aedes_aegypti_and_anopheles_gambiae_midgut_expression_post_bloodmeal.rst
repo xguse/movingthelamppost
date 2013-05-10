@@ -5,6 +5,8 @@ Comparison of *Aedes* *aegypti* and *Anopheles* *gambiae* midgut gene expression
 	:width: 600px
 	:align: center
 	:target: http://movingthelamppost.com/blog/html/_static/2013-05-08_myWork/index.html
+	
+.. warning:: The links on the discussion slides are broken at the moment.  I will get them fixed as soon as possible.  They would simply take you back to the slides with the data that the discussion point refers to.
 
 .. more::
 
