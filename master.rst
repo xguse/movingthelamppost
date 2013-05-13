@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/05/13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong
    2013/05/12/elements_of_transgenic_disease_vector_control_part2
    2013/05/09/comparison_of_aedes_aegypti_and_anopheles_gambiae_midgut_expression_post_bloodmeal
    2013/04/21/elements_of_transgenic_disease_vector_control_part1

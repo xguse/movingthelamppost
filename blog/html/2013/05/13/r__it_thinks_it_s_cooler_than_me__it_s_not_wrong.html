@@ -1,0 +1,218 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>R: it thinks it’s cooler than me; it’s not wrong &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)" href="../12/elements_of_transgenic_disease_vector_control_part2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.1_wad',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../12/elements_of_transgenic_disease_vector_control_part2.html">Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>May 13, 2013</span>
+        </div>
+    <div class="section" id="r-it-thinks-it-s-cooler-than-me-it-s-not-wrong">
+<h1>R: it thinks it&#8217;s cooler than me; it&#8217;s not wrong</h1>
+<p>I do a lot of RNA-seq analysis for my research and we mostly run the popular &#8220;Tuxedo&#8221; suite of analysis programs (<a class="reference external" href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">bowtie</a>, <a class="reference external" href="http://tophat.cbcb.umd.edu/">tophat</a>, <a class="reference external" href="http://cufflinks.cbcb.umd.edu/">cufflinks</a>, and now the <strong>REALLY COOL</strong> <a class="reference external" href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">cummeRbund</a>).
+So cummeRbund, as the capitalization suggests, is written in the <a class="reference external" href="http://www.r-project.org/">R</a> programming language (meant mostly for doing statistics <strong>really</strong> well).  So I have been working in R a bit more than usual lately and I realized something. But before I get into that, you should know something:</p>
+<p><strong>R and I have a *love:hate* relationship...</strong></p>
+<p>It really does have almost mind-blowing capabilities, and it has been thoroughly embraced by at least the gene expression and related wings of the bioinformatics community.
+This has resulted in the conglomerate family of R libraries housed under the umbrella of the <a class="reference external" href="http://www.bioconductor.org/">bioconductor</a> namespace.
+It&#8217;s data display capabilities are spectacular; to which anyone who has seen plots generated by the <a class="reference external" href="http://ggplot2.org/">ggplot2</a> library can attest. <a class="reference external" href="http://goo.gl/1GBWV">Take a look.</a>.
+Oh and did I mention does all of it&#8217;s world-class awesomeness completely <em>pro bono</em>?
+Suffice it to say that, R is plain awesome and this once niche language initially popular with academics who couldn&#8217;t or simply wouldn&#8217;t spring for expensive licenses for more mainstream stats software is actually starting to take the rest of the data-analysis world by storm [<a class="reference external" href="http://java.sys-con.com/node/2288420">link1</a>, <a class="reference external" href="http://r4stats.com/articles/popularity/">link2</a>].</p>
+<p><strong>So that was some of the love side of the relationship.</strong></p>
+<p>What I said I came to realize, at this beginning of the post, deals more with the <em>other</em> side of the relationship.
+Basically, R is like that athletic, pretty, popular kid at your high school.
+I know that sounds like an extraordinary claim, but bear with me.
+R, like that kid, knows that what it has is pretty darn awesome.
+And like that kid, it has grown up with people bending over backwards to ask it to the dance no matter how well or poorly it treated its suitors.
+But I gotta tell ya, as a Python-guy, <em>it&#8217;s almost offensive to me to work in R</em>.
+I do it.
+And don&#8217;t get me wrong, I am glad it is there.
+But it does not let you forget that you NEED it, not the other way around.</p>
+<p>Now I must admit that if I started with R, instead of Perl and Python (hell, or even BASH), I might feel the opposite, but I am not sure about that.
+It also might be that I am just spoiled by working in Python most of my time since that language bends over backwards <strong>for me</strong>.
+But Holy Hell, it seems like R is the classic example of design by committee!</p>
+<p>Here are some examples of things that drive me crazy.  Please pipe in if you object to or can provide rebuttals that might change my mind about them.</p>
+<div class="topic">
+<p class="topic-title first">Things that drive me crazy about R</p>
+<ol class="arabic simple">
+<li>Object methods seem to live in the global namespace.</li>
+<li>Documentation is simply hit or miss at best and downright less-than-useless in many cases (and its not just the authors&#8217; fault)</li>
+<li>Slicing arrays is overly complicated</li>
+<li>The convention of naming variables with a &#8216;.&#8217; instead of an &#8216;_&#8217;</li>
+<li>Assignment operator is twice as many characters as it should be</li>
+</ol>
+</div>
+<p>Each point will probably end up getting its own short post.</p>
+<div class="section" id="object-methods-seem-to-live-in-the-global-namespace">
+<h2>Object methods seem to live in the global namespace.</h2>
+<p>This one might be me not being familiar enough with how R treats scope or namespace, but it sure seems that if I want to call an object method (<span class="docutils literal"><span class="pre">objMethod</span></span>) for an R object (<span class="docutils literal"><span class="pre">rObj</span></span>), I call <span class="docutils literal"><span class="pre">objMethod</span></span> like a global function:</p>
+<div class="highlight-none"><div class="highlight"><pre>objMethod(rObj)
+</pre></div>
+</div>
+<p>That sure <strong>looks</strong> like it lives in the global namespace rather than in its object&#8217;s namespace.
+Here is how this would be done in Python for comparison:</p>
+<div class="highlight-none"><div class="highlight"><pre>pyObj.objMethod()
+</pre></div>
+</div>
+<p>You specify the local namespace (<span class="docutils literal"><span class="pre">pyObj</span></span>) then call the method that lives in that namespace.  Its an object so it knows that it is operating on itself.  That&#8217;s kinda the <strong>whole idea of objects</strong>.</p>
+<p>Now this might sound like a trivial difference, and to some extent, it is.
+But it is also kinda dumb in my opinion.
+For one thing, it needlessly creates confusion when trying to learn a code library.
+There is nothing in the code that tells me that I can not call <span class="docutils literal"><span class="pre">objectMethod</span></span> on non-<span class="docutils literal"><span class="pre">rObj</span></span> variables: that it <strong>belongs</strong> to only objects of the same type as <span class="docutils literal"><span class="pre">rObj</span></span>.</p>
+<p>In python this is unmistakable.</p>
+<p>This is actually a major gripe of mine about R; it really doesn&#8217;t seem to want you to have an easy time learning new libraries.
+However, there is another problem.
+Because the <span class="docutils literal"><span class="pre">objectMethod</span></span> lives in global namespace, it can be overwritten if you load another library that has an object with a method of the same name.
+<strong>This is exactly why object methods live in the local namespace of their objects in most languages</strong>.</p>
+<p>Anyway, if I am wrong about this, please set me straight.  If nothing else, I will learn something new about R that will let me get better at it.</p>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        
+        
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/05/13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../12/elements_of_transgenic_disease_vector_control_part2.html">Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Don't use RSS aggregators?</h1>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">Subscribe via email</a>
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/background.html" style="font-size: 11pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 11pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/cummerbund.html" style="font-size: 8pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 11pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_expression.html" style="font-size: 8pt">gene expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 11pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 11pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 11pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 11pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 11pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 8pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 11pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 11pt">vector control</a>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (1)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="../../../categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="../../../categories/my_research.html">My Research</a> (3)</li></ul>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

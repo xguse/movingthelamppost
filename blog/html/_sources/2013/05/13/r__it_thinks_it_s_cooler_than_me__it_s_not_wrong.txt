@@ -1,6 +1,7 @@
 R: it thinks it's cooler than me; it's not wrong
 =================================================
 
+
 I do a lot of RNA-seq analysis for my research and we mostly run the popular "Tuxedo" suite of analysis programs (`bowtie <http://bowtie-bio.sourceforge.net/bowtie2/index.shtml>`_, `tophat <http://tophat.cbcb.umd.edu/>`_, `cufflinks <http://cufflinks.cbcb.umd.edu/>`_, and now the **REALLY COOL** `cummeRbund <http://compbio.mit.edu/cummeRbund/manual_2_0.html>`_).
 So cummeRbund, as the capitalization suggests, is written in the `R <http://www.r-project.org/>`_ programming language (meant mostly for doing statistics **really** well).  So I have been working in R a bit more than usual lately and I realized something. But before I get into that, you should know something: 
 
@@ -19,7 +20,7 @@ Suffice it to say that, R is plain awesome and this once niche language initiall
 
 What I said I came to realize, at this beginning of the post, deals more with the *other* side of the relationship.
 Basically, R is like that athletic, pretty, popular kid at your high school.
-I know that sounds like a extraordinary claim, but bear with me.
+I know that sounds like an extraordinary claim, but bear with me.
 R, like that kid, knows that what it has is pretty darn awesome.
 And like that kid, it has grown up with people bending over backwards to ask it to the dance no matter how well or poorly it treated its suitors.
 But I gotta tell ya, as a Python-guy, *it's almost offensive to me to work in R*.
@@ -33,11 +34,48 @@ But Holy Hell, it seems like R is the classic example of design by committee!
 
 Here are some examples of things that drive me crazy.  Please pipe in if you object to or can provide rebuttals that might change my mind about them.
 
-1. Object methods seem to live in the global namespace.
-2. Documentation is simply hit or miss at best and downright less-than-useless in many cases (and its not just the authors' fault)
-3. Slicing arrays is overly complicated
-4. The convention of naming variables with a '.' instead of an '_' 
-5. Assignment operator is twice as many characters as it should be
+.. topic:: Things that drive me crazy about R
+
+	1. Object methods seem to live in the global namespace.
+	2. Documentation is simply hit or miss at best and downright less-than-useless in many cases (and its not just the authors' fault)
+	3. Slicing arrays is overly complicated
+	4. The convention of naming variables with a '.' instead of an '_' 
+	5. Assignment operator is twice as many characters as it should be
+
+Each point will probably end up getting its own short post.
+
+Object methods seem to live in the global namespace.
+--------------------------------------------------------
+
+This one might be me not being familiar enough with how R treats scope or namespace, but it sure seems that if I want to call an object method (``objMethod``) for an R object (``rObj``), I call ``objMethod`` like a global function:
+
+.. code-block:: none
+
+	objMethod(rObj)
+	
+That sure **looks** like it lives in the global namespace rather than in its object's namespace.
+Here is how this would be done in Python for comparison:
+
+.. code-block:: none
+
+	pyObj.objMethod()
+	
+You specify the local namespace (``pyObj``) then call the method that lives in that namespace.  Its an object so it knows that it is operating on itself.  That's kinda the **whole idea of objects**.
+
+Now this might sound like a trivial difference, and to some extent, it is.
+But it is also kinda dumb in my opinion.
+For one thing, it needlessly creates confusion when trying to learn a code library.
+There is nothing in the code that tells me that I can not call ``objectMethod`` on non-``rObj`` variables: that it **belongs** to only objects of the same type as ``rObj``.
+
+In python this is unmistakable.
+
+This is actually a major gripe of mine about R; it really doesn't seem to want you to have an easy time learning new libraries.
+However, there is another problem.
+Because the ``objectMethod`` lives in global namespace, it can be overwritten if you load another library that has an object with a method of the same name.
+**This is exactly why object methods live in the local namespace of their objects in most languages**.
+
+Anyway, if I am wrong about this, please set me straight.  If nothing else, I will learn something new about R that will let me get better at it.
+
 
 
 .. author:: default
