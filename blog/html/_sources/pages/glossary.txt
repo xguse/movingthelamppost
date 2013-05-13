@@ -4,7 +4,6 @@ Glossary
 .. glossary::
 	:sorted:
 
-
 	RNA-seq
 		`RNA-seq, also called "Whole Transcriptome Shotgun Sequencing" ("WTSS"), refers to the use of high-throughput sequencing technologies to sequence cDNA in order to get information about a sample's RNA content. The technique has been adopted in studies of diseases like cancer. With deep coverage and base-level resolution, next-generation sequencing provides information on differential expression of genes, including gene alleles and differently spliced transcripts; non-coding RNAs; post-transcriptional mutations or editing; and gene fusions. <http://en.wikipedia.org/wiki/RNA-Seq>`_
 		

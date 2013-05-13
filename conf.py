@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-
+import sys, os
 import tinkerer
 import tinkerer.paths        
+
+
+# adds local extension directory to python path
+sys.path.append(os.path.abspath('ext'))
+
 
 # **************************************************************
 # TODO: Edit the lines below
@@ -52,8 +57,12 @@ posts_per_page = 10
 # Edit lines below to further customize Sphinx build
 # **************************************************************
 
+# Configure sphinx-natbib
+#natbib = {file:'_static/bib/zzzz.bib'}
+
+
 # Add other Sphinx extensions here
-extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinx.ext.mathjax'] 
+extensions = [ 'sphinxcontrib.youtube','tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinx.ext.mathjax'] 
 
 # Add other template paths here
 templates_path = ['_templates']
@@ -73,7 +82,7 @@ html_sidebars = {
 }
 
 # choose which pygments style to use for code highlighting
-#pygments_style = 'solarlized'
+pygments_style = 'solarizeddark'
 
 
 # **************************************************************

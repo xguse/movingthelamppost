@@ -128,6 +128,7 @@ Because medical options are generally quite scarce, most attention in the field 
 This can include removal of nearby mosquito breeding sites (usually standing water), spraying of insecticides, introduction of biological predators, and/or bed nets, etc. 
 One fairly novel approach that has implications for the next post in this series is sterile insect technique.
 
+.. _topic-SIT:
 .. topic:: Sterile Insect Technique:
 
 	`Sterile insect technique (SIT) <http://en.wikipedia.org/wiki/Sterile_insect_technique>`_ exploits a peculiar aspect of some insects' reproductive behavior.  

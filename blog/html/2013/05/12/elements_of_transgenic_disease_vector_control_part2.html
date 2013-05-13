@@ -1,0 +1,338 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>Elements of transgenic disease-vector control (Part 2: altering the mosquitoes) &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Comparison of Aedes aegypti and Anopheles gambiae midgut gene expression post bloodmeal: an overview" href="../09/comparison_of_aedes_aegypti_and_anopheles_gambiae_midgut_expression_post_bloodmeal.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.1_wad',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../09/comparison_of_aedes_aegypti_and_anopheles_gambiae_midgut_expression_post_bloodmeal.html">Comparison of <em>Aedes</em> <em>aegypti</em> and <em>Anopheles</em> <em>gambiae</em> midgut gene expression post bloodmeal: an overview</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>May 12, 2013</span>
+        </div>
+    <div class="section" id="elements-of-transgenic-disease-vector-control-part-2-altering-the-mosquitoes">
+<h1>Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)</h1>
+<div class="topic">
+<p class="topic-title first">The four fundamentals of transgenic vector control:</p>
+<ol class="arabic simple">
+<li>the ability to introduce <a class="reference internal" href="../../../pages/glossary.html#term-transgene"><em class="xref std std-term">transgenes</em></a> into the mosquito&#8217;s genome in a heritable way</li>
+<li>discovery or construction <a class="reference internal" href="../../../pages/glossary.html#term-effector-gene"><em class="xref std std-term">effector genes</em></a></li>
+<li>the ability to control when and where the effector genes are Expressed</li>
+<li>the ability of your transgenic mosquitoes to have <strong>swift</strong>, dramatic, and clinically meaningful effects on the native vector population</li>
+</ol>
+</div>
+<div class="section" id="introducing-inheritable-transgenes-into-the-mosquito-genome">
+<h2>Introducing Inheritable Transgenes into the Mosquito Genome</h2>
+<p>Before one can employ transgenic methods for vector control, one must of course have the ability to make transgenic vectors.
+For mosquitoes, this is quite a bit more labor intensive than for other fly species like <em>Drosophila melanogaster</em>.
+However, it has been accomplished, and protocols to reliably introduce transgenes into many mosquito species now exist <a class="reference internal" href="#transmosqs" id="id1">[TransMosqs]</a>.
+Unfortunately, the relative difficulty is still high, and it takes roughly 2-3 months before a stable line is established.
+So while this step can be filed under &#8220;accomplished&#8221;, work is constantly being done to improve its ease and efficiency.</p>
+<p>The method of gene insertion into the genome generally relies on re-purposing the activities of small, &#8220;parasitic&#8221;, mobile DNA elements called <em class="xref std std-term">transposons</em> or <em class="xref std std-term">transposable elements</em>.
+These elements have the ability to cut themselves out of one part of the DNA and re-insert themselves into another.
+We can engineer them in the lab to carry our genes instead of the genes that they usually contain.
+This allows our genes to be inserted into the genome instead of the contents of the original transposon.</p>
+<p>Until recently, most if not all transposons used inserted the genes into more-or-less random regions, and in single, double or <strong>multiple</strong> copies and/or locations.
+This makes characterizing the effects of the effector genes complicated <a class="reference internal" href="#piggybacrefs" id="id2">[piggyBacRefs]</a>.
+However, with the successful implementation of the <a class="reference external" href="http://en.wikipedia.org/wiki/Site-specific_recombinase_technology#PhiC31_Integrase">phic31 site specific integration system</a> in <em>Aedes aegypti</em> and <em>Anopheles stephensi</em> <a class="reference internal" href="#thorpe1998" id="id3">[Thorpe1998]</a>,<a class="reference internal" href="#nimmo2006" id="id4">[Nimmo2006]</a>,<a class="reference internal" href="#issacs-as" id="id5">[Issacs_As]</a>, we can now reliably target specific, known regions of the genome for transgene integration of a single copy.</p>
+</div>
+<div class="section" id="effector-genes">
+<h2>Effector Genes</h2>
+<p>With the ability to integrate transgene constructs into the vectors&#8217; genomes, we need constructs that carry genes that will effect the response that we desire in the vector.
+Two broad strategies are commonly applied when designing an anti-transmission <em class="xref std std-term">phenotype</em>.</p>
+<div class="section" id="vector-population-reduction">
+<h3>Vector Population Reduction:</h3>
+<div class="align-center figure align-right">
+<a class="reference internal image-reference" href="../../../_images/onlyGoodMosq.png"><img alt="../../../_images/onlyGoodMosq.png" src="../../../_images/onlyGoodMosq.png" style="width: 250px;" /></a>
+<p class="caption"><em>The only</em> <strong>&#8220;good&#8221;</strong> <em>mosquito is a...</em></p>
+</div>
+<p>The goal of <em class="xref std std-term">vector population reduction</em> is the same as the conventional vector control modalities.
+<em>Reduce the size of the vector population to decrease the probability of infectious interactions between vectors and humans.</em></p>
+<p><strong>Conventional tactics</strong> include removal of breeding sites through draining of swamps, removal of items that store water (tires, buckets, etc) where larvae develop from populated areas, and of course, chemical insecticidal campaigns. Another, more recent tactic is sterile insect technique (see the relevant <a class="reference internal" href="../../04/21/elements_of_transgenic_disease_vector_control_part1.html#topic-sit"><em>topic</em></a> from part one of this series).</p>
+<p>A <strong>transgenic tactic</strong> for the population reduction strategy is illustrated by <a class="reference external" href="http://www.oxitec.com/">Oxitec&#8217;s</a> <em>Aedes aegypti</em> strain <a class="reference external" href="http://www.oxitec.com/health/our-products/aedes-agypti-ox3604c/">OX3604C</a> developed with support from the <a class="reference external" href="http://www.grandchallenges.org/Pages/Default.aspx">Bill and Melinda Gates Foundation&#8217;s Grand Challenges for Global Health Initiative</a>.
+OX3604C, represents a female-specific <abbr title="Release of Insects carrying a Dominant Lethal phenotype">RIDL</abbr> approach which uses a poison transgene that kills any female adult expressing the transgene unless the female is being fed the &#8220;antidote&#8221; through its water supply.</p>
+<p>Releasing enough of these mosquitoes will affect the local mosquito species population in a way that is analogous to <abbr title="Sterile Insect Technique">SIT</abbr>.</p>
+</div>
+<div class="section" id="vector-population-replacement-conversion">
+<h3>Vector Population Replacement (Conversion):</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The more standard term is vector population replacement.
+However, I prefer <strong>vector population conversion</strong> because it is more accurate.
+We will not necessarily even <em>want</em> to replace the local population with purely lab-produced mosquitoes.
+What will most likely be happening is that the population goes from having no frequency of our designed trait, to having a high frequency of our trait, but that the rest of the genetic information in the population is still derived from the genomes present in the <em>original population</em>.</p>
+<p class="last">It would be as if a brown eyed family moved into a valley where people only had blue eyes.
+Since the <em>brown eyes</em> trait is usually dominant over the <em>blue eyes</em> trait, the brown eyed phenotype will spread through the valley as generations interbreed.
+However, it would not be accurate to say that the original brown eyed family <strong>replaced</strong> the native population.</p>
+</div>
+<p>Vector population conversion is a novel strategy for vector control that only exists within the context of genetically altering the vectors.
+This strategy actually promises to be the most long-lasting vector-focused intervention; because unlike <strong>all</strong> vector population reduction tactics, there is a theoretical point in a conversion intervention (the anti-transmission trait works and is present in local populations at near 100%) when the human interaction can be ceased but the intervention continues to function.
+For population reduction to approach this result, the vector species must not simply be eliminated from the local area, but approach elimination on a continental scale, or more realistically achieve global eradication.</p>
+<p>The reason is that these mosquitoes (especially <em>Aedes aegypti</em>) can and do travel long distances, as eggs or larvae, in the backs of trucks (between villages) or in the pools of water collected in super-tankers (transcontinentally).
+So a local village is only free of the vectors until more migrate into the area.
+But in a conversion scenario, those migrants mate with the local vector population, and their offspring are assimilated into transmission-deficient mosquitoes.
+The protection of the local village can be preserved <em>even if some surrounding villages fail to maintain control of their mosquitoes</em>.</p>
+<p>An example of a <strong>transgenic tactic</strong> for population conversion of <em>Aedes aegypti</em> into a transmission-deficient phenotype involves an effector gene that codes for double stranded portion of the target dengue virus as RNA <a class="reference internal" href="#franz2006" id="id6">[Franz2006]</a>,<a class="reference internal" href="#mathur2010" id="id7">[Mathur2010]</a>.
+Because most animal cells have a system that detects and degrades double stranded RNA<a class="footnote-reference" href="#dsrna" id="id8">[1]</a> in a sequence specific manner, this primes the mosquito cells&#8217; antiviral response to specifically attack the dengue virus if the effector gene is expressed in the cell before it gets infected.</p>
+</div>
+</div>
+<div class="section" id="controlling-when-and-where-the-effector-genes-are-expressed">
+<h2>Controlling When and Where the Effector Genes are Expressed</h2>
+<div class="topic">
+<p class="topic-title first">Crash Course in Gene Expression:</p>
+<p>The following is a <strong>very</strong> brief introduction to how the expression of genes are usually controlled.
+Pay specific attention to the parts that mention <em class="xref std std-term">transcription factors</em> and enhancer regions.</p>
+<div style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe src="http://www.youtube.com/embed/SMtWvDbfHLo" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div><p>If that was a little over your head, <a class="reference external" href="https://www.youtube.com/watch?v=5MfSYnItYvg">watch this version first</a>, then go back and watch the advanced on again.</p>
+</div>
+<p>Even armed with an effector gene that clears 100% of the pathogen 100% of the time, you will not be successful in limiting transmission if it is not turned on in the right time and place.
+If your effector gene works best when the pathogen is in the midgut, but your gene is only expressed in the antennae, you have wasted your time.</p>
+<p>The region of DNA directly before the sequence of the gene is <em>usually</em> the most influential determinant of the pattern of expression and is referred to as the <em class="xref std std-term">promoter</em>.
+It determines when the gene will be turned on (let&#8217;s say directly following the ingestion of a bloodmeal), and in which tissue type (let&#8217;s say the midgut).
+The way that this is accomplished is due to the binding of special proteins called transcription factors that recognize specific DNA sequences.
+Once bound to the promoter they recruit the special machinery needed for the gene to be turned on.</p>
+<p>If we wanted to control a transgene in a specific way (turned on after a bloodmeal in the midgut), one way to go about it would be to identify genes in the mosquito that already have a similar expression pattern to the ideal that you want.
+Then we could copy the promoter from that gene and paste it in front of our transgene<a class="footnote-reference" href="#copypaste" id="id9">[2]</a>.
+Because we will have replicated the specific transcription factor binding sites (TFBS) that control the original gene, our transgene should inherit a very similar expression pattern.</p>
+<p>This is a very common process used to engineer the expression patterns of real transgenes in mosquitoes.
+In <a class="reference internal" href="#moreira2000" id="id10">[Moreira2000]</a>, the promoter sequences of a gene called carboxypeptidase (normally expressed in the midgut after a meal to help digest it) from <em>Aedes aegypti</em> and <em>Anopheles gambiae</em> were pasted in front of a transgene that causes the cells that express the gene to light up.
+This type of transgene is called a <em class="xref std std-term">reporter gene</em> because it allows the researchers to visualize the activity of the promoter used to drive its expression.</p>
+<p>From the abstract of <a class="reference internal" href="#moreira2000" id="id11">[Moreira2000]</a>:</p>
+<blockquote>
+<div>Six independent transgenic lines were obtained with the <abbr title="Ae = Aedes aegypti; CP = carboxypeptidase gene">AeCP</abbr> construct and one with the <abbr title="Ag = Anopheles gambiae; CP = carboxypeptidase gene">AgCP</abbr> construct. Luciferase mRNA and protein were abundantly expressed in the guts of transgenic mosquitoes in four of the six AeCP lines and in the AgCP line. Expression of the reporter gene was gut-specific and reached peak levels at about 24 h post-blood ingestion.</div></blockquote>
+</div>
+<div class="section" id="achieving-swift-dramatic-and-clinically-meaningful-effects-on-the-native-vector-population">
+<h2>Achieving Swift, Dramatic, and Clinically Meaningful Effects on the Native Vector Population</h2>
+<p>In many ways, this is the most difficult part of the puzzle.
+In order for the transgene to have its self-sustaining properties as well as achieve effective anti-transmission results, it must spread through the native mosquito population to the point that the percent of individuals possessing the gene approaches 100%.</p>
+<p>Optimistically assuming that the transgene carries a negligible fitness cost<a class="footnote-reference" href="#fitness" id="id12">[3]</a>, or even a slight fitness advantage, achieving near 100% conversion could take decades.
+Funding terms for efforts like this in poor nations can be closer to 5 years or less.
+To enable the population conversion strategies to work, we must come up with genetic &#8220;tricks&#8221; that cause the gene to spread through a mosquito population <strong>much</strong> faster than could happen naturally.
+Efforts to discover or design this <em class="xref std std-term">gene drive</em> system are an on going and active area in this field.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">The topic of gene drive deserves its own post, so I will use this space to link to any future post that tackles the subject in substantial depth.</p>
+</div>
+<p class="rubric"><strong>Footnotes:</strong></p>
+<table class="docutils footnote" frame="void" id="dsrna" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[1]</a></td><td>Double stranded RNA generally signals that a virus is active in the cell.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="copypaste" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[2]</a></td><td>The story is <strong>of course</strong> more complicated than this, and the replication of the original expression pattern may not always be perfect with this simplified method; however, it is suitably explanatory for our purposes at the moment.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fitness" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[3]</a></td><td>By fitness cost/advantage here, I mean that the transgene causes the mosquitoes that inherit it to be either less or more successful at producing offspring, respectively.</td></tr>
+</tbody>
+</table>
+<p class="rubric"><strong>Citations:</strong></p>
+<table class="docutils citation" frame="void" id="transmosqs" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[TransMosqs]</a></td><td>getCitation</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="piggybacrefs" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[piggyBacRefs]</a></td><td>getCitation</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="thorpe1998" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[Thorpe1998]</a></td><td>Thorpe, H. M., &amp; Smith, M. C. (1998). In vitro site-specific integration of bacteriophage DNA catalyzed by a recombinase of the resolvase/invertase family. Proceedings of the National Academy of Sciences of the United States of America, 95(10), 5505–10. Retrieved from <a class="reference external" href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=20407&amp;tool=pmcentrez&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=20407&amp;tool=pmcentrez&amp;rendertype=abstract</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="nimmo2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[Nimmo2006]</a></td><td>Nimmo, D. D., Alphey, L., Meredith, J. M., &amp; Eggleston, P. (2006). High efficiency site-specific genetic engineering of the mosquito genome. Insect molecular biology, 15(2), 129–36. doi:10.1111/j.1365-2583.2006.00615.x</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="issacs-as" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[Issacs_As]</a></td><td>getCitation</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="franz2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[Franz2006]</a></td><td>Franz, A. W. E., Sanchez-Vargas, I., Adelman, Z. N., Blair, C. D., Beaty, B. J., James, A. A., &amp; Olson, K. E. (2006). Engineering RNA interference-based resistance to dengue virus type 2 in genetically modified Aedes aegypti. Proceedings of the National Academy of Sciences of the United States of America, 103(11), 4198–203. doi:10.1073/pnas.0600479103</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="mathur2010" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[Mathur2010]</a></td><td>Mathur, G., Sanchez-Vargas, I., Alvarez, D., Olson, K. E., Marinotti, O., &amp; James, a a. (2010). Transgene-mediated suppression of dengue viruses in the salivary glands of the yellow fever mosquito, Aedes aegypti. Insect molecular biology, 1. doi:10.1111/j.1365-2583.2010.01032.x</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="moreira2000" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Moreira2000]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> Moreira, L. a, Edwards, M. J., Adhami, F., Jasinskiene, N., James, a a, &amp; Jacobs-Lorena, M. (2000). Robust gut-specific gene expression in transgenic Aedes aegypti mosquitoes. Proceedings of the National Academy of Sciences of the United States of America, 97(20), 10895–8. Retrieved from <a class="reference external" href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=27120&amp;tool=pmcentrez&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=27120&amp;tool=pmcentrez&amp;rendertype=abstract</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/my_research.html">My Research</a>, <a href="../../../categories/my_dissertation.html">My Dissertation</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/mosquitoes.html">mosquitoes</a>, <a href="../../../tags/background.html">background</a>, <a href="../../../tags/vector_control.html">vector control</a>, <a href="../../../tags/transgenic_mosquitoes.html">transgenic mosquitoes</a>, <a href="../../../tags/gmo.html">GMO</a>, <a href="../../../tags/gmm.html">GMM</a>, <a href="../../../tags/my_research.html">my research</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/05/12/elements_of_transgenic_disease_vector_control_part2";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../09/comparison_of_aedes_aegypti_and_anopheles_gambiae_midgut_expression_post_bloodmeal.html">Comparison of <em>Aedes</em> <em>aegypti</em> and <em>Anopheles</em> <em>gambiae</em> midgut gene expression post bloodmeal: an overview</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Don't use RSS aggregators?</h1>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">Subscribe via email</a>
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/background.html" style="font-size: 11pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 11pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/cummerbund.html" style="font-size: 8pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 8pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 11pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 11pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 11pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 11pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 11pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 8pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 11pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 11pt">vector control</a>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (1)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="../../../categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="../../../categories/my_research.html">My Research</a> (3)</li></ul>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
