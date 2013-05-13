@@ -19,18 +19,20 @@ Introducing Inheritable Transgenes into the Mosquito Genome
 
 Before one can employ transgenic methods for vector control, one must of course have the ability to make transgenic vectors.
 For mosquitoes, this is quite a bit more labor intensive than for other fly species like *Drosophila melanogaster*.
-However, it has been accomplished, and protocols to reliably introduce transgenes into many mosquito species now exist [TransMosqs]_.
+However, it has been accomplished, and protocols to reliably introduce transgenes into many mosquito species now exist.
 Unfortunately, the relative difficulty is still high, and it takes roughly 2-3 months before a stable line is established.
 So while this step can be filed under "accomplished", work is constantly being done to improve its ease and efficiency. 
 
-The method of gene insertion into the genome generally relies on re-purposing the activities of small, "parasitic", mobile DNA elements called :term:`transposons` or :term:`transposable elements`.
+.. more::
+
+The method of gene insertion into the genome generally relies on re-purposing the activities of small, "parasitic", mobile DNA elements called :term:`transposons <transposon>` or :term:`transposable elements <transposable element>`.
 These elements have the ability to cut themselves out of one part of the DNA and re-insert themselves into another.
 We can engineer them in the lab to carry our genes instead of the genes that they usually contain.
 This allows our genes to be inserted into the genome instead of the contents of the original transposon.
 
-Until recently, most if not all transposons used inserted the genes into more-or-less random regions, and in single, double or **multiple** copies and/or locations.
-This makes characterizing the effects of the effector genes complicated [piggyBacRefs]_.
-However, with the successful implementation of the `phic31 site specific integration system <http://en.wikipedia.org/wiki/Site-specific_recombinase_technology#PhiC31_Integrase>`_ in *Aedes aegypti* and *Anopheles stephensi* [Thorpe1998]_,\ [Nimmo2006]_,\ [Issacs_As]_, we can now reliably target specific, known regions of the genome for transgene integration of a single copy.
+Until recently, most if not all transposons used inserted the genes into more-or-less random regions, and in single, double or **multiple** copies and/or locations [Adelman2004]_,\ [Sethuraman2007]_.
+This makes characterizing the effects of the effector genes complicated.
+However, with the successful implementation of the `phic31 site specific integration system <http://en.wikipedia.org/wiki/Site-specific_recombinase_technology#PhiC31_Integrase>`_ in *Aedes aegypti* and *Anopheles stephensi* [Thorpe1998]_,\ [Nimmo2006]_,\ [Isaacs2012]_, we can now reliably target specific, known regions of the genome for transgene integration of a single copy.
 
 Effector Genes
 ------------------------------
@@ -51,7 +53,7 @@ Vector Population Reduction:
 
 
 
-The goal of :term:`vector population reduction` is the same as the conventional vector control modalities.
+The goal of vector population reduction is the same as the conventional vector control modalities.
 *Reduce the size of the vector population to decrease the probability of infectious interactions between vectors and humans.*
 
 **Conventional tactics** include removal of breeding sites through draining of swamps, removal of items that store water (tires, buckets, etc) where larvae develop from populated areas, and of course, chemical insecticidal campaigns. Another, more recent tactic is sterile insect technique (see the relevant :ref:`topic <topic-SIT>` from part one of this series).
@@ -95,7 +97,7 @@ Controlling When and Where the Effector Genes are Expressed
 .. topic:: Crash Course in Gene Expression:
 
 	The following is a **very** brief introduction to how the expression of genes are usually controlled. 
-	Pay specific attention to the parts that mention :term:`transcription factors` and enhancer regions.
+	Pay specific attention to the parts that mention :term:`transcription factors <transcription factor>` and enhancer regions.
 
 	.. youtube:: SMtWvDbfHLo
 		:width: 100%
@@ -139,6 +141,16 @@ Efforts to discover or design this :term:`gene drive` system are an on going and
 
 .. seealso:: The topic of gene drive deserves its own post, so I will use this space to link to any future post that tackles the subject in substantial depth.
 
+
+
+
+
+
+
+..................
+
+
+
 .. rubric:: **Footnotes:**
 
 
@@ -148,18 +160,22 @@ Efforts to discover or design this :term:`gene drive` system are an on going and
 
 .. [#fitness] By fitness cost/advantage here, I mean that the transgene causes the mosquitoes that inherit it to be either less or more successful at producing offspring, respectively.
 
+
+............................
+
 .. rubric:: **Citations:**
 
 
-.. [TransMosqs] getCitation
 
-.. [piggyBacRefs] getCitation
+.. [Adelman2004] Adelman, Z. N., Jasinskiene, N., Vally, K. J. M., Peek, C., Travanty, E. A., Olson, K. E., Brown, S. E., et al. (2004). Formation and loss of large, unstable tandem arrays of the piggyBac transposable element in the yellow fever mosquito, Aedes aegypti. Transgenic research, 13(5), 411–25. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/15587266
+
+.. [Sethuraman2007] Sethuraman, N., Fraser, M. J., Eggleston, P., & O’Brochta, D. A. (2007). Post-integration stability of piggyBac in Aedes aegypti. Insect biochemistry and molecular biology, 37(9), 941–51. doi:10.1016/j.ibmb.2007.05.004
 
 .. [Thorpe1998] Thorpe, H. M., & Smith, M. C. (1998). In vitro site-specific integration of bacteriophage DNA catalyzed by a recombinase of the resolvase/invertase family. Proceedings of the National Academy of Sciences of the United States of America, 95(10), 5505–10. Retrieved from http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=20407&tool=pmcentrez&rendertype=abstract
 
 .. [Nimmo2006] Nimmo, D. D., Alphey, L., Meredith, J. M., & Eggleston, P. (2006). High efficiency site-specific genetic engineering of the mosquito genome. Insect molecular biology, 15(2), 129–36. doi:10.1111/j.1365-2583.2006.00615.x
 
-.. [Issacs_As] getCitation
+.. [Isaacs2012] Isaacs, A. T., Jasinskiene, N., Tretiakov, M., Thiery, I., Zettor, A., Bourgouin, C., & James, A. A. (2012). Transgenic Anopheles stephensi coexpressing single-chain antibodies resist Plasmodium falciparum development. Proceedings of the National Academy of Sciences of the United States of America, 109(28), E1922–30. doi:10.1073/pnas.1207738109
 
 
 .. [Franz2006] Franz, A. W. E., Sanchez-Vargas, I., Adelman, Z. N., Blair, C. D., Beaty, B. J., James, A. A., & Olson, K. E. (2006). Engineering RNA interference-based resistance to dengue virus type 2 in genetically modified Aedes aegypti. Proceedings of the National Academy of Sciences of the United States of America, 103(11), 4198–203. doi:10.1073/pnas.0600479103
@@ -170,5 +186,5 @@ Efforts to discover or design this :term:`gene drive` system are an on going and
 
 .. author:: default
 .. categories:: My Research, My Dissertation
-.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, my research
+.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, my research, gene drive, gene expression, gene regulation, 
 .. comments::

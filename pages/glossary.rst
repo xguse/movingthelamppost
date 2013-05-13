@@ -3,7 +3,29 @@ Glossary
 
 .. glossary::
 	:sorted:
-
+	
+	reporter gene
+		`In molecular biology, a reporter gene (often simply reporter) is a gene that researchers attach to a regulatory sequence of another gene of interest in bacteria, cell culture, animals or plants. Certain genes are chosen as reporters because the characteristics they confer on organisms expressing them are easily identified and measured (cause the cells to glow), or because they are selectable markers (allow only the cells with the reporter to survive in the presence of a poison). <http://en.wikipedia.org/wiki/Reporter_gene>`_
+	
+	promoter
+		`In genetics, a promoter is a region of DNA that initiates transcription of a particular gene. Promoters are located near the genes they transcribe, on the same strand and upstream on the DNA. <http://en.wikipedia.org/wiki/Promoter_(genetics)>`_
+	
+	transcription factor
+		`In molecular biology and genetics, a transcription factor (sometimes called a sequence-specific DNA-binding factor) is a protein that binds to specific DNA sequences, thereby controlling the flow (or transcription) of genetic information from DNA to mRNA. Transcription factors perform this function alone or with other proteins in a complex, by promoting (as an activator), or blocking (as a repressor) the recruitment of RNA polymerase (the enzyme that performs the transcription of genetic information from DNA to RNA) to specific genes. <http://en.wikipedia.org/wiki/Transcription_factor>`_
+		
+	genotype
+		the specific genetic sequence of an individual organism. example: the mutation in an eye color gene that results in blue eyes.
+		
+	phenotype
+		any observable genetic trait of an individual organism. examples: eye color, height, malformed wings, feathers, scales, venom, etc
+	
+	gene drive
+		molecular genetic tactics that cause a linked trait or gene to spread through a population at faster rates than expected based on fitness alone; generally operating independently of natural selection and genetic drift.
+	
+	transposon
+	transposable element
+		relatively short regions of DNA in an organism's genome that have the ability to cut (or copy) themselves from the genome and insert themselves into a new location in the genome.  (`More information on different types and behaviors of TEs <http://www.nature.com/scitable/topicpage/transposons-the-jumping-genes-518>`_)
+	
 	RNA-seq
 		`RNA-seq, also called "Whole Transcriptome Shotgun Sequencing" ("WTSS"), refers to the use of high-throughput sequencing technologies to sequence cDNA in order to get information about a sample's RNA content. The technique has been adopted in studies of diseases like cancer. With deep coverage and base-level resolution, next-generation sequencing provides information on differential expression of genes, including gene alleles and differently spliced transcripts; non-coding RNAs; post-transcriptional mutations or editing; and gene fusions. <http://en.wikipedia.org/wiki/RNA-Seq>`_
 		
@@ -38,7 +60,7 @@ Glossary
 		not originating from the system to which the object is being applied. http://www.merriam-webster.com/dictionary/exogenous
 
 	transgene
-		a (usually functional) gene that has been transfered from one organism to another. http://en.wikipedia.org/wiki/Transgene
+		a (usually functional) gene that has been transferred from one organism to another. http://en.wikipedia.org/wiki/Transgene
 
 	genome
 		the sum of an organism's genetic material (RNA or DNA). http://en.wikipedia.org/wiki/Genome
