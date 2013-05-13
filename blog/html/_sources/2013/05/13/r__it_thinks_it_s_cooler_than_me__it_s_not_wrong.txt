@@ -80,5 +80,5 @@ Anyway, if I am wrong about this, please set me straight.  If nothing else, I wi
 
 .. author:: default
 .. categories:: none
-.. tags:: none
+.. tags:: programming, namespace, object oriented programming, R, Python, gripes, RNA-seq
 .. comments::
