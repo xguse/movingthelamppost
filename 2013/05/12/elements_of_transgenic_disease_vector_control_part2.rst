@@ -1,7 +1,10 @@
 Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)
 ===============================================================================
+.. _altering-the-mosquitoes:
 
+:ref:`Part one of this series can be found here <setting-the-scene>`
 
+.. attention:: I am serious when I say that I want your criticisms, suggestions, comments, reference suggestions, etc. Please **do** visit the comments section and help me out! The most helpful commenters will be acknowledged in the final dissertation document. 
 
 .. |RIDL| replace:: :abbr:`RIDL (Release of Insects carrying a Dominant Lethal phenotype)`
 .. |SIT| replace:: :abbr:`SIT (Sterile Insect Technique)`
@@ -14,6 +17,8 @@ Elements of transgenic disease-vector control (Part 2: altering the mosquitoes)
 	4. the ability of your transgenic mosquitoes to have **swift**, dramatic, and clinically meaningful effects on the native vector population (:term:`gene drive`)
 
 
+	
+	
 Introducing Inheritable Transgenes into the Mosquito Genome
 --------------------------------------------------------------------------
 
@@ -186,5 +191,5 @@ Efforts to discover or design this :term:`gene drive` system are an on going and
 
 .. author:: default
 .. categories:: My Research, My Dissertation
-.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, my research, gene drive, gene expression, gene regulation, 
+.. tags:: mosquitoes, background, vector control, transgenic mosquitoes, GMO, GMM, my research, gene drive, gene expression, gene regulation, Dissertation: Chapter One (Background)
 .. comments::

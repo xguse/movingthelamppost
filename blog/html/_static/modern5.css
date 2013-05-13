@@ -413,6 +413,11 @@ div.note {
 	border: 1px solid #AACC99;
 }
 
+div.attention  {
+	background-color: #FFB300;
+	border: 1px solid #93A4AD;
+}
+
 div.seealso {
 	background-color: #ffc;
 	border: 1px solid #ff6;

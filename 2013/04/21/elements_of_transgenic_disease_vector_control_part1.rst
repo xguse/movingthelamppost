@@ -1,7 +1,13 @@
 Elements of transgenic disease-vector control (Part 1: setting the scene)
 =========================================================================
+.. _setting-the-scene:
 
 .. |TLDR| replace:: :abbr:`TL;DR (Too Long; Didn't Read)`
+
+:ref:`Part two of this series can be found here <altering-the-mosquitoes>`
+
+.. attention:: I am serious when I say that I want your criticisms, suggestions, comments, reference suggestions, etc. Please **do** visit the comments section and help me out! The most helpful commenters will be acknowledged in the final dissertation document. 
+
 
 
 Foreword
@@ -146,7 +152,7 @@ This could be called **vector population conversion**.  Tune in next time to rea
 
 
 
-
+:ref:`Part two of this series can be found here <altering-the-mosquitoes>`
 
 |
 |
