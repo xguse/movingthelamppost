@@ -39,6 +39,16 @@ Until recently, most if not all transposons used inserted the genes into more-or
 This makes characterizing the effects of the effector genes complicated.
 However, with the successful implementation of the `phic31 site specific integration system <http://en.wikipedia.org/wiki/Site-specific_recombinase_technology#PhiC31_Integrase>`_ in *Aedes aegypti* and *Anopheles stephensi* [Thorpe1998]_,\ [Nimmo2006]_,\ [Isaacs2012]_, we can now reliably target specific, known regions of the genome for transgene integration of a single copy.
 
+The "heritable" part is achieved through which cells take up the transgene. 
+Only certain types of cells have the ability to project their genetic code into the next generation.
+In order to have a transgene be heritable by the following generations we must make sure that at least some of the cells that get the transgene are germ line cells (sperm or egg cells).
+
+A peculiarity about fly development is that as the embryo is developing the cells that will become the germ line always position themselves at one end (or pole) of the embryo.
+They earned the moniker "pole cells".
+This makes targeting these cells for the transgene feasible.
+When the solution containing the transgene construct is injected into the embryos, it is done where the pole cells are.
+This means that the first set of mosquitoes that might be fully transgenic is not the set that you injected but the first generation of offspring that your injected mosquitoes produce.
+
 Effector Genes
 ------------------------------
 
