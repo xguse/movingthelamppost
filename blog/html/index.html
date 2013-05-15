@@ -79,6 +79,80 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>May 15, 2013</span>
+        </div>
+        <div class="section" id="new-release-blacktie-v0-2-1">
+<h1><a href="2013/05/15/new_release__blacktie_v0_2_1.html">NEW RELEASE: Blacktie v0.2.1</a></h1>
+<p>I have released a new version of blacktie (0.2.1) which has a number of minor fixes and <strong>NOW INCLUDES</strong> <a class="reference external" href="http://compbio.mit.edu/cummeRbund">cummeRbund</a> <strong>SUPPORT!!!</strong></p>
+<a class="reference internal image-reference" href="_images/basic_cummerbund_plots.png"><img alt="../../../_images/basic_cummerbund_plots.png" src="_images/basic_cummerbund_plots.png" style="width: 600px;"/></a>
+<ul class="simple">
+<li>github repo: <a class="reference external" href="https://github.com/xguse/blacktie">https://github.com/xguse/blacktie</a></li>
+<li>documentation: <a class="reference external" href="http://xguse.github.io/blacktie">http://xguse.github.io/blacktie/</a></li>
+<li><strong>issue tracking and feature requests:</strong> <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
+</ul>
+<p>Thanks and again <strong>please</strong> let me know what you think.  I need your input to make blacktie better and easier to use.</p>
+<p>Gus</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>One major change was introduced in v0.2.0rc1: the yaml config file was changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
+<p class="last">This is the last time that this warning will be included.</p>
+</div>
+<div class="section" id="news">
+<h2>News</h2>
+<div class="section" id="id1">
+<h3>0.2.1</h3>
+<p><em>Release date: 2013-05-15</em></p>
+<ul class="simple">
+<li>git tag: ‘v0.2.1’</li>
+<li>added new script named blacktie-cummerbund to run cummeRbund</li>
+<li>added new class in calls.py CummerbundCall to use blacktie-cummerbund script to add cummeRbund plots to blacktie script</li>
+<li>checks for R and rpy2 installations</li>
+<li>if cummeRbund R library not found, it walks you through installing it</li>
+<li><span class="docutils literal"><span class="pre">src/blacktie/utils/calls.py</span></span>: - fixed _flag_out_dir() so that if the outdir has not been created yet it gracefully moves on</li>
+<li><span class="docutils literal"><span class="pre">examples/blacktie_config_example.yaml</span></span>: - added cummerbund_options</li>
+<li><span class="docutils literal"><span class="pre">requirements.txt</span></span>: - added rpy2</li>
+<li>updated docs</li>
+</ul>
+</div>
+<div class="section" id="rc1">
+<h3>0.2.0rc1</h3>
+<p><em>Release date: 2013-04-19</em></p>
+<ul>
+<li><p class="first">git tag: ‘v0.2.0rc1’</p>
+</li>
+<li><p class="first">Added support for handling biological replicates in cuffdiff runs.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Major changes to yaml config:</dt>
+<dd><ul class="first last simple">
+<li>condition_queue[index].group_id –&gt; condition_queue[index].experiment_id</li>
+<li>addition of condition_queue[index].replicate_id to track replicate data</li>
+<li>condition_queue[index].name now represents description of an ‘experiemental condition’ and will be shared by replicates.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/my_code.html">My Code</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/new_release.html">new release</a>, <a href="tags/blacktie.html">blacktie</a>, <a href="tags/tophat.html">tophat</a>, <a href="tags/cufflinks.html">cufflinks</a>, <a href="tags/cuffmerge.html">cuffmerge</a>, <a href="tags/cuffdiff.html">cuffdiff</a>, <a href="tags/ngs.html">NGS</a>, <a href="tags/rna_seq.html">RNA-seq</a>, <a href="tags/python.html">python</a>, <a href="tags/open_source.html">open source</a>, <a href="tags/open_science.html">open science</a>, <a href="tags/cummerbund.html">cummeRbund</a>, <a href="tags/r.html">R</a>, <a href="tags/bioinformatics.html">bioinformatics</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/05/15/new_release__blacktie_v0_2_1.html#disqus_thread" data-disqus-identifier="2013/05/15/new_release__blacktie_v0_2_1">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>May 13, 2013</span>
         </div>
         <div class="section" id="r-it-thinks-it-s-cooler-than-me-it-s-not-wrong">
@@ -484,50 +558,51 @@ course.  It goes something like this:</p>
     </form>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
-      <a href="tags/background.html" style="font-size: 11pt">background</a>&nbsp;&nbsp;
-      <a href="tags/blacktie.html" style="font-size: 11pt">blacktie</a>&nbsp;&nbsp;
+      <a href="tags/background.html" style="font-size: 10pt">background</a>&nbsp;&nbsp;
+      <a href="tags/bioinformatics.html" style="font-size: 8pt">bioinformatics</a>&nbsp;&nbsp;
+      <a href="tags/blacktie.html" style="font-size: 12pt">blacktie</a>&nbsp;&nbsp;
       <a href="tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
       <a href="tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
-      <a href="tags/cuffdiff.html" style="font-size: 8pt">cuffdiff</a>&nbsp;&nbsp;
-      <a href="tags/cufflinks.html" style="font-size: 8pt">cufflinks</a>&nbsp;&nbsp;
-      <a href="tags/cuffmerge.html" style="font-size: 8pt">cuffmerge</a>&nbsp;&nbsp;
-      <a href="tags/cummerbund.html" style="font-size: 8pt">cummeRbund</a>&nbsp;&nbsp;
-      <a href="tags/dissertation__chapter_one__background_.html" style="font-size: 11pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="tags/cuffmerge.html" style="font-size: 10pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="tags/cummerbund.html" style="font-size: 10pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="tags/dissertation__chapter_one__background_.html" style="font-size: 10pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
       <a href="tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
       <a href="tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
       <a href="tags/gene_expression.html" style="font-size: 8pt">gene expression</a>&nbsp;&nbsp;
       <a href="tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
       <a href="tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
-      <a href="tags/gmm.html" style="font-size: 11pt">GMM</a>&nbsp;&nbsp;
-      <a href="tags/gmo.html" style="font-size: 11pt">GMO</a>&nbsp;&nbsp;
+      <a href="tags/gmm.html" style="font-size: 10pt">GMM</a>&nbsp;&nbsp;
+      <a href="tags/gmo.html" style="font-size: 10pt">GMO</a>&nbsp;&nbsp;
       <a href="tags/gripes.html" style="font-size: 8pt">gripes</a>&nbsp;&nbsp;
       <a href="tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
-      <a href="tags/mosquitoes.html" style="font-size: 11pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="tags/mosquitoes.html" style="font-size: 10pt">mosquitoes</a>&nbsp;&nbsp;
       <a href="tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
       <a href="tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
       <a href="tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
       <a href="tags/namespace.html" style="font-size: 8pt">namespace</a>&nbsp;&nbsp;
-      <a href="tags/new_release.html" style="font-size: 8pt">new release</a>&nbsp;&nbsp;
-      <a href="tags/ngs.html" style="font-size: 11pt">NGS</a>&nbsp;&nbsp;
+      <a href="tags/new_release.html" style="font-size: 10pt">new release</a>&nbsp;&nbsp;
+      <a href="tags/ngs.html" style="font-size: 12pt">NGS</a>&nbsp;&nbsp;
       <a href="tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
       <a href="tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
-      <a href="tags/open_source.html" style="font-size: 8pt">open source</a>&nbsp;&nbsp;
+      <a href="tags/open_source.html" style="font-size: 10pt">open source</a>&nbsp;&nbsp;
       <a href="tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
       <a href="tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
-      <a href="tags/python.html" style="font-size: 8pt">python</a>&nbsp;&nbsp;
-      <a href="tags/r.html" style="font-size: 8pt">R</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 10pt">python</a>&nbsp;&nbsp;
+      <a href="tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
       <a href="tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
-      <a href="tags/rna_seq.html" style="font-size: 14pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="tags/rna_seq.html" style="font-size: 15pt">RNA-seq</a>&nbsp;&nbsp;
       <a href="tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
       <a href="tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
-      <a href="tags/tophat.html" style="font-size: 8pt">tophat</a>&nbsp;&nbsp;
-      <a href="tags/transgenic_mosquitoes.html" style="font-size: 11pt">transgenic mosquitoes</a>&nbsp;&nbsp;
-      <a href="tags/vector_control.html" style="font-size: 11pt">vector control</a>
+      <a href="tags/tophat.html" style="font-size: 10pt">tophat</a>&nbsp;&nbsp;
+      <a href="tags/transgenic_mosquitoes.html" style="font-size: 10pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="tags/vector_control.html" style="font-size: 10pt">vector control</a>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (1)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (3)</li></ul>
+    <ul><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (3)</li></ul>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->

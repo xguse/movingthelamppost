@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
         <meta name="viewport" content="width=device-width">
-        <title>NEW RELEASE: Blacktie v0.2.0rc1 &mdash; moving the lamppost</title>
+        <title>NEW RELEASE: Blacktie v0.2.1 &mdash; moving the lamppost</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
@@ -27,7 +27,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="next" title="Genome-Level Analysis of Selective Constraint without Apparent Sequence Conservation" href="../16/vakhrusheva_et_al_gbe_2013.html" /><link rel="prev" title="Elements of transgenic disease-vector control (Part 1: setting the scene)" href="../21/elements_of_transgenic_disease_vector_control_part1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+        <link rel="next" title="R: it thinks it’s cooler than me; it’s not wrong" href="../13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.1_wad',
@@ -79,35 +79,49 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../21/elements_of_transgenic_disease_vector_control_part1.html">Elements of transgenic disease-vector control (Part 1: setting the scene)</a></li>
-            <li class="right"><a href="../16/vakhrusheva_et_al_gbe_2013.html">Genome-Level Analysis of Selective Constraint without Apparent Sequence Conservation</a> &raquo; </li>
+            <li class="left"></li>
+            <li class="right"><a href="../13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong.html">R: it thinks it&#8217;s cooler than me; it&#8217;s not wrong</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>April 19, 2013</span>
+            <span>May 15, 2013</span>
         </div>
-    <div class="section" id="new-release-blacktie-v0-2-0rc1">
-<h1>NEW RELEASE: Blacktie v0.2.0rc1</h1>
-<p>I have released a new version of blacktie (0.2.0rc1) which has a number of minor fixes and new features.</p>
+    <div class="section" id="new-release-blacktie-v0-2-1">
+<h1>NEW RELEASE: Blacktie v0.2.1</h1>
+<p>I have released a new version of blacktie (0.2.1) which has a number of minor fixes and <strong>NOW INCLUDES</strong> <a class="reference external" href="http://compbio.mit.edu/cummeRbund/">cummeRbund</a> <strong>SUPPORT!!!</strong></p>
+<a class="reference internal image-reference" href="../../../_images/basic_cummerbund_plots.png"><img alt="../../../_images/basic_cummerbund_plots.png" src="../../../_images/basic_cummerbund_plots.png" style="width: 600px;" /></a>
 <ul class="simple">
 <li>github repo: <a class="reference external" href="https://github.com/xguse/blacktie">https://github.com/xguse/blacktie</a></li>
 <li>documentation: <a class="reference external" href="http://xguse.github.io/blacktie/">http://xguse.github.io/blacktie/</a></li>
-<li>issue tracking and feature requests: <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
+<li><strong>issue tracking and feature requests:</strong> <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
 </ul>
+<p>Thanks and again <strong>please</strong> let me know what you think.  I need your input to make blacktie better and easier to use.</p>
+<p>Gus</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">One major gotcha will be that the yaml config file has been changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
+<p>One major change was introduced in v0.2.0rc1: the yaml config file was changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
+<p class="last">This is the last time that this warning will be included.</p>
 </div>
-<p>Thanks and <strong>please</strong> let me know what you think.  I need your input to make improvements.</p>
-<p>Gus</p>
-<hr class="docutils" />
 <div class="section" id="news">
 <h2>News</h2>
+<div class="section" id="id1">
+<h3>0.2.1</h3>
+<p><em>Release date: 2013-05-15</em></p>
+<ul class="simple">
+<li>git tag: &#8216;v0.2.1&#8217;</li>
+<li>added new script named blacktie-cummerbund to run cummeRbund</li>
+<li>added new class in calls.py CummerbundCall to use blacktie-cummerbund script to add cummeRbund plots to blacktie script</li>
+<li>checks for R and rpy2 installations</li>
+<li>if cummeRbund R library not found, it walks you through installing it</li>
+<li><span class="docutils literal"><span class="pre">src/blacktie/utils/calls.py</span></span>: - fixed _flag_out_dir() so that if the outdir has not been created yet it gracefully moves on</li>
+<li><span class="docutils literal"><span class="pre">examples/blacktie_config_example.yaml</span></span>: - added cummerbund_options</li>
+<li><span class="docutils literal"><span class="pre">requirements.txt</span></span>: - added rpy2</li>
+<li>updated docs</li>
+</ul>
+</div>
 <div class="section" id="rc1">
 <h3>0.2.0rc1</h3>
 <p><em>Release date: 2013-04-19</em></p>
 <ul>
 <li><p class="first">git tag: &#8216;v0.2.0rc1&#8217;</p>
-</li>
-<li><p class="first">email_notification is now adjustable for other email servers</p>
 </li>
 <li><p class="first">Added support for handling biological replicates in cuffdiff runs.</p>
 </li>
@@ -116,7 +130,7 @@
 <dd><ul class="first last simple">
 <li>condition_queue[index].group_id &#8211;&gt; condition_queue[index].experiment_id</li>
 <li>addition of condition_queue[index].replicate_id to track replicate data</li>
-<li>condition_queue[index].name now represents description of an &#8216;experimental condition&#8217; and will be shared by replicates.</li>
+<li>condition_queue[index].name now represents description of an &#8216;experiemental condition&#8217; and will be shared by replicates.</li>
 </ul>
 </dd>
 </dl>
@@ -138,12 +152,12 @@
         <div class="tags">
             <span>
                 Tags:
-                <a href="../../../tags/new_release.html">new release</a>, <a href="../../../tags/blacktie.html">blacktie</a>, <a href="../../../tags/tophat.html">tophat</a>, <a href="../../../tags/cufflinks.html">cufflinks</a>, <a href="../../../tags/cuffmerge.html">cuffmerge</a>, <a href="../../../tags/cuffdiff.html">cuffdiff</a>, <a href="../../../tags/ngs.html">NGS</a>, <a href="../../../tags/rna_seq.html">RNA-seq</a>, <a href="../../../tags/python.html">python</a>, <a href="../../../tags/open_source.html">open source</a>, <a href="../../../tags/open_science.html">open science</a></span>
+                <a href="../../../tags/new_release.html">new release</a>, <a href="../../../tags/blacktie.html">blacktie</a>, <a href="../../../tags/tophat.html">tophat</a>, <a href="../../../tags/cufflinks.html">cufflinks</a>, <a href="../../../tags/cuffmerge.html">cuffmerge</a>, <a href="../../../tags/cuffdiff.html">cuffdiff</a>, <a href="../../../tags/ngs.html">NGS</a>, <a href="../../../tags/rna_seq.html">RNA-seq</a>, <a href="../../../tags/python.html">python</a>, <a href="../../../tags/open_source.html">open source</a>, <a href="../../../tags/open_science.html">open science</a>, <a href="../../../tags/cummerbund.html">cummeRbund</a>, <a href="../../../tags/r.html">R</a>, <a href="../../../tags/bioinformatics.html">bioinformatics</a></span>
         </div>
         </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/04/19/new_release__blacktie_v0_2_0rc1";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../21/elements_of_transgenic_disease_vector_control_part1.html">Elements of transgenic disease-vector control (Part 1: setting the scene)</a></li>
-            <li class="right"><a href="../16/vakhrusheva_et_al_gbe_2013.html">Genome-Level Analysis of Selective Constraint without Apparent Sequence Conservation</a> &raquo; </li>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/05/15/new_release__blacktie_v0_2_1";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong.html">R: it thinks it&#8217;s cooler than me; it&#8217;s not wrong</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section>
 <div class="widget" id="sub_by_email">
     <h1>Don't use RSS aggregators?</h1>
