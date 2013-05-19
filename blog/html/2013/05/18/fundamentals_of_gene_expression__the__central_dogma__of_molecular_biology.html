@@ -1,0 +1,304 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>Fundamentals of Gene Expression: the ‘Central Dogma’ of Molecular Biology &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="NEW RELEASE: Blacktie v0.2.1" href="../15/new_release__blacktie_v0_2_1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.1_wad',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../15/new_release__blacktie_v0_2_1.html">NEW RELEASE: Blacktie v0.2.1</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>May 18, 2013</span>
+        </div>
+    <div class="section" id="fundamentals-of-gene-expression-the-central-dogma-of-molecular-biology">
+<h1>Fundamentals of Gene Expression: the &#8216;Central Dogma&#8217; of Molecular Biology</h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This is an adaptation/update of a post I wrote a long time ago on my other blog <a class="reference external" href="http://scipher.wordpress.com">scipher.wordpress.com</a>.  Here is <a class="reference external" href="http://scipher.wordpress.com/2007/07/19/the-central-dogma-of-molecular-biology">the original post</a> in case you would like to read it.</p>
+<p class="last">The purpose of this post is to serve as a background foundation for me to point to when I reference certain aspects of gene expression in posts on this blog, especially as related to descriptions in my &#8216;dissertation&#8217; posts.</p>
+</div>
+<div class="section" id="the-dogma-of-gene-expression">
+<h2>The &#8220;Dogma&#8221; of Gene Expression?</h2>
+<p>There is a concept in molecular biology that is referred to as &#8220;the central dogma&#8221;. I do not like this name as I feel that the language is too close to that of religion, but history has firmly cemented its use to describe the concept. In general, it is described as:</p>
+<blockquote>
+<div>Genetic information flows from nucleic acid (DNA and RNA) to nucleic acid, or from nucleic acid to protein, but does not flow from protein to nucleic acid.</div></blockquote>
+<p>I believe that Francis Crick was one of the first to assert this.
+<a class="reference internal" href="#figure1"><em>Figure 1</em></a> reproduces a diagram of the central dogma from circa 1958, as reconstructed by Francis Crick.
+There had been a strong debate at the time over what molecule was transferring the genetic information from old cell to new cell.
+The two types of molecules involved were proteins and nucleic acids.
+The legendary description of the double helix by Crick and Watson went a long way towards supporting DNA as the general data keeper, and the data has born this out.</p>
+<p>In this post I will go over some of the implications of the central dogma, and provide an introduction into how DNA, RNA, and proteins interact to enable the life processes of our cells.</p>
+<div class="figure" id="figure1">
+<a class="reference internal image-reference" href="../../../_images/Cricks_1958_central_dogma.jpg"><img alt="../../../_images/Cricks_1958_central_dogma.jpg" src="../../../_images/Cricks_1958_central_dogma.jpg" style="width: 300px;" /></a>
+<p class="caption"><strong>Figure 1</strong></p>
+<div class="legend">
+<a class="reference internal" href="#crick1970" id="id1">[Crick1970]</a></div>
+</div>
+<div id="more"> </div></div>
+<div class="section" id="dna-as-database">
+<h2>DNA as Database</h2>
+<p>There are a couple reasons why DNA seems to be the main storage molecule.
+DNA is more stable than RNA due to its molecular structure.
+In addition, molecules of DNA are usually found in the famous double stranded helix orientation which yields a much more stable complex than single stranded nucleic acids.
+The double helix also provides a very useful way to duplicate genetic information as a cell divides.</p>
+<p>Nucleic acids store information.
+Ok. What kind of information?
+I said that information flows to proteins.
+What does that mean?
+Well DNA stores the instructions for how to make proteins.
+Both DNA and proteins are polymers.
+Like a metal chain, which is made up of repeating links of metal, DNA and proteins are made of smaller repeating building blocks or residues.
+Unlike a chain, which usually has only one type of link, DNA and proteins have multiple types of building blocks.
+Nucleic acids generally use four different residues called nucleotides.
+Proteins are made up of about 20 different residues called amino acids.
+So the information I was talking about is encoded as a particular pattern of the building blocks arranged in a sequence.
+Just as a sentence in English can encode a virtually infinite number of meanings using sequences of only 26 letters, a protein uses a set of 20 amino acids to encode a virtually infinite number of patterns.</p>
+<p>The specific pattern of amino acids determines the properties of the protein and therefore its function in the cell.
+There are many reasons that the sequence determines function, but for now, suffice it to say that the sequence of amino acids that make up a particular protein is vital to its function.
+It is this vital information that is encoded in the DNA.</p>
+<p><strong>Proteins do the work of life.</strong>
+They digest our food; they repair tissue damage; they let our cells communicate; they attack intruding organisms.
+DNA is how our cells know how to make these molecules.</p>
+</div>
+<div class="section" id="a-typical-example">
+<h2>A Typical Example</h2>
+<p>What follows is a simplified version of how the information for how to make a protein gets from the DNA to being manifested as a functional protein.
+I will describe how it happens in a <a class="reference internal" href="../../../pages/glossary.html#term-eukaryote"><em class="xref std std-term">eukaryotic</em></a> cell because that is the type of cells that humans are made of.
+Eukaryotes (organisms with eukaryotic cells) separate their DNA from the rest of the cell into what is called a nucleus (<a class="reference internal" href="#figure2"><em>Figure 2</em></a>).
+This protects the DNA from the cellular processes that happen in the cell and allows for an extra level of control when it comes to gene regulation.</p>
+<div class="figure" id="figure2">
+<a class="reference internal image-reference" href="../../../_images/Animal_cell_structure_en.svg.png"><img alt="../../../_images/Animal_cell_structure_en.svg.png" src="../../../_images/Animal_cell_structure_en.svg.png" style="width: 550px;" /></a>
+<p class="caption"><strong>Figure 2</strong></p>
+<div class="legend">
+<p>The parts of an eukaryotic cell. (Click to enlarge)</p>
+<p>[image credit: <a class="reference external" href="http://en.wikipedia.org/wiki/File:Animal_cell_structure_en.svg">Mariana Ruiz</a>]</p>
+</div>
+</div>
+<div class="section" id="the-library-analogy">
+<h3>The Library Analogy</h3>
+<p>You can think of the nucleus as a library.
+The DNA inside is like a giant set of reference books.
+In a library, you usually cannot check out the reference books right?
+You have to copy the information that you need into notes, and you will use these to write your paper.
+It is the same with the DNA in the nucleus.
+So what do cells copy notes with?
+RNA.</p>
+<p>When RNA is used in this fashion, we call it messenger RNA (mRNA) because it carries the message of how to make a protein.
+There are certain types of proteins in the the nucleus that can unzip the double stranded helix of DNA.
+Once this happens a copy of that region of the DNA is made, but with RNA instead of DNA.
+This process of copying the DNA sequence into RNA sequence is called <a class="reference internal" href="../../../pages/glossary.html#term-transcription"><em class="xref std std-term">transcription</em></a>.</p>
+<div class="topic">
+<p class="topic-title first">DNA Transcription (Basic) (<a class="reference external" href="https://www.youtube.com/watch?v=SMtWvDbfHLo">Advanced</a>)</p>
+<div style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe src="http://www.youtube.com/embed/5MfSYnItYvg" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div><p>I recommend watching both the basic <strong>and</strong> advanced versions of these videos. They each contain certain aspects that are left out of the other.</p>
+<p>[video credit: <a class="reference external" href="http://www.dnalc.org/">Cold Spring Harbor Laboratory - DNA Learning Center</a>]</p>
+</div>
+<p>Only one strand is copied.
+This single stranded RNA copy of the gene then leaves the nucleus.
+Outside the nucleus, another set of proteins reads the sequence of mRNA and gathers free floating amino acids to fuse them into a chain.
+The sequence of the mRNA determines the order in which each amino acid is incorporated into the growing protein.
+The process of translating the mRNA sequence into a protein sequence is called <a class="reference internal" href="../../../pages/glossary.html#term-translation"><em class="xref std std-term">translation</em></a>.</p>
+<div class="topic">
+<p class="topic-title first">mRNA Translation (Basic) (<a class="reference external" href="https://www.youtube.com/watch?v=TfYf_rPWUdY">Advanced</a>)</p>
+<div style="padding-bottom: 56.250000%; padding-top: 30px; position: relative; width: 100%">
+<iframe src="http://www.youtube.com/embed/8dsTvBaUMvw" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div><p>[video credit: <a class="reference external" href="http://www.dnalc.org/">Cold Spring Harbor Laboratory - DNA Learning Center</a>]</p>
+</div>
+<p>That&#8217;s pretty much it! Not that complicated eh?</p>
+<p>Not all organism&#8217;s use DNA as their storage molecule, however.
+Some viruses encode their genome with RNA, others use DNA but only a single strand of it whereas the norm is double stranded DNA.
+I have described what is typical, but you should know that there are forms of life that use variations of this.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>The central dogma of molecular biology is the observation that genetic information generally can be transmitted from DNA/RNA to other DNA/RNA or from DNA/RNA to protein, but not from protein to DNA/RNA
+I should say here that we cannot say that it is impossible for information to flow from protein to nucleic acid; it may be.
+However, no one has postulated a mechanism whereby this might happen, and has never been observed.
+It may be discovered someday, but that is VERY unlikely.
+DNA is usually the storage molecule for genetic information which is then encoded into RNA so that it can ultimately be translated into a protein.</p>
+<hr class="docutils" />
+<p class="rubric"><strong>Footnotes:</strong></p>
+<hr class="docutils" />
+<p class="rubric"><strong>Citations:</strong></p>
+<table class="docutils citation" frame="void" id="crick1970" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Crick1970]</a></td><td>Crick, F. (1970). Central dogma of molecular biology. Nature, 227(5258), 561-3. Retrieved from <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pubmed/4913914">http://www.ncbi.nlm.nih.gov/pubmed/4913914</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/background_science.html">Background Science</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/the_central_dogma.html">the central dogma</a>, <a href="../../../tags/transcription.html">transcription</a>, <a href="../../../tags/translation.html">translation</a>, <a href="../../../tags/gene_expression.html">gene expression</a>, <a href="../../../tags/dna.html">DNA</a>, <a href="../../../tags/rna.html">RNA</a>, <a href="../../../tags/protein.html">protein</a>, <a href="../../../tags/nucleic_acids.html">nucleic acids</a>, <a href="../../../tags/amino_acids.html">amino acids</a>, <a href="../../../tags/cell.html">cell</a>, <a href="../../../tags/nucleus.html">nucleus</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/05/18/fundamentals_of_gene_expression__the__central_dogma__of_molecular_biology";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../15/new_release__blacktie_v0_2_1.html">NEW RELEASE: Blacktie v0.2.1</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Don't use RSS aggregators?</h1>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">Subscribe via email</a>
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/background_science.html">Background Science</a> (1)</li><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (2)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="../../../categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="../../../categories/my_research.html">My Research</a> (3)</li></ul>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/background.html" style="font-size: 10pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/bioinformatics.html" style="font-size: 8pt">bioinformatics</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 12pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 10pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/cummerbund.html" style="font-size: 10pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 10pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/dna.html" style="font-size: 8pt">DNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_expression.html" style="font-size: 10pt">gene expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 8pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 10pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 10pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/gripes.html" style="font-size: 8pt">gripes</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 10pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/namespace.html" style="font-size: 8pt">namespace</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 10pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 12pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleic_acids.html" style="font-size: 8pt">nucleic acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleus.html" style="font-size: 8pt">nucleus</a>&nbsp;&nbsp;
+      <a href="../../../tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 10pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 10pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna.html" style="font-size: 8pt">RNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 15pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/the_central_dogma.html" style="font-size: 8pt">the central dogma</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 10pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transcription.html" style="font-size: 8pt">transcription</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 10pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/translation.html" style="font-size: 8pt">translation</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 10pt">vector control</a>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

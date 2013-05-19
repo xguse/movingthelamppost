@@ -4,6 +4,16 @@ Glossary
 .. glossary::
 	:sorted:
 	
+	eukaryote
+		an organism whose cells contain complex structures (particularly a nucleus containing the genome) enclosed within membranes. `Other membrane-bound structures <http://en.wikipedia.org/wiki/Organelle>`_ exist as well.
+		http://en.wikipedia.org/wiki/Eukaryote
+	
+	transcription
+		`Transcription is the first step of gene expression, in which a particular segment of DNA is copied into RNA by the enzyme, RNA polymerase. <http://en.wikipedia.org/wiki/Transcription_(genetics)>`_
+	
+	translation
+		Translation is the process by which amino acids are polymerized into proteins by reading the information encoded on strands of mRNA.
+	
 	reporter gene
 		`In molecular biology, a reporter gene (often simply reporter) is a gene that researchers attach to a regulatory sequence of another gene of interest in bacteria, cell culture, animals or plants. Certain genes are chosen as reporters because the characteristics they confer on organisms expressing them are easily identified and measured (cause the cells to glow), or because they are selectable markers (allow only the cells with the reporter to survive in the presence of a poison). <http://en.wikipedia.org/wiki/Reporter_gene>`_
 	
