@@ -107,8 +107,8 @@ Public health: *multiple targets*
 Because the arrow of transmission always\ [#nonhuman_transmission]_ points from mosquito to human or from human to mosquito, if either of those arrows are broken, the cycle will collapse and the area would eventually be cleared of the pathogen provided the intervention is maintained.
 This model suggests that there are two primary targets for public health interventions aiming to reduce the :term:`incidence` (followed by :term:`prevalence`) of infection in a population.
 
-	1. prevent mosquitoes from infecting humans
-	2. prevent humans from infecting mosquitoes
+1. prevent mosquitoes from infecting humans
+2. prevent humans from infecting mosquitoes
 
 However, many of the interventions can not be clearly divided into addressing purely the human or vector side of the cycle.
 For example, any efforts to reduce the number of bites that humans receive from mosquitoes affects both the probabilities of the vector *and* the human becoming infected.  
