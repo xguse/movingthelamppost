@@ -1,4 +1,4 @@
-/* Typography */body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: .9em; }
+/* Typography */body { font-family: 'Titillium Web','Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1em; }
 
 header h1 * { font-size: 1.6em; font-weight: normal; }
 header h2 { font-size: 1.4em; font-weight: normal; margin: 0; padding: 0; }
@@ -17,6 +17,32 @@ aside.sidebar { font-size: 1em; }
 aside.sidebar.highlight { font-size: .8em; }
 
 footer { font-size: 0.8em; }
+
+
+blockquote {
+font-family: 'Noto Sans', serif;
+font-size: .9em;
+font-style: italic;
+width: 450px;
+margin: 0.25em 0;
+padding: 0.25em 40px;
+line-height: 1.45;
+position: relative;
+color: #383838;
+}
+
+blockquote:before {
+display: block;
+content: "\201C";
+font-family: Noto Sans, serif;
+font-size: 60px;
+position: absolute;
+left: -0px;
+top: -13px;
+color: #7a7a7a;
+}
+
+
 
 /* Layout */
 body { margin: auto; max-width: 1000px; }
