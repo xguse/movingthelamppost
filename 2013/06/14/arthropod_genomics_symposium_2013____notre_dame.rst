@@ -27,6 +27,7 @@ Web Apollo web based annotation editing platform
 - MANUAL annotation is NECESSARY not just desirable: without it many downstream experiments will be poisoned
 - democratization of genome assembly and annotation require a new model of collaborative annotation
 
+.. more::
 
 
 Emerging Genomes
