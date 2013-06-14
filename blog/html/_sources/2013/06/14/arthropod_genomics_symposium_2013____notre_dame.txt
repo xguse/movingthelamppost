@@ -5,7 +5,7 @@ General Session
 -------------------
 Dan Lawson
 **************
-	- Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k
+- Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k
 
 Steven Richards (Fringy)
 **************************
