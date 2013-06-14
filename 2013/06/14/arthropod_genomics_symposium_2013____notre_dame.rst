@@ -3,6 +3,8 @@ Arthropod Genomics Symposium 2013 -- Notre Dame
 
 My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://globalhealth.nd.edu/7th-annual-arthropod-genomics-symposium/>`_  If you are interested, you can follow live tweets from `#13ArthGen <https://twitter.com/search?q=%2313arthgen&src=typd>`_.
 
+.. note:: Obviously, my spelling is gonna suck on this.  Please don't hold it against me!?
+
 
 
 
@@ -10,10 +12,12 @@ General Session
 -------------------
 Dan Lawson
 **************
+
 - Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k
 
 Steven Richards (Fringy)
 **************************
+
 - ND50 10kb basic bar to reach for good annotation through Maker
 
 Terence Murphy
@@ -157,6 +161,14 @@ Greg Hunt (Purdue)
 ********************
 Parent of origin effects in gene expression in honey bees
 
+- hybrids between african and european bees sting intermediate of the parents (but if the father is African hybrids are more similar to african bees?)  **NOT SURE I GOT THAT RIGHT**
+- Used multiple different mapping methods but didnt say how -- *DONT LIKE THAT*
+- Truethfully I dunno if I can talk about the rest because I can't tell if his biases are real or due to not using the same mapper in all conditions...
+
+Susan Weiner (Iowa State Univ)
+***********************************
+DNA methylation in the primitively social wasp *Polistes dominulus*
+
 -
 
 
@@ -164,5 +176,5 @@ Parent of origin effects in gene expression in honey bees
 
 .. author:: default
 .. categories:: Conferences
-.. tags:: ArthGen2013, genomics, arthropods, transcriptomics, twitter, science@twitter
+.. tags:: ArthGen2013, genomics, arthropods, transcriptomics, twitter, science@twitter, live blogging
 .. comments::
