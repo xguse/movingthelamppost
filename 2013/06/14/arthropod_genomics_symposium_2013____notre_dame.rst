@@ -107,6 +107,7 @@ melitaea cinxia genome
 Epigenetics
 -------------
 Jennifer Brisson (U of Neb - Lincoln)
+*****************************************
 Linking DNA methylation to phenotype in the pea aphid
 
 - meth found in gene bodies primarily in exons
@@ -119,6 +120,37 @@ Linking DNA methylation to phenotype in the pea aphid
 	- this IS detected by the speaker
 	- role for DNA methylation in dcerning paralogs?
 		- example used is RNAi genes (Dicer etc)
+
+Micheal Goodisman (GA Tech)
+***********************
+Function of DNA methylation in insects
+
+- DNA methylation lost in some insects
+	- NO METHEYL IN DIPTERA?!  *Did I know that?*
+- What is the function of methyl in insects?
+- **Note:** look up CpG_o/e
+- in Apis and Pea Aphid:
+	- uniform expression between conditions = high methylation 
+	- differential expression bt condition = low methylation
+	- says its a strong repeating pattern
+- fire ant diploid vs haploid males:
+	- increased gene expression tends to track with increased DNAmeth
+	- as variation in gene expression increases DNAmeth decreases
+	- most DNAmeth seen in Haploid males... (not sure I got that right)
+- Conservation of methylation and other epigenetic data (honey bee vs fire ant and Dmel [no DNAmeth but yes histone modification])
+	- over all: within ants, correlatiuon of genes with DNAmeth are very high (r ~>0.7)
+	- same in bees
+	- between ants/bees: still relatively high correlation (r ~ 0.6)
+	- are DNAmeth in genes in ants/bees correleated with specific histone mods in Dmel: 
+		- Answer is YES
+		- no time to document which hist mods he showed
+- Summary:
+	- phenoype specific genes are unmethylated
+	- ubiquitously genes are methylated
+	- DNAmeth associated with ploidy
+	- Patterns of DNAmeth conserved within and bewtween species
+	- DNAmeth tends to be associated with specific histone mods
+	- DNAmeth tied to alternative splicing
 
 
 
