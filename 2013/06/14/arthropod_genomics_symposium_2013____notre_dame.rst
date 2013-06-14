@@ -104,6 +104,24 @@ melitaea cinxia genome
 
 
 
+Epigenetics
+-------------
+Jennifer Brisson (U of Neb - Lincoln)
+Linking DNA methylation to phenotype in the pea aphid
+
+- meth found in gene bodies primarily in exons
+- Methylation associated with higher expression (only at global level?)
+- differences bt morphs:
+	- methyl patterns plainly morph specific by PCA 2D
+	- intron specific CHH methylation flat in wingless/asex but very pronounced in Sexual morphs
+- function of intergenic DNA methylation:
+	- skipped exons should have higher methylations bc CTCF cant bind the exon to slow down the machinerey to allow that exon to be recognized as NOT intron
+	- this IS detected by the speaker
+	- role for DNA methylation in dcerning paralogs?
+		- example used is RNAi genes (Dicer etc)
+
+
+
 
 .. author:: default
 .. categories:: Conferences
