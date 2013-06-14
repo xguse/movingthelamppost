@@ -1,6 +1,11 @@
 Arthropod Genomics Symposium 2013 -- Notre Dame
 ===============================================
 
+My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://globalhealth.nd.edu/7th-annual-arthropod-genomics-symposium/>`_  If you are interested, you can follow live tweets from `#13ArthGen <https://twitter.com/search?q=%2313arthgen&src=typd>`_.
+
+
+
+
 General Session
 -------------------
 Dan Lawson
@@ -101,5 +106,5 @@ melitaea cinxia genome
 
 .. author:: default
 .. categories:: Conferences
-.. tags:: ArthGen2013, genomics, arthropods, transcriptomics
+.. tags:: ArthGen2013, genomics, arthropods, transcriptomics, twitter, science@twitter
 .. comments::
