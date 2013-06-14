@@ -169,7 +169,15 @@ Susan Weiner (Iowa State Univ)
 ***********************************
 DNA methylation in the primitively social wasp *Polistes dominulus*
 
--
+- primitavely eusocial = not morpholagical difference (queen/works look the same)
+- independent origin of socialality? (Did i hear that right?)
+- Polistes has way more DNAmeth than all other insects looked at
+- is there a bias to sites DNAmeth in caste?
+	- yes.... **but** PCA 2D was not **THAT** impressive
+- Zebularine treatment (*inhibits DNAmeth*) in multiple replications and variations tend to cause individuals make them more worker-like (opposite as in honey bees)
+- DNMT3 has not been found yet (DNAmethyltransferase i think)
+- DNMT1 and 2 are there
+
 
 
 
