@@ -177,7 +177,8 @@ DNA methylation in the primitively social wasp *Polistes dominulus*
 - Zebularine treatment (*inhibits DNAmeth*) in multiple replications and variations tend to cause individuals make them more worker-like (opposite as in honey bees)
 - DNMT3 has not been found yet (DNAmethyltransferase i think)
 - DNMT1 and 2 are there
-
+- question asked: was zebularine validated that it is working uniformly
+	- answer: working on that
 
 
 
