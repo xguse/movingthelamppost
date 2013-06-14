@@ -23,6 +23,7 @@ How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline
 Monica Munoz-Torez
 *********************
 Web Apollo web based annotation editing platform
+
 - first realtime genome collaborative annotation editor on the web
 - MANUAL annotation is NECESSARY not just desirable: without it many downstream experiments will be poisoned
 - democratization of genome assembly and annotation require a new model of collaborative annotation
@@ -122,7 +123,7 @@ Linking DNA methylation to phenotype in the pea aphid
 		- example used is RNAi genes (Dicer etc)
 
 Micheal Goodisman (GA Tech)
-***********************
+*******************************
 Function of DNA methylation in insects
 
 - DNA methylation lost in some insects
@@ -151,6 +152,12 @@ Function of DNA methylation in insects
 	- Patterns of DNAmeth conserved within and bewtween species
 	- DNAmeth tends to be associated with specific histone mods
 	- DNAmeth tied to alternative splicing
+
+Greg Hunt (Purdue)
+********************
+Parent of origin effects in gene expression in honey bees
+
+-
 
 
 
