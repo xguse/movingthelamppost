@@ -24,7 +24,7 @@ Terence Murphy
 ********************
 How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline
 
-Monica Munoz-Torez
+Monica Munoz-Torres
 *********************
 *Web Apollo web based annotation editing platform*
 
