@@ -180,6 +180,57 @@ DNA methylation in the primitively social wasp *Polistes dominulus*
 - question asked: was zebularine validated that it is working uniformly
 	- answer: working on that
 
+Comparative Genomics
+------------------------
+
+Rob Waterhouse (Univ Geneva/MIT)
+*Orthology-based genome annotation and interpretation*
+
+- where we have come since Dmel in early 2000s
+- what is it you want from your genome BEFORE you start to make sure that you have the quality you need
+- once your annotation is done:
+    - how do you asses the completness of your annotation?
+    - once complete, orthology becomes useful tool
+- orthoDB: most comprehensive source for orthology amoung arthropods (>57 species)
+- Assesing completion:
+    - BUSCOs -> **needs definition later**
+        - orthos with single copy ortho in 90% of other species
+        - expectation:
+            - most should be found in your assembly
+            - most should be single copy
+        - implementation:
+            - blast
+            - then:
+                - best BLAST regions
+                - next-best BLAST
+                - homology based gene predictions
+        - example:
+            - 15 Mosquito species
+            - fewer than 10 BUSCOs in most Mosq species
+            - Aedes:
+                - 16 missing
+                - 244 multi copy
+            - Culex:
+                - 47 missing
+                - 126 multi copy
+            - also look at the length differentials between orthologs
+                - helps see whether the fragmentation of assembly is affecting your assembly/gene models
+    - mapping: new feature for orthoDB
+        - allows new genomes to be mapped to current frozen set of orthologs
+        - private interface if required
+        - also allows you to predict how many of the BUSCOs are missing to decide whether to make current gene set public
+- orthology to infer gene function:
+    - functional traits
+    - evolutionary traits
+    - **CAVEAT EMPTOR**:
+        - orthology does not strictly define function
+    - Added a **BUNCH** of cool extra information including synteny blocks and relative evolutionary rate
+    - **if:**
+        - single copy
+        - kept in most species
+        - slow evolutionary rate
+    - **then:**
+        - functional assumptions are warranted
 
 
 

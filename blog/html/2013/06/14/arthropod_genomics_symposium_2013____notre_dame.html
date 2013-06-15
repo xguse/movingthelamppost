@@ -450,6 +450,158 @@
 </ul>
 </div>
 </div>
+<div class="section" id="comparative-genomics">
+<h2>Comparative Genomics</h2>
+<p>Rob Waterhouse (Univ Geneva/MIT)
+<em>Orthology-based genome annotation and interpretation</em></p>
+<ul>
+<li><p class="first">where we have come since Dmel in early 2000s</p>
+</li>
+<li><p class="first">what is it you want from your genome BEFORE you start to make sure that you have the quality you need</p>
+</li>
+<li><dl class="first docutils">
+<dt>once your annotation is done:</dt>
+<dd><ul class="first last simple">
+<li>how do you asses the completness of your annotation?</li>
+<li>once complete, orthology becomes useful tool</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">orthoDB: most comprehensive source for orthology amoung arthropods (&gt;57 species)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Assesing completion:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>BUSCOs -&gt; <strong>needs definition later</strong></dt>
+<dd><ul class="first last">
+<li><p class="first">orthos with single copy ortho in 90% of other species</p>
+</li>
+<li><dl class="first docutils">
+<dt>expectation:</dt>
+<dd><ul class="first last simple">
+<li>most should be found in your assembly</li>
+<li>most should be single copy</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>implementation:</dt>
+<dd><ul class="first last">
+<li><p class="first">blast</p>
+</li>
+<li><dl class="first docutils">
+<dt>then:</dt>
+<dd><ul class="first last simple">
+<li>best BLAST regions</li>
+<li>next-best BLAST</li>
+<li>homology based gene predictions</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>example:</dt>
+<dd><ul class="first last">
+<li><p class="first">15 Mosquito species</p>
+</li>
+<li><p class="first">fewer than 10 BUSCOs in most Mosq species</p>
+</li>
+<li><dl class="first docutils">
+<dt>Aedes:</dt>
+<dd><ul class="first last simple">
+<li>16 missing</li>
+<li>244 multi copy</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Culex:</dt>
+<dd><ul class="first last simple">
+<li>47 missing</li>
+<li>126 multi copy</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>also look at the length differentials between orthologs</dt>
+<dd><ul class="first last simple">
+<li>helps see whether the fragmentation of assembly is affecting your assembly/gene models</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>mapping: new feature for orthoDB</dt>
+<dd><ul class="first last simple">
+<li>allows new genomes to be mapped to current frozen set of orthologs</li>
+<li>private interface if required</li>
+<li>also allows you to predict how many of the BUSCOs are missing to decide whether to make current gene set public</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>orthology to infer gene function:</dt>
+<dd><ul class="first last">
+<li><p class="first">functional traits</p>
+</li>
+<li><p class="first">evolutionary traits</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>CAVEAT EMPTOR</strong>:</dt>
+<dd><ul class="first last simple">
+<li>orthology does not strictly define function</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Added a <strong>BUNCH</strong> of cool extra information including synteny blocks and relative evolutionary rate</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>if:</strong></dt>
+<dd><ul class="first last simple">
+<li>single copy</li>
+<li>kept in most species</li>
+<li>slow evolutionary rate</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>then:</strong></dt>
+<dd><ul class="first last simple">
+<li>functional assumptions are warranted</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 
     <div class="postmeta">
