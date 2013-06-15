@@ -312,6 +312,8 @@ Igor Sharakhov (Virgina Tech)
 Systems Biology/Population Genomics
 ---------------------------------------
 
+.. _andyclark:
+
 Andy Clark (Cornell)
 ******************************************
 *Population genomic and metabolic inference from a global diversity reference panel of _Drosophila melanogaster_*
@@ -347,14 +349,25 @@ Andy Clark (Cornell)
 - New descriptions of hybrid dysgenesis through cross population mating allowing exploration of other mobile elements and their effects (similar to P-element)
 - Wolbachia data suggests a single invasion of Dmel 
 
+.. _petercherbas:
 
 Peter Cherbas (Indiana Univ)
 ******************************************
 *modENCODE and the potential of systems biology in _Drosophila_*
 
+- 1938 new transcribed regions (not linked to any other gene model)
+- almost every gene included new 5' or 3' UTR...
+- promoter switching linked to certain lines where Broad in activated or deactivated by ecdysone
+- environmental perturbations reveal totally new genes
+- neural specific expressed isoforms have LONG 3' extentions
+- 18 loci where there is almost exactly overlaped (sense/antisense) transcription (seems protein coding too but I am not sure)
+- in general: the **least certain** part of any annotation is the non-coding regions
+- **RESOURCE:** MANY cell lines used to produced transcriptomes for public use
+- cell lines unique and represents different "test tubes" for biological questions
+    - unique complement of transcription factors etc
+    - sufficiently differentiated to be homologous in behavior and components
 
-
-
+.. _jeremylynch:
 
 Jeremy Lynch (Univ Illinois Chicago)
 ******************************************
@@ -363,6 +376,7 @@ Jeremy Lynch (Univ Illinois Chicago)
 
 
 
+.. _sarahmitchell:
 
 Sara Mitchell (Harvard Public Health)
 ******************************************
