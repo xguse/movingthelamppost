@@ -281,15 +281,14 @@ Michael Brewer (UC Berkley)
 
 .. _piRNA:
 
-Igor Sharakhov (Virgina Tech)
+Igor Sharakhov
 ********************************
-*Ornganization and evolution of piRNAs in _Anopheles gambiae_*
+*(Virgina Tech) Ornganization and evolution of piRNAs in _Anopheles gambiae_*
 
 - in aedes piRNAs bind mostly to GENES not transposable elements
 - tissue subcell localization:
     - Dmel:
         - diff localization for each piRNA protein
-    - 
 - composition of piRNA in Ag
     - aedes piRNA clusters overlap GENES
     - most piRNAs in Ag seem to have signiture of Ping Pong amplification
