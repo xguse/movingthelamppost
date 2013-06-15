@@ -261,8 +261,23 @@ Michael Brewer (UC Berkley)
 ******************************
 *Evolutionary transcriptomics associated with developmental color switching in an adaptive radiation of Hawaiian Tetragnatha spiders (Araneae: Tetragnathidae)*
 
--
 
+- orb weavers that don't weave orbs anymore and adopt purely active hunting lifestyle
+- 2 ecomorph:
+    - green
+    - maroon
+- green individuals switch to maroon and their diet changes upon maturity
+- they can control whether/when they shift?
+- can date the species due to isolation on the islands
+- METHOD:
+    - RNAseq
+    - trinity assembly
+    - annotate by blast
+    - trinity MM ORF
+    - RecipBestBlast
+    - Something else: slide change...
+- ... got caught up in other things ...
+- **He has many centipede/millipede RNA-seq libraries but they are being neglected in the community: if you are interested in the results from these libraries please contact him**
 
 .. author:: default
 .. categories:: Conferences
