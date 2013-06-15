@@ -359,8 +359,8 @@ Peter Cherbas (Indiana Univ)
 - almost every gene included new 5' or 3' UTR...
 - promoter switching linked to certain lines where Broad in activated or deactivated by ecdysone
 - environmental perturbations reveal totally new genes
-- neural specific expressed isoforms have LONG 3' extentions
-- 18 loci where there is almost exactly overlaped (sense/antisense) transcription (seems protein coding too but I am not sure)
+- neural specific expressed isoforms have LONG 3' extensions
+- 18 loci where there is almost exactly overlapped (sense/antisense) transcription (seems protein coding too but I am not sure)
 - in general: the **least certain** part of any annotation is the non-coding regions
 - **RESOURCE:** MANY cell lines used to produced transcriptomes for public use
 - cell lines unique and represents different "test tubes" for biological questions
@@ -373,7 +373,19 @@ Jeremy Lynch (Univ Illinois Chicago)
 ******************************************
 *Global analysis of the dorsal-ventral patterning regulatory network in the wasp _Nasonia vitripennis_ using quantitative transcriptomics*
 
-
+- opening statement: **DON'T BE AFRAID OF THE COMMAND LINE!!!!**
+- Nasonia embryo layed out very similar to that of Dmel
+    - morphology and gene expression
+    - most likely convergent evolution
+- Nasonia patterning systems more dynamic
+- BMP provides most patterning information
+- also once cells start migrating in the embryo there are major divergences from Dmel as well
+- does Nasonia use the same genes as Dmel?
+    - knock out BMP: lose dorsal gene expression
+    - KO toll: lose ventral gene expression
+- used tuxedo protocol 
+- also used trinity to see what happened de novo followed by DESeq
+    - works mostly ok but has a lot of nonsense as well
 
 
 .. _sarahmitchell:
@@ -382,9 +394,19 @@ Sara Mitchell (Harvard Public Health)
 ******************************************
 *Genetic pathways induced by mating have a key role in the reproductive biology of _Anopheles gambiae_*
 
+- many discoveries regarding elements that are required for mating plug formation as well as signals effecting the female post mating changes (sperm is not required)
+- found changes in the midgut after mating
+- looking at early middle and late matting reponses (3, 12, 24 h)
+- mostly induction of genes in mated vs virgins
+- wow.  LOTS of information very fast!  Not keeping up with typing very well!
 
 
 
+My Own Personal "Remember This" List
+-----------------------------------------
+
+- GMAP to map de novo assembled transcriptomes to the genome
+    - plan to convert to GTF and merge with cufflinks GTF using cuffmerge to help define UTRs better for CRM/CRE discovery in my Mosquito species
 
 
 .. author:: default
