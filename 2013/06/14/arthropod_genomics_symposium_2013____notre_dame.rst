@@ -26,7 +26,7 @@ How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline
 
 Monica Munoz-Torez
 *********************
-Web Apollo web based annotation editing platform
+*Web Apollo web based annotation editing platform*
 
 - first realtime genome collaborative annotation editor on the web
 - MANUAL annotation is NECESSARY not just desirable: without it many downstream experiments will be poisoned
@@ -40,7 +40,7 @@ Emerging Genomes
 
 Amy Toth
 ************
-Genome of primitively social wasp "Polistes dominula": insights/opportunity for understanding genomic basis of eusociality
+*Genome of primitively social wasp "Polistes dominula": insights/opportunity for understanding genomic basis of eusociality*
 
 - low repetitive elements	
 - even lower TE content
@@ -65,7 +65,7 @@ Genome of primitively social wasp "Polistes dominula": insights/opportunity for 
 
 Dave Denlinger (Ohio State)
 *******************************
-Sequencing the Antarctic Midge, Belgica antarctica: the smallest insect genome
+*Sequencing the Antarctic Midge, Belgica antarctica: the smallest insect genome*
 
 - poly extremophile
     - cold -- frozen solid 8-9 months a year
@@ -105,7 +105,8 @@ Sequencing the Antarctic Midge, Belgica antarctica: the smallest insect genome
 
 Virpi Ahola
 ***************
-melitaea cinxia genome
+
+*melitaea cinxia genome*
 
 
 
@@ -113,7 +114,8 @@ Epigenetics
 -------------
 Jennifer Brisson (U of Neb - Lincoln)
 *****************************************
-Linking DNA methylation to phenotype in the pea aphid
+
+*Linking DNA methylation to phenotype in the pea aphid*
 
 - meth found in gene bodies primarily in exons
 - Methylation associated with higher expression (only at global level?)
@@ -128,7 +130,8 @@ Linking DNA methylation to phenotype in the pea aphid
 
 Micheal Goodisman (GA Tech)
 *******************************
-Function of DNA methylation in insects
+
+*Function of DNA methylation in insects*
 
 - DNA methylation lost in some insects
 	- NO METHEYL IN DIPTERA?!  *Did I know that?*
@@ -159,7 +162,8 @@ Function of DNA methylation in insects
 
 Greg Hunt (Purdue)
 ********************
-Parent of origin effects in gene expression in honey bees
+
+*Parent of origin effects in gene expression in honey bees*
 
 - hybrids between african and european bees sting intermediate of the parents (but if the father is African hybrids are more similar to african bees?)  **NOT SURE I GOT THAT RIGHT**
 - Used multiple different mapping methods but didnt say how -- *DONT LIKE THAT*
@@ -167,7 +171,8 @@ Parent of origin effects in gene expression in honey bees
 
 Susan Weiner (Iowa State Univ)
 ***********************************
-DNA methylation in the primitively social wasp *Polistes dominulus*
+
+*DNA methylation in the primitively social wasp *Polistes dominulus**
 
 - primitavely eusocial = not morpholagical difference (queen/works look the same)
 - independent origin of socialality? (Did i hear that right?)
@@ -184,6 +189,8 @@ Comparative Genomics
 ------------------------
 
 Rob Waterhouse (Univ Geneva/MIT)
+**************************************
+
 *Orthology-based genome annotation and interpretation*
 
 - where we have come since Dmel in early 2000s
@@ -231,6 +238,19 @@ Rob Waterhouse (Univ Geneva/MIT)
         - slow evolutionary rate
     - **then:**
         - functional assumptions are warranted
+
+
+Chris Winchell (UC Berkley)
+********************************
+
+*Genome and germline of emerging genome of crustacean __Parhyale hawaiensis__*
+
+- BAC library:
+    - 129 024 clones
+    - median insert ~140 kb
+    - aprox coverage 5X
+    - 70 have been seq'd: 53 genes found
+
 
 
 
