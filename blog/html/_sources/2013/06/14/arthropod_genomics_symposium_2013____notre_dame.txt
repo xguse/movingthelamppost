@@ -442,7 +442,7 @@ Brian Lazzaro (Cornell Univ)
     - it does btw...
     - ?? Could it not be that the more sugar you add to the food the more you make it easier for the bacteria? (you feed them more?)
         - there seems to be some link to genotype
-        - could be that the genetic component is how well the fly converts sugar to less growable substrates
+        - could be that the genetic component is how well the fly converts sugar to less usable substrates
         - ?? could you use a sugar that the flies can use but is not easy for the bacteria to use?
         - ?? a bactaeria that doesnt eat glucose?
     - 4th PC out of 5 deminsions in PCA?
