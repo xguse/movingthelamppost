@@ -416,7 +416,7 @@ Leslie Vosshall (The Rockefeller Univ)
 - "Aedes has a 'horrifically' enormous genome"
 - KO OR-coeffector effectively removes function of all ORs
 - used Zinc Fingers to do the KO
-- Behvior assay:
+- Behavior assay:
     - tube with a human scent at the end, see if the females choose the right tube.
     - ORCO-/- cant see human scent alone but can see if CO2 is added
     - IRs must also be involved
@@ -433,6 +433,20 @@ Leslie Vosshall (The Rockefeller Univ)
     - mosqs need more than one signal to trigger feeding
     - mutants severly impaired in lab but in semi field conditions much LESS impaired
 
+
+Brian Lazzaro (Cornell Univ)
+********************************
+*Complexity in the function and evolution of insect immunity*
+
+- how does diet affect immunity?
+    - it does btw...
+    - ?? Could it not be that the more sugar you add to the food the more you make it easier for the bacteria? (you feed them more?)
+        - there seems to be some link to genotype
+        - could be that the genetic component is how well the fly converts sugar to less growable substrates
+        - ?? could you use a sugar that the flies can use but is not easy for the bacteria to use?
+        - ?? a bactaeria that doesnt eat glucose?
+    - 4th PC out of 5 deminsions in PCA?
+- how does mating effect immunity?
 
 
 
