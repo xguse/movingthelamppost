@@ -308,6 +308,71 @@ Igor Sharakhov (Virgina Tech)
             - M and S forms NOT as similar in X chromosome
     - aedes piRNAs clusters as much as 20% of genome
 
+
+Systems Biology/Population Genomics
+---------------------------------------
+
+Andy Clark (Cornell)
+******************************************
+*Population genomic and metabolic inference from a global diversity reference panel of _Drosophila melanogaster_*
+
+- using flies as model for diabetes: insulin signaling and TOR
+- lines isofemale lines (>90 lines):
+    - Ithica
+    - Netherlands 
+    - Beijing
+    - Zimbabwe
+    - Tasmania
+- significant metabolic phenotypic variation between the lines
+- scored for MANY types of info:
+    - enzyme activity
+    - fat storage
+    - more
+- modeling objective:
+    - fit models predicting endpoints like total fat storage from genome
+    - assess sensitivity of component of models 
+    - explain genetic architecture
+- modeling:
+    - multiple regression
+        - observed vs expected: r^2 = 0.23
+    - Flux balance Analysis (FBA)
+    - Structural Equation MOodels (SEM)
+        - obsvd vs exp: r^2 = 0.44
+    - Bayesian hierarchical model
+- 3 cam 120 frames/sec linked in 3D
+- perturbations by flying through magnetic field with magnet glued to their back
+- recovery from perturbation begins in a single wing beat
+- **VERY COOL VIDEOS**
+- Data suggesting that the Drosophila melanogaster population variance may mirror the human data supporting the idea that we brought Dmel with us as we left Africa and they follow similar variance constrictions as they followed the particular human population as they split
+- New descriptions of hybrid dysgenesis through cross population mating allowing exploration of other mobile elements and their effects (similar to P-element)
+- Wolbachia data suggests a single invasion of Dmel 
+
+
+Peter Cherbas (Indiana Univ)
+******************************************
+*modENCODE and the potential of systems biology in _Drosophila_*
+
+
+
+
+
+Jeremy Lynch (Univ Illinois Chicago)
+******************************************
+*Global analysis of the dorsal-ventral patterning regulatory network in the wasp _Nasonia vitripennis_ using quantitative transcriptomics*
+
+
+
+
+
+Sara Mitchell (Harvard Public Health)
+******************************************
+*Genetic pathways induced by mating have a key role in the reproductive biology of _Anopheles gambiae_*
+
+
+
+
+
+
 .. author:: default
 .. categories:: Conferences
 .. tags:: ArthGen2013, genomics, arthropods, transcriptomics, twitter, science@twitter, live blogging
