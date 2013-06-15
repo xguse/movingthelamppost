@@ -279,6 +279,36 @@ Michael Brewer (UC Berkley)
 - ... got caught up in other things ...
 - **He has many centipede/millipede RNA-seq libraries but they are being neglected in the community: if you are interested in the results from these libraries please contact him**
 
+.. _piRNA:
+
+Igor Sharakhov (Virgina Tech)
+********************************
+*Ornganization and evolution of piRNAs in _Anopheles gambiae_*
+
+- in aedes piRNAs bind mostly to GENES not transposable elements
+- tissue subcell localization:
+    - Dmel:
+        - diff localization for each piRNA protein
+    - 
+- composition of piRNA in Ag
+    - aedes piRNA clusters overlap GENES
+    - most piRNAs in Ag seem to have signiture of Ping Pong amplification
+    - Localization in Ag seems mostly localized with transposable elements not genes
+        - but on X many map with genes...
+
+- Genomic chromosomal localization of piRNA in Ag
+    - they have Abs for PIWI1
+    - PIWI1 localization on chromo looks more like Dmel PIWI
+    - PIWI2 (aub) not succeeded 
+    - aedes: most piRNA clusters NOT near centromeres like Dmel
+        - mostly in euchromatin
+    - Ag: most piRNA peaks in centromereic but many outside of centromeric 
+            - however still mostly in heterochromatic 
+            - M and S forms look pretty similar in localization of clusters
+            - again in X chromosome many more clusters mapping in euchromatin
+            - M and S forms NOT as similar in X chromosome
+    - aedes piRNAs clusters as much as 20% of genome
+
 .. author:: default
 .. categories:: Conferences
 .. tags:: ArthGen2013, genomics, arthropods, transcriptomics, twitter, science@twitter, live blogging
