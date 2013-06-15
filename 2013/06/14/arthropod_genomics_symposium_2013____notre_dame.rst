@@ -402,11 +402,52 @@ Sara Mitchell (Harvard Public Health)
 
 
 
+Ecological Genomics
+-------------------------
+
+Leslie Vosshall (The Rockefeller Univ)
+**********************************************
+*Dissecting mosquito host-seeking behavior through loss-of-function genetics*
+
+- two clases of insect oder recepters
+    - OR
+    - IR
+- each insect has different numbers of these receptors
+- "Aedes has a 'horrifically' enormous genome"
+- KO OR-coeffector effectively removes function of all ORs
+- used Zinc Fingers to do the KO
+- Behvior assay:
+    - tube with a human scent at the end, see if the females choose the right tube.
+    - ORCO-/- cant see human scent alone but can see if CO2 is added
+    - IRs must also be involved
+- given choice between human or guinee pig the double mutants are much less good at choosing the human
+- ORco not needed to choose human over nothing but are important for choosing human vs non-human
+- Vienette 2:
+    - many cues moisture, heat, smell, C02 etc
+    - moving on to gustatory receptors (GR)
+    - GR3 knocks out all???
+    - GR3-/- blind to CO2
+    - CO2 + Heat causes biting
+    - both needed
+    - GR3- means no CO2 signal
+    - mosqs need more than one signal to trigger feeding
+    - mutants severly impaired in lab but in semi field conditions much LESS impaired
+
+
+
+
+
+
 My Own Personal "Remember This" List
 -----------------------------------------
 
 - GMAP to map de novo assembled transcriptomes to the genome
     - plan to convert to GTF and merge with cufflinks GTF using cuffmerge to help define UTRs better for CRM/CRE discovery in my Mosquito species
+
+
+
+
+
 
 
 .. author:: default
