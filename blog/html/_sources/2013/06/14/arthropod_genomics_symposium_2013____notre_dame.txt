@@ -251,7 +251,17 @@ Chris Winchell (UC Berkley)
     - aprox coverage 5X
     - 70 have been seq'd: 53 genes found
 
+- germline *REPLACEMENT?!*
+    - you can ablate the original developing germline cells and they will MAKE MORE!! (convert somatic cells to germline?)
+    - very elegant transgenic demonstration of where the new germline cells are originating in the blastoderm
+- **not** a "normal" event, but may be a failsafe for rare germline loss of function in development
 
+
+Michael Brewer (UC Berkley)
+******************************
+*Evolutionary transcriptomics associated with developmental color switching in an adaptive radiation of Hawaiian Tetragnatha spiders (Araneae: Tetragnathidae)*
+
+-
 
 
 .. author:: default
