@@ -7,18 +7,18 @@ My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://glob
     
     1. **COMING SOON:** links to or embedded versions of the recorded talks for each section. These will be added as soon as I can get the location of where they will be hosted.
     2. **My Spelling:** Obviously, my spelling is gonna suck on this.  Please don't hold it against me.
-    3. **Linking to Specific Sections:** If you want to link to a specific person's notes you can use 'anchor' notation as illustrated here for `Amy Toth <http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy_toth>`_:
+    3. **Linking to Specific Sections:** If you want to link to a specific person's notes you can use 'anchor' notation as illustrated here for `Amy Toth <http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy-toth>`_:
 
     .. code-block:: none
 
-        http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy_toth
+        http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy-toth
 
 
 
 General Session
 -------------------
 
-.. _dan_lawson:
+.. _dan-lawson:
 
 Dan Lawson (EBI)
 ***********************
@@ -28,7 +28,7 @@ Dan Lawson (EBI)
 
 '''''''''''''''''''''''''
 
-.. _steven_richards:
+.. _steven-richards:
 
 Steven "Fringy" Richards (Baylor College of Medicine)
 **************************************************************
@@ -38,7 +38,7 @@ Steven "Fringy" Richards (Baylor College of Medicine)
 
 '''''''''''''''''''''''''
 
-.. _terence_murphy:
+.. _terence-murphy:
 
 Terence Murphy (NCBI)
 *****************************
@@ -47,7 +47,7 @@ Terence Murphy (NCBI)
 
 '''''''''''''''''''''''''
 
-.. _monica_munoz-torres:
+.. _monica-munoz-torres:
 
 Monica Munoz-Torres (Lawrence Berkeley National Laboratory)
 ****************************************************************
@@ -65,7 +65,7 @@ Monica Munoz-Torres (Lawrence Berkeley National Laboratory)
 Emerging Genomes
 -----------------
 
-.. _amy_toth:
+.. _amy-toth:
 
 Amy Toth
 ************
@@ -95,7 +95,7 @@ Amy Toth
 
 '''''''''''''''''''''''''
 
-.. _dave_denlinger:
+.. _dave-denlinger:
 
 Dave Denlinger (Ohio State)
 *******************************
@@ -140,7 +140,7 @@ Dave Denlinger (Ohio State)
 
 '''''''''''''''''''''''''
 
-.. _virpi_ahola:
+.. _virpi-ahola:
 
 Virpi Ahola
 ***************
@@ -154,7 +154,7 @@ Virpi Ahola
 Epigenetics
 -------------
 
-.. _jennifer_brisson:
+.. _jennifer-brisson:
 
 Jennifer Brisson (U of Neb - Lincoln)
 *****************************************
@@ -175,7 +175,7 @@ Jennifer Brisson (U of Neb - Lincoln)
 
 '''''''''''''''''''''''''
 
-.. _micheal_goodisman:
+.. _micheal-goodisman:
 
 Micheal Goodisman (GA Tech)
 *******************************
@@ -212,7 +212,7 @@ Micheal Goodisman (GA Tech)
 
 '''''''''''''''''''''''''
 
-.. _greg_hunt:
+.. _greg-hunt:
 
 Greg Hunt (Purdue)
 ********************
@@ -226,7 +226,7 @@ Greg Hunt (Purdue)
 
 '''''''''''''''''''''''''
 
-.. _susan_weiner:
+.. _susan-weiner:
 
 Susan Weiner (Iowa State Univ)
 ***********************************
@@ -252,7 +252,7 @@ Susan Weiner (Iowa State Univ)
 Comparative Genomics
 ------------------------
 
-.. _rob_waterhouse:
+.. _rob-waterhouse:
 
 Rob Waterhouse (Univ Geneva/MIT)
 **************************************
@@ -309,7 +309,7 @@ Rob Waterhouse (Univ Geneva/MIT)
 
 '''''''''''''''''''''''''
 
-.. _chris_winchell:
+.. _chris-winchell:
 
 Chris Winchell (UC Berkley)
 ********************************
@@ -331,7 +331,7 @@ Chris Winchell (UC Berkley)
 
 '''''''''''''''''''''''''
 
-.. _michael_brewer:
+.. _michael-brewer:
 
 Michael Brewer (UC Berkley)
 ******************************
@@ -396,7 +396,7 @@ Igor Sharakhov (Virgina Tech)
 Systems Biology/Population Genomics
 ---------------------------------------
 
-.. _andy_clark:
+.. _andy-clark:
 
 Andy Clark (Cornell)
 ******************************************
@@ -436,7 +436,7 @@ Andy Clark (Cornell)
 
 '''''''''''''''''''''''''
 
-.. _peter_cherbas:
+.. _peter-cherbas:
 
 Peter Cherbas (Indiana Univ)
 ******************************************
@@ -457,7 +457,7 @@ Peter Cherbas (Indiana Univ)
 
 '''''''''''''''''''''''''
 
-.. _jeremy_lynch:
+.. _jeremy-lynch:
 
 Jeremy Lynch (Univ Illinois Chicago)
 ******************************************
@@ -481,7 +481,7 @@ Jeremy Lynch (Univ Illinois Chicago)
 
 '''''''''''''''''''''''''
 
-.. _sarah_mitchell:
+.. _sarah-mitchell:
 
 Sara Mitchell (Harvard Public Health)
 ******************************************
@@ -501,7 +501,7 @@ Sara Mitchell (Harvard Public Health)
 Ecological Genomics
 -------------------------
 
-.. _leslie_vosshall:
+.. _leslie-vosshall:
 
 Leslie Vosshall (The Rockefeller Univ)
 **********************************************
@@ -535,7 +535,7 @@ Leslie Vosshall (The Rockefeller Univ)
 
 '''''''''''''''''''''''''
 
-.. _brian_lazzaro:
+.. _brian-lazzaro:
 
 Brian Lazzaro (Cornell Univ)
 ********************************
