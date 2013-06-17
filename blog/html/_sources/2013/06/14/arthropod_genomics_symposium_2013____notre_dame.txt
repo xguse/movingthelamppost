@@ -7,11 +7,11 @@ My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://glob
     
     1. **COMING SOON:** links to or embedded versions of the recorded talks for each section. These will be added as soon as I can get the location of where they will be hosted.
     2. **My Spelling:** Obviously, my spelling is gonna suck on this.  Please don't hold it against me.
-    3. **Linking to Specific Sections:** If you want to link to a specific person's notes you can use 'anchor' notation as illustrated here for `Amy Toth <http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy-toth>`_:
+    3. **Linking to Specific Sections:** If you want to link to a specific person's notes you can use 'anchor' notation as illustrated here for `Jennifer Brisson <http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#jennifer-brisson>`_:
 
     .. code-block:: none
 
-        http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy-toth
+        http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#jennifer-brisson
 
 
 
@@ -66,6 +66,7 @@ Emerging Genomes
 -----------------
 
 .. _amy-toth:
+
 
 Amy Toth
 ************
