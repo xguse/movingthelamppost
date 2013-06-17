@@ -6,37 +6,51 @@ My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://glob
 .. note::
     
     1. **COMING SOON:** links to or embedded versions of the recorded talks for each section. These will be added as soon as I can get the location of where they will be hosted.
-    2. Obviously, my spelling is gonna suck on this.  Please don't hold it against me!?
+    2. **My Spelling:** Obviously, my spelling is gonna suck on this.  Please don't hold it against me.
+    3. **Linking to Specific Sections:** If you want to link to a specific person's notes you can use 'anchor' notation as illustrated here for `Amy Toth <http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy_toth>`_:
+
+    .. code-block:: none
+
+        http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#amy_toth
 
 
 
 General Session
 -------------------
-Dan Lawson
-**************
+
+.. _dan_lawson:
+
+Dan Lawson (EBI)
+***********************
 
 - Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k
 
 
 '''''''''''''''''''''''''
 
-Steven Richards (Fringy)
-**************************
+.. _steven_richards:
+
+Steven "Fringy" Richards (Baylor College of Medicine)
+**************************************************************
 
 - ND50 10kb basic bar to reach for good annotation through Maker
 
 
 '''''''''''''''''''''''''
 
-Terence Murphy
-********************
+.. _terence_murphy:
+
+Terence Murphy (NCBI)
+*****************************
 *How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline*
 
 
 '''''''''''''''''''''''''
 
-Monica Munoz-Torres
-*********************
+.. _monica_munoz-torres:
+
+Monica Munoz-Torres (Lawrence Berkeley National Laboratory)
+****************************************************************
 *Web Apollo web based annotation editing platform*
 
 - first realtime genome collaborative annotation editor on the web
@@ -46,8 +60,12 @@ Monica Munoz-Torres
 .. more::
 
 
+'''''''''''''''''''''''''
+
 Emerging Genomes
 -----------------
+
+.. _amy_toth:
 
 Amy Toth
 ************
@@ -76,6 +94,8 @@ Amy Toth
 
 
 '''''''''''''''''''''''''
+
+.. _dave_denlinger:
 
 Dave Denlinger (Ohio State)
 *******************************
@@ -120,15 +140,22 @@ Dave Denlinger (Ohio State)
 
 '''''''''''''''''''''''''
 
+.. _virpi_ahola:
+
 Virpi Ahola
 ***************
 
 *melitaea cinxia genome*
 
 
+'''''''''''''''''''''''''
+
 
 Epigenetics
 -------------
+
+.. _jennifer_brisson:
+
 Jennifer Brisson (U of Neb - Lincoln)
 *****************************************
 
@@ -147,6 +174,8 @@ Jennifer Brisson (U of Neb - Lincoln)
 
 
 '''''''''''''''''''''''''
+
+.. _micheal_goodisman:
 
 Micheal Goodisman (GA Tech)
 *******************************
@@ -183,6 +212,8 @@ Micheal Goodisman (GA Tech)
 
 '''''''''''''''''''''''''
 
+.. _greg_hunt:
+
 Greg Hunt (Purdue)
 ********************
 
@@ -194,6 +225,8 @@ Greg Hunt (Purdue)
 
 
 '''''''''''''''''''''''''
+
+.. _susan_weiner:
 
 Susan Weiner (Iowa State Univ)
 ***********************************
@@ -211,8 +244,15 @@ Susan Weiner (Iowa State Univ)
 - question asked: was zebularine validated that it is working uniformly
 	- answer: working on that
 
+
+'''''''''''''''''''''''''
+
+
+
 Comparative Genomics
 ------------------------
+
+.. _rob_waterhouse:
 
 Rob Waterhouse (Univ Geneva/MIT)
 **************************************
@@ -269,6 +309,8 @@ Rob Waterhouse (Univ Geneva/MIT)
 
 '''''''''''''''''''''''''
 
+.. _chris_winchell:
+
 Chris Winchell (UC Berkley)
 ********************************
 
@@ -288,6 +330,8 @@ Chris Winchell (UC Berkley)
 
 
 '''''''''''''''''''''''''
+
+.. _michael_brewer:
 
 Michael Brewer (UC Berkley)
 ******************************
@@ -315,6 +359,8 @@ Michael Brewer (UC Berkley)
 '''''''''''''''''''''''''
 
 .. _piRNA:
+
+.. _igor_sharakhov:
 
 Igor Sharakhov (Virgina Tech)
 ********************************
@@ -344,10 +390,13 @@ Igor Sharakhov (Virgina Tech)
     - aedes piRNAs clusters as much as 20% of genome
 
 
+
+'''''''''''''''''''''''''
+
 Systems Biology/Population Genomics
 ---------------------------------------
 
-.. _andyclark:
+.. _andy_clark:
 
 Andy Clark (Cornell)
 ******************************************
@@ -387,7 +436,7 @@ Andy Clark (Cornell)
 
 '''''''''''''''''''''''''
 
-.. _petercherbas:
+.. _peter_cherbas:
 
 Peter Cherbas (Indiana Univ)
 ******************************************
@@ -408,7 +457,7 @@ Peter Cherbas (Indiana Univ)
 
 '''''''''''''''''''''''''
 
-.. _jeremylynch:
+.. _jeremy_lynch:
 
 Jeremy Lynch (Univ Illinois Chicago)
 ******************************************
@@ -432,7 +481,7 @@ Jeremy Lynch (Univ Illinois Chicago)
 
 '''''''''''''''''''''''''
 
-.. _sarahmitchell:
+.. _sarah_mitchell:
 
 Sara Mitchell (Harvard Public Health)
 ******************************************
@@ -445,9 +494,14 @@ Sara Mitchell (Harvard Public Health)
 - wow.  LOTS of information very fast!  Not keeping up with typing very well!
 
 
+'''''''''''''''''''''''''
+
+
 
 Ecological Genomics
 -------------------------
+
+.. _leslie_vosshall:
 
 Leslie Vosshall (The Rockefeller Univ)
 **********************************************
@@ -480,6 +534,8 @@ Leslie Vosshall (The Rockefeller Univ)
 
 
 '''''''''''''''''''''''''
+
+.. _brian_lazzaro:
 
 Brian Lazzaro (Cornell Univ)
 ********************************
