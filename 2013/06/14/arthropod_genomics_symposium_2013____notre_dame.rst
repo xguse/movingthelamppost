@@ -15,14 +15,23 @@ Dan Lawson
 
 - Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k
 
+
+'''''''''''''''''''''''''
+
 Steven Richards (Fringy)
 **************************
 
 - ND50 10kb basic bar to reach for good annotation through Maker
 
+
+'''''''''''''''''''''''''
+
 Terence Murphy
 ********************
-How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline
+*How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline*
+
+
+'''''''''''''''''''''''''
 
 Monica Munoz-Torres
 *********************
@@ -62,6 +71,9 @@ Amy Toth
         - however dna meth not likely to be related to cast diff through diff expression, but maybe through splicing control
         - Dnmt3 (usually needed for DNA meth) not found yet in this genome
     - novel genes
+
+
+'''''''''''''''''''''''''
 
 Dave Denlinger (Ohio State)
 *******************************
@@ -103,6 +115,9 @@ Dave Denlinger (Ohio State)
 
      
 
+
+'''''''''''''''''''''''''
+
 Virpi Ahola
 ***************
 
@@ -127,6 +142,9 @@ Jennifer Brisson (U of Neb - Lincoln)
 	- this IS detected by the speaker
 	- role for DNA methylation in dcerning paralogs?
 		- example used is RNAi genes (Dicer etc)
+
+
+'''''''''''''''''''''''''
 
 Micheal Goodisman (GA Tech)
 *******************************
@@ -160,6 +178,9 @@ Micheal Goodisman (GA Tech)
 	- DNAmeth tends to be associated with specific histone mods
 	- DNAmeth tied to alternative splicing
 
+
+'''''''''''''''''''''''''
+
 Greg Hunt (Purdue)
 ********************
 
@@ -168,6 +189,9 @@ Greg Hunt (Purdue)
 - hybrids between african and european bees sting intermediate of the parents (but if the father is African hybrids are more similar to african bees?)  **NOT SURE I GOT THAT RIGHT**
 - Used multiple different mapping methods but didnt say how -- *DONT LIKE THAT*
 - Truethfully I dunno if I can talk about the rest because I can't tell if his biases are real or due to not using the same mapper in all conditions...
+
+
+'''''''''''''''''''''''''
 
 Susan Weiner (Iowa State Univ)
 ***********************************
@@ -240,6 +264,9 @@ Rob Waterhouse (Univ Geneva/MIT)
         - functional assumptions are warranted
 
 
+
+'''''''''''''''''''''''''
+
 Chris Winchell (UC Berkley)
 ********************************
 
@@ -256,6 +283,9 @@ Chris Winchell (UC Berkley)
     - very elegant transgenic demonstration of where the new germline cells are originating in the blastoderm
 - **not** a "normal" event, but may be a failsafe for rare germline loss of function in development
 
+
+
+'''''''''''''''''''''''''
 
 Michael Brewer (UC Berkley)
 ******************************
@@ -278,6 +308,9 @@ Michael Brewer (UC Berkley)
     - Something else: slide change...
 - ... got caught up in other things ...
 - **He has many centipede/millipede RNA-seq libraries but they are being neglected in the community: if you are interested in the results from these libraries please contact him**
+
+
+'''''''''''''''''''''''''
 
 .. _piRNA:
 
@@ -349,6 +382,9 @@ Andy Clark (Cornell)
 - New descriptions of hybrid dysgenesis through cross population mating allowing exploration of other mobile elements and their effects (similar to P-element)
 - Wolbachia data suggests a single invasion of Dmel 
 
+
+'''''''''''''''''''''''''
+
 .. _petercherbas:
 
 Peter Cherbas (Indiana Univ)
@@ -366,6 +402,9 @@ Peter Cherbas (Indiana Univ)
 - cell lines unique and represents different "test tubes" for biological questions
     - unique complement of transcription factors etc
     - sufficiently differentiated to be homologous in behavior and components
+
+
+'''''''''''''''''''''''''
 
 .. _jeremylynch:
 
@@ -387,6 +426,9 @@ Jeremy Lynch (Univ Illinois Chicago)
 - also used trinity to see what happened de novo followed by DESeq
     - works mostly ok but has a lot of nonsense as well
 
+
+
+'''''''''''''''''''''''''
 
 .. _sarahmitchell:
 
@@ -434,6 +476,9 @@ Leslie Vosshall (The Rockefeller Univ)
     - mutants severly impaired in lab but in semi field conditions much LESS impaired
 
 
+
+'''''''''''''''''''''''''
+
 Brian Lazzaro (Cornell Univ)
 ********************************
 *Complexity in the function and evolution of insect immunity*
@@ -451,6 +496,9 @@ Brian Lazzaro (Cornell Univ)
 
 
 
+
+
+'''''''''''''''''''''''''
 
 My Own Personal "Remember This" List
 -----------------------------------------
