@@ -3,8 +3,10 @@ Arthropod Genomics Symposium 2013 -- Notre Dame
 
 My notes on talks from the `7th Annual Arthropod Genomics Symposium <http://globalhealth.nd.edu/7th-annual-arthropod-genomics-symposium/>`_  If you are interested, you can follow live tweets from `#13ArthGen <https://twitter.com/search?q=%2313arthgen&src=typd>`_.
 
-.. note:: Obviously, my spelling is gonna suck on this.  Please don't hold it against me!?
-
+.. note::
+    
+    1. **COMING SOON:** links to or embedded versions of the recorded talks for each section. These will be added as soon as I can get the location of where they will be hosted.
+    2. Obviously, my spelling is gonna suck on this.  Please don't hold it against me!?
 
 
 
