@@ -360,7 +360,7 @@ Michael Brewer (UC Berkley)
 
 .. _piRNA:
 
-.. _igor_sharakhov:
+.. _igor-sharakhov:
 
 Igor Sharakhov (Virgina Tech)
 ********************************
