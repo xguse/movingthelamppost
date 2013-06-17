@@ -49,9 +49,10 @@ html_theme_options = { }
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
 rss_service = "http://feeds.feedburner.com/MovingTheLamppost"
+rss_generate_full_posts = True
 
 # Number of blog posts per page
-posts_per_page = 10
+posts_per_page = 5
 
 # **************************************************************
 # Edit lines below to further customize Sphinx build
