@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips
    2013/06/14/arthropod_genomics_symposium_2013____notre_dame
    2013/05/18/fundamentals_of_gene_expression__the__central_dogma__of_molecular_biology
    2013/05/15/new_release__blacktie_v0_2_1
