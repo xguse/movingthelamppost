@@ -49,6 +49,9 @@ The blog was published originally in Bangla at Mukto-Mona.com, who have also pro
 Published on March 8, 2013 this was his last post at Mukto-Mona Banglablog under the title ... "Speak, for the cup of hemlock is not yet on your lips". The post contains some graphic images below.
 
 
+.. more::
+
+
 Speak, for the Cup of Hemlock is not yet on Your Lips
 --------------------------------------------------------------
 *by Asif Mohiuddin. Translation by Allachalaina.*
