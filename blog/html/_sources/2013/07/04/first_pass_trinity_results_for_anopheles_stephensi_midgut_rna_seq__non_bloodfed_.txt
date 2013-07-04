@@ -67,7 +67,11 @@ Now I count and plot the size data.
     <matplotlib.text.Text at 0x645b290>
 
 
+
 .. image:: /_static/As_midgut_RNAseq_lib_TRINITY_files/_fig_03.png
+
+
+.. more::
 
 Now I calculate the N50*length* and N50*index* for the trinity assembly.
 
