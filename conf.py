@@ -63,7 +63,8 @@ posts_per_page = 5
 
 
 # Add other Sphinx extensions here
-extensions = [ 'sphinxcontrib.youtube','tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinx.ext.mathjax'] 
+
+extensions = ['sphinxcontrib.youtube','tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinx.ext.mathjax'] 
 
 # Add other template paths here
 templates_path = ['_templates']

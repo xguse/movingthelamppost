@@ -1,0 +1,369 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed) &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Speak, for the Cup of Hemlock is not yet on Your Lips" href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:i|Noto+Sans:i|Titillium+Web|Titillium+Web:i"></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html">Speak, for the Cup of Hemlock is not yet on Your Lips</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>July 04, 2013</span>
+        </div>
+    <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
+<h1>First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)</h1>
+<div class="section" id="exploration-of-the-first-set-of-results-from-a-trinity-run-with-default-settings-on-one-library-of-anopheles-stephensi-midgut-rna-seq-as-00-lib-one">
+<h2>Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As_00 lib one)</h2>
+<div class="section" id="analyze-lengths-of-assembled-contigs-transcripts">
+<h3>Analyze Lengths Of Assembled Contigs/Transcripts</h3>
+<p>Function to count all transcripts of length <em>X</em>:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">rSeq.utils.files</span> <span class="kn">import</span> <span class="n">ParseFastA</span>
+
+<span class="k">def</span> <span class="nf">measure_and_count_transcripts</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">):</span>
+
+    <span class="n">tx_lens</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ParseFastA</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">)</span>
+    <span class="n">seqs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">seq</span> <span class="ow">in</span> <span class="n">seqs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">tx_lens</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">&quot;The number of different transcript sizes encountered: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tx_lens</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tx_lens</span>
+</pre></div>
+</div>
+<p>Now I count and plot the size data.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Prep to plot a Histogram of the numbers of transcripts in each length bin</span>
+
+<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta&#39;</span><span class="p">)</span>
+
+<span class="n">trinity_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">trinity_tx_lens</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">trinity_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">trinity_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4632</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x645b290&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_03.png" src="../../../_images/_fig_03.png" />
+<p>Now I calculate the N50*length* and N50*index* for the trinity assembly.</p>
+<p><strong>N50*index*:</strong> the number of largest contigs(transcripts) whose summed
+lengths equal at least 50% of the sum of <strong>ALL</strong> contigs (smaller
+numbers are &#8216;better&#8217;)</p>
+<p><strong>N50*length*:</strong> the length of the last added contig from above (larger
+numbers are &#8216;better&#8217;)</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_N50s</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+    <span class="n">total_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;total_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">total_length</span><span class="p">)</span>
+
+    <span class="n">running_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">collected_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n50_i</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+        <span class="n">running_total</span> <span class="o">+=</span> <span class="n">length</span>
+        <span class="n">collected_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">running_total</span> <span class="o">&gt;=</span> <span class="n">total_length</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">n50_i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">collected_lengths</span><span class="p">)</span>
+            <span class="n">n50_l</span> <span class="o">=</span> <span class="n">length</span>
+            <span class="k">break</span>
+
+    <span class="k">print</span> <span class="s">&quot;running_total:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">running_total</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;N50_index:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s"> of </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_i</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;N50_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_l</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;median contig length</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               31858558
+running_total:              15931068
+N50_index:                  3927 of 25167
+N50_length:                 2469
+median contig length        647.0</pre>
+</div>
+</div>
+<div class="section" id="analyze-lengths-of-predicted-transcripts">
+<h3>Analyze Lengths Of Predicted Transcripts</h3>
+<div class="section" id="astes1-0">
+<h4>1. AsteS1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteS1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/genome_data/AsteS/Anopheles-stephensi-SDA-500_TRANSCRIPTS_AsteS1.0.fa&#39;</span><span class="p">)</span>
+
+<span class="n">asteS1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteS1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4058</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3f2ced0&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_08.png" src="../../../_images/_fig_08.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               25155329
+running_total:              12580251
+N50_index:                  2617 of 13251
+N50_length:                 2838
+median contig length        1344.0</pre>
+</div>
+</div>
+<div class="section" id="astei1-0">
+<h4>2. AsteI1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteI1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/genome_data/AsteI/Anopheles-stephensi-Indian_TRANSCRIPTS_AsteI1.0.fa&#39;</span><span class="p">)</span>
+
+<span class="n">asteI1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteI1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 5227</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x6d37710&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_13.png" src="../../../_images/_fig_13.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               35859205
+running_total:              17930131
+N50_index:                  3231 of 23287
+N50_length:                 3279
+median contig length        717.0</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/my_research.html">My Research</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/rna_seq.html">RNA-seq</a>, <a href="../../../tags/de_novo_transcriptome_assembly.html">de novo transcriptome assembly</a>, <a href="../../../tags/trinity.html">Trinity</a>, <a href="../../../tags/anopheles_stephensi.html">Anopheles stephensi</a>, <a href="../../../tags/midgut.html">midgut</a>, <a href="../../../tags/non_bloodfed.html">non-bloodfed</a>, <a href="../../../tags/blood_feeding.html">blood feeding</a>, <a href="../../../tags/ipython.html">ipython</a>, <a href="../../../tags/python.html">python</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html">Speak, for the Cup of Hemlock is not yet on Your Lips</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Subscribe</h1>
+    <a href='http://www.feedly.com/home#subscription/feed%2Fhttp%3A%2F%2Ffeeds.feedburner.com%2FMovingTheLamppost'  target='blank'><img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-medium_2x.png' alt='follow us in feedly' width='71' height='28'></a>
+    <br>
+    <a href="http://feeds.feedburner.com/MovingTheLamppost">via feedburner</a>
+    <br>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">via email</a>
+    
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/background_science.html">Background Science</a> (1)</li><li><a href="../../../categories/conferences.html">Conferences</a> (1)</li><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (2)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="../../../categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="../../../categories/my_research.html">My Research</a> (4)</li></ul>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/anopheles_stephensi.html" style="font-size: 8pt">Anopheles stephensi</a>&nbsp;&nbsp;
+      <a href="../../../tags/arthgen2013.html" style="font-size: 8pt">ArthGen2013</a>&nbsp;&nbsp;
+      <a href="../../../tags/arthropods.html" style="font-size: 8pt">arthropods</a>&nbsp;&nbsp;
+      <a href="../../../tags/asif.html" style="font-size: 8pt">Asif</a>&nbsp;&nbsp;
+      <a href="../../../tags/asif_mohiuddin.html" style="font-size: 8pt">Asif Mohiuddin</a>&nbsp;&nbsp;
+      <a href="../../../tags/background.html" style="font-size: 10pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/bangladesh.html" style="font-size: 8pt">Bangladesh</a>&nbsp;&nbsp;
+      <a href="../../../tags/bioinformatics.html" style="font-size: 8pt">bioinformatics</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 12pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/blood_feeding.html" style="font-size: 8pt">blood feeding</a>&nbsp;&nbsp;
+      <a href="../../../tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 10pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/cummerbund.html" style="font-size: 10pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="../../../tags/de_novo_transcriptome_assembly.html" style="font-size: 8pt">de novo transcriptome assembly</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 10pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/dna.html" style="font-size: 8pt">DNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/free_expression.html" style="font-size: 8pt">free expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/freedom.html" style="font-size: 8pt">freedom</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_expression.html" style="font-size: 10pt">gene expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 10pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 10pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 10pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/government.html" style="font-size: 8pt">government</a>&nbsp;&nbsp;
+      <a href="../../../tags/gripes.html" style="font-size: 8pt">gripes</a>&nbsp;&nbsp;
+      <a href="../../../tags/human_rights.html" style="font-size: 8pt">human rights</a>&nbsp;&nbsp;
+      <a href="../../../tags/injustice.html" style="font-size: 8pt">injustice</a>&nbsp;&nbsp;
+      <a href="../../../tags/intolerance.html" style="font-size: 8pt">intolerance</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 10pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/live_blogging.html" style="font-size: 8pt">live blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/midgut.html" style="font-size: 8pt">midgut</a>&nbsp;&nbsp;
+      <a href="../../../tags/mohiuddin.html" style="font-size: 8pt">Mohiuddin</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 10pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/namespace.html" style="font-size: 8pt">namespace</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 10pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 12pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/non_bloodfed.html" style="font-size: 8pt">non-bloodfed</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleic_acids.html" style="font-size: 8pt">nucleic acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleus.html" style="font-size: 8pt">nucleus</a>&nbsp;&nbsp;
+      <a href="../../../tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 10pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 12pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna.html" style="font-size: 8pt">RNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 17pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/science_twitter.html" style="font-size: 8pt">science@twitter</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/the_central_dogma.html" style="font-size: 8pt">the central dogma</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 10pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transcription.html" style="font-size: 8pt">transcription</a>&nbsp;&nbsp;
+      <a href="../../../tags/transcriptomics.html" style="font-size: 8pt">transcriptomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 10pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/translation.html" style="font-size: 8pt">translation</a>&nbsp;&nbsp;
+      <a href="../../../tags/trinity.html" style="font-size: 8pt">Trinity</a>&nbsp;&nbsp;
+      <a href="../../../tags/twitter.html" style="font-size: 8pt">twitter</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 10pt">vector control</a>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

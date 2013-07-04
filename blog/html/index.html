@@ -85,6 +85,180 @@
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>July 04, 2013</span>
+        </div>
+        <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
+<h1><a href="2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html">First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)</a></h1>
+<div class="section" id="exploration-of-the-first-set-of-results-from-a-trinity-run-with-default-settings-on-one-library-of-anopheles-stephensi-midgut-rna-seq-as-00-lib-one">
+<h2>Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As_00 lib one)</h2>
+<div class="section" id="analyze-lengths-of-assembled-contigs-transcripts">
+<h3>Analyze Lengths Of Assembled Contigs/Transcripts</h3>
+<p>Function to count all transcripts of length <em>X</em>:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">rSeq.utils.files</span> <span class="kn">import</span> <span class="n">ParseFastA</span>
+
+<span class="k">def</span> <span class="nf">measure_and_count_transcripts</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">):</span>
+
+    <span class="n">tx_lens</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ParseFastA</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">)</span>
+    <span class="n">seqs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">seq</span> <span class="ow">in</span> <span class="n">seqs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">tx_lens</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">&quot;The number of different transcript sizes encountered: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tx_lens</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tx_lens</span>
+</pre></div>
+</div>
+<p>Now I count and plot the size data.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Prep to plot a Histogram of the numbers of transcripts in each length bin</span>
+
+<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta'</span><span class="p">)</span>
+
+<span class="n">trinity_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">trinity_tx_lens</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">trinity_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">trinity_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4632</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x645b290&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_03.png" src="_images/_fig_03.png"/>
+<p>Now I calculate the N50*length* and N50*index* for the trinity assembly.</p>
+<p><strong>N50*index*:</strong> the number of largest contigs(transcripts) whose summed
+lengths equal at least 50% of the sum of <strong>ALL</strong> contigs (smaller
+numbers are ‘better’)</p>
+<p><strong>N50*length*:</strong> the length of the last added contig from above (larger
+numbers are ‘better’)</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_N50s</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+    <span class="n">total_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;total_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">total_length</span><span class="p">)</span>
+
+    <span class="n">running_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">collected_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n50_i</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+        <span class="n">running_total</span> <span class="o">+=</span> <span class="n">length</span>
+        <span class="n">collected_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">running_total</span> <span class="o">&gt;=</span> <span class="n">total_length</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">n50_i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">collected_lengths</span><span class="p">)</span>
+            <span class="n">n50_l</span> <span class="o">=</span> <span class="n">length</span>
+            <span class="k">break</span>
+
+    <span class="k">print</span> <span class="s">&quot;running_total:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">running_total</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;N50_index:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s"> of </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_i</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;N50_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_l</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;median contig length</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               31858558
+running_total:              15931068
+N50_index:                  3927 of 25167
+N50_length:                 2469
+median contig length        647.0</pre>
+</div>
+</div>
+<div class="section" id="analyze-lengths-of-predicted-transcripts">
+<h3>Analyze Lengths Of Predicted Transcripts</h3>
+<div class="section" id="astes1-0">
+<h4>1. AsteS1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteS1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/genome_data/AsteS/Anopheles-stephensi-SDA-500_TRANSCRIPTS_AsteS1.0.fa'</span><span class="p">)</span>
+
+<span class="n">asteS1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteS1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4058</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3f2ced0&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_08.png" src="_images/_fig_08.png"/>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               25155329
+running_total:              12580251
+N50_index:                  2617 of 13251
+N50_length:                 2838
+median contig length        1344.0</pre>
+</div>
+</div>
+<div class="section" id="astei1-0">
+<h4>2. AsteI1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteI1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/genome_data/AsteI/Anopheles-stephensi-Indian_TRANSCRIPTS_AsteI1.0.fa'</span><span class="p">)</span>
+
+<span class="n">asteI1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteI1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 5227</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">'g'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x6d37710&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_13.png" src="_images/_fig_13.png"/>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               35859205
+running_total:              17930131
+N50_index:                  3231 of 23287
+N50_length:                 3279
+median contig length        717.0</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/my_research.html">My Research</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/rna_seq.html">RNA-seq</a>, <a href="tags/de_novo_transcriptome_assembly.html">de novo transcriptome assembly</a>, <a href="tags/trinity.html">Trinity</a>, <a href="tags/anopheles_stephensi.html">Anopheles stephensi</a>, <a href="tags/midgut.html">midgut</a>, <a href="tags/non_bloodfed.html">non-bloodfed</a>, <a href="tags/blood_feeding.html">blood feeding</a>, <a href="tags/ipython.html">ipython</a>, <a href="tags/python.html">python</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html#disqus_thread" data-disqus-identifier="2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>June 29, 2013</span>
         </div>
         <div class="section" id="speak-for-the-cup-of-hemlock-is-not-yet-on-your-lips">
@@ -315,80 +489,6 @@ The legendary description of the double helix by Crick and Watson went a long wa
         </div>
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/05/15/new_release__blacktie_v0_2_1.html#disqus_thread" data-disqus-identifier="2013/05/15/new_release__blacktie_v0_2_1">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>May 13, 2013</span>
-        </div>
-        <div class="section" id="r-it-thinks-it-s-cooler-than-me-it-s-not-wrong">
-<h1><a href="2013/05/13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong.html">R: it thinks it’s cooler than me; it’s not wrong</a></h1>
-<p>I do a lot of RNA-seq analysis for my research and we mostly run the popular “Tuxedo” suite of analysis programs (<a class="reference external" href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">bowtie</a>, <a class="reference external" href="http://tophat.cbcb.umd.edu">tophat</a>, <a class="reference external" href="http://cufflinks.cbcb.umd.edu">cufflinks</a>, and now the <strong>REALLY COOL</strong> <a class="reference external" href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">cummeRbund</a>).
-So cummeRbund, as the capitalization suggests, is written in the <a class="reference external" href="http://www.r-project.org">R</a> programming language (meant mostly for doing statistics <strong>really</strong> well).  So I have been working in R a bit more than usual lately and I realized something. But before I get into that, you should know something:</p>
-<p><strong>R and I have a *love:hate* relationship...</strong></p>
-<p>It really does have almost mind-blowing capabilities, and it has been thoroughly embraced by at least the gene expression and related wings of the bioinformatics community.
-This has resulted in the conglomerate family of R libraries housed under the umbrella of the <a class="reference external" href="http://www.bioconductor.org">bioconductor</a> project.
-It’s data display capabilities are spectacular; to which anyone who has seen plots generated by the <a class="reference external" href="http://ggplot2.org">ggplot2</a> library can attest. <a class="reference external" href="http://goo.gl/1GBWV">Take a look.</a>.
-Oh and did I mention does all of it’s world-class awesomeness completely <em>pro bono</em>?
-Suffice it to say that, R is plain awesome and this once niche language initially popular with academics who couldn’t or simply wouldn’t spring for expensive licenses for more mainstream stats software is actually starting to take the rest of the data-analysis world by storm [<a class="reference external" href="http://java.sys-con.com/node/2288420">link1</a>, <a class="reference external" href="http://r4stats.com/articles/popularity">link2</a>].</p>
-<p><strong>So that was some of the love side of the relationship.</strong></p>
-<p>What I said I came to realize, at this beginning of the post, deals more with the <em>other</em> side of the relationship.
-Basically, R is like that athletic, pretty, popular kid at your high school.
-I know that sounds like an extraordinary claim, but bear with me.
-R, like that kid, knows that what it has is pretty darn awesome.
-And like that kid, it has grown up with people bending over backwards to ask it to the dance no matter how well or poorly it treated its suitors.
-But I gotta tell ya, as a Python-guy, <em>it’s almost offensive to me to work in R</em>.
-I do it.
-And don’t get me wrong, I am glad it is there.
-But it does not let you forget that you need <strong>it</strong>, not the other way around.</p>
-<p>Now I must admit that if I started with R, instead of Perl and Python (hell, or even BASH), I might feel the opposite, but I am not sure about that.
-It also might be that I am just spoiled by working in Python most of my time since that language bends over backwards <strong>for me</strong>.
-But Holy Hell, it seems like R is the classic example of design by committee!</p>
-<p>Here are some examples of things that drive me crazy.  Please pipe in if you object to or can provide rebuttals that might change my mind about them.</p>
-<div class="topic">
-<p class="topic-title first">Things that drive me crazy about R</p>
-<ol class="arabic simple">
-<li>Object methods seem to live in the global namespace.</li>
-<li>Documentation is simply hit or miss at best and downright less-than-useless in many cases (and its not just the authors’ fault)</li>
-<li>Slicing arrays is overly complicated</li>
-<li>The convention of naming variables with a ‘.’ instead of an ‘_’</li>
-<li>Assignment operator is twice as many characters as it should be</li>
-</ol>
-</div>
-<p>Each point will probably end up getting its own short post.</p>
-<div class="section" id="object-methods-seem-to-live-in-the-global-namespace">
-<h2>Object methods seem to live in the global namespace.</h2>
-<p>This one might be me not being familiar enough with how R treats scope or namespace, but it sure seems that if I want to call an object method (<span class="docutils literal"><span class="pre">objMethod</span></span>) for an R object (<span class="docutils literal"><span class="pre">rObj</span></span>), I call <span class="docutils literal"><span class="pre">objMethod</span></span> like a global function:</p>
-<div class="highlight-none"><div class="highlight"><pre>objMethod(rObj)
-</pre></div>
-</div>
-<p>That sure <strong>looks</strong> like it lives in the global namespace rather than in its object’s namespace.
-Here is how this would be done in Python for comparison:</p>
-<div class="highlight-none"><div class="highlight"><pre>pyObj.objMethod()
-</pre></div>
-</div>
-<p>You specify the local namespace (<span class="docutils literal"><span class="pre">pyObj</span></span>) then call the method that lives in that namespace.  Its an object so it knows that it is operating on itself.  That’s kinda the <strong>whole idea of objects</strong>.</p>
-<p>Now this might sound like a trivial difference, and to some extent, it is.
-But it is also kinda dumb in my opinion.
-For one thing, it needlessly creates confusion when trying to learn a code library.
-There is nothing in the code that tells me that I can not call <span class="docutils literal"><span class="pre">objectMethod</span></span> on non-<span class="docutils literal"><span class="pre">rObj</span></span> variables: that it <strong>belongs</strong> to only objects of the same type as <span class="docutils literal"><span class="pre">rObj</span></span>.</p>
-<p>In python this is unmistakable.</p>
-<p>This is actually a major gripe of mine about R; it really doesn’t seem to want you to have an easy time learning new libraries.
-However, there is another problem.
-Because the <span class="docutils literal"><span class="pre">objectMethod</span></span> lives in global namespace, it can be overwritten if you load another library that has an object with a method of the same name.
-<strong>This is exactly why object methods live in the local namespace of their objects in most languages</strong>.</p>
-<p>Anyway, if I am wrong about this, please set me straight.  If nothing else, I will learn something new about R that will let me get better at it.</p>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by W Augustine Dunn</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/programming.html">programming</a>, <a href="tags/namespace.html">namespace</a>, <a href="tags/object_oriented_programming.html">object oriented programming</a>, <a href="tags/r.html">R</a>, <a href="tags/python.html">Python</a>, <a href="tags/gripes.html">gripes</a>, <a href="tags/rna_seq.html">RNA-seq</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://movingthelamppost.com/blog/html/2013/05/13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong.html#disqus_thread" data-disqus-identifier="2013/05/13/r__it_thinks_it_s_cooler_than_me__it_s_not_wrong">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -413,10 +513,11 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
     </form>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (3)</li></ul>
+    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li></ul>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
       <a href="tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
+      <a href="tags/anopheles_stephensi.html" style="font-size: 8pt">Anopheles stephensi</a>&nbsp;&nbsp;
       <a href="tags/arthgen2013.html" style="font-size: 8pt">ArthGen2013</a>&nbsp;&nbsp;
       <a href="tags/arthropods.html" style="font-size: 8pt">arthropods</a>&nbsp;&nbsp;
       <a href="tags/asif.html" style="font-size: 8pt">Asif</a>&nbsp;&nbsp;
@@ -426,12 +527,14 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
       <a href="tags/bioinformatics.html" style="font-size: 8pt">bioinformatics</a>&nbsp;&nbsp;
       <a href="tags/blacktie.html" style="font-size: 12pt">blacktie</a>&nbsp;&nbsp;
       <a href="tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="tags/blood_feeding.html" style="font-size: 8pt">blood feeding</a>&nbsp;&nbsp;
       <a href="tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
       <a href="tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
       <a href="tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
       <a href="tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
       <a href="tags/cuffmerge.html" style="font-size: 10pt">cuffmerge</a>&nbsp;&nbsp;
       <a href="tags/cummerbund.html" style="font-size: 10pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="tags/de_novo_transcriptome_assembly.html" style="font-size: 8pt">de novo transcriptome assembly</a>&nbsp;&nbsp;
       <a href="tags/dissertation__chapter_one__background_.html" style="font-size: 10pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
       <a href="tags/dna.html" style="font-size: 8pt">DNA</a>&nbsp;&nbsp;
       <a href="tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
@@ -448,8 +551,9 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
       <a href="tags/human_rights.html" style="font-size: 8pt">human rights</a>&nbsp;&nbsp;
       <a href="tags/injustice.html" style="font-size: 8pt">injustice</a>&nbsp;&nbsp;
       <a href="tags/intolerance.html" style="font-size: 8pt">intolerance</a>&nbsp;&nbsp;
-      <a href="tags/ipython.html" style="font-size: 8pt">ipython</a>&nbsp;&nbsp;
+      <a href="tags/ipython.html" style="font-size: 10pt">ipython</a>&nbsp;&nbsp;
       <a href="tags/live_blogging.html" style="font-size: 8pt">live blogging</a>&nbsp;&nbsp;
+      <a href="tags/midgut.html" style="font-size: 8pt">midgut</a>&nbsp;&nbsp;
       <a href="tags/mohiuddin.html" style="font-size: 8pt">Mohiuddin</a>&nbsp;&nbsp;
       <a href="tags/mosquitoes.html" style="font-size: 10pt">mosquitoes</a>&nbsp;&nbsp;
       <a href="tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
@@ -458,6 +562,7 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
       <a href="tags/namespace.html" style="font-size: 8pt">namespace</a>&nbsp;&nbsp;
       <a href="tags/new_release.html" style="font-size: 10pt">new release</a>&nbsp;&nbsp;
       <a href="tags/ngs.html" style="font-size: 12pt">NGS</a>&nbsp;&nbsp;
+      <a href="tags/non_bloodfed.html" style="font-size: 8pt">non-bloodfed</a>&nbsp;&nbsp;
       <a href="tags/nucleic_acids.html" style="font-size: 8pt">nucleic acids</a>&nbsp;&nbsp;
       <a href="tags/nucleus.html" style="font-size: 8pt">nucleus</a>&nbsp;&nbsp;
       <a href="tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
@@ -466,12 +571,12 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
       <a href="tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
       <a href="tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
       <a href="tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
-      <a href="tags/python.html" style="font-size: 10pt">python</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 12pt">python</a>&nbsp;&nbsp;
       <a href="tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
       <a href="tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
       <a href="tags/rna.html" style="font-size: 8pt">RNA</a>&nbsp;&nbsp;
-      <a href="tags/rna_seq.html" style="font-size: 15pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="tags/rna_seq.html" style="font-size: 17pt">RNA-seq</a>&nbsp;&nbsp;
       <a href="tags/science_twitter.html" style="font-size: 8pt">science@twitter</a>&nbsp;&nbsp;
       <a href="tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
@@ -482,6 +587,7 @@ Because the <span class="docutils literal"><span class="pre">objectMethod</span>
       <a href="tags/transcriptomics.html" style="font-size: 8pt">transcriptomics</a>&nbsp;&nbsp;
       <a href="tags/transgenic_mosquitoes.html" style="font-size: 10pt">transgenic mosquitoes</a>&nbsp;&nbsp;
       <a href="tags/translation.html" style="font-size: 8pt">translation</a>&nbsp;&nbsp;
+      <a href="tags/trinity.html" style="font-size: 8pt">Trinity</a>&nbsp;&nbsp;
       <a href="tags/twitter.html" style="font-size: 8pt">twitter</a>&nbsp;&nbsp;
       <a href="tags/vector_control.html" style="font-size: 10pt">vector control</a>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->

@@ -5,8 +5,171 @@
         <link>http://movingthelamppost.com/blog/html/</link>
         <description>random musings of a molecular biologist turned code jockey in the era of big data and open science.</description>
         <language>en-us</language>
-        <pubDate>Sat, 29 Jun 2013 00:00:00 -0700</pubDate>
+        <pubDate>Thu, 04 Jul 2013 00:00:00 -0700</pubDate>
         
+        <item>
+            <link>http://movingthelamppost.com/blog/html/2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html</link>
+            <guid>http://movingthelamppost.com/blog/html/2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html</guid>
+            <title><![CDATA[First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)]]></title>
+            <description><![CDATA[<div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
+<h1>First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)</h1>
+<div class="section" id="exploration-of-the-first-set-of-results-from-a-trinity-run-with-default-settings-on-one-library-of-anopheles-stephensi-midgut-rna-seq-as-00-lib-one">
+<h2>Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As_00 lib one)</h2>
+<div class="section" id="analyze-lengths-of-assembled-contigs-transcripts">
+<h3>Analyze Lengths Of Assembled Contigs/Transcripts</h3>
+<p>Function to count all transcripts of length <em>X</em>:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">rSeq.utils.files</span> <span class="kn">import</span> <span class="n">ParseFastA</span>
+
+<span class="k">def</span> <span class="nf">measure_and_count_transcripts</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">):</span>
+
+    <span class="n">tx_lens</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ParseFastA</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">)</span>
+    <span class="n">seqs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">seq</span> <span class="ow">in</span> <span class="n">seqs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">tx_lens</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">&quot;The number of different transcript sizes encountered: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tx_lens</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tx_lens</span>
+</pre></div>
+</div>
+<p>Now I count and plot the size data.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Prep to plot a Histogram of the numbers of transcripts in each length bin</span>
+
+<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta'</span><span class="p">)</span>
+
+<span class="n">trinity_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">trinity_tx_lens</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">trinity_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">trinity_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4632</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x645b290&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_03.png" src="http://movingthelamppost.com/blog/html/_images/_fig_03.png"/>
+<p>Now I calculate the N50*length* and N50*index* for the trinity assembly.</p>
+<p><strong>N50*index*:</strong> the number of largest contigs(transcripts) whose summed
+lengths equal at least 50% of the sum of <strong>ALL</strong> contigs (smaller
+numbers are ‘better’)</p>
+<p><strong>N50*length*:</strong> the length of the last added contig from above (larger
+numbers are ‘better’)</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_N50s</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+    <span class="n">total_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;total_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">total_length</span><span class="p">)</span>
+
+    <span class="n">running_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">collected_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n50_i</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+        <span class="n">running_total</span> <span class="o">+=</span> <span class="n">length</span>
+        <span class="n">collected_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">running_total</span> <span class="o">&gt;=</span> <span class="n">total_length</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">n50_i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">collected_lengths</span><span class="p">)</span>
+            <span class="n">n50_l</span> <span class="o">=</span> <span class="n">length</span>
+            <span class="k">break</span>
+
+    <span class="k">print</span> <span class="s">&quot;running_total:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">running_total</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;N50_index:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s"> of </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_i</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;N50_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_l</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;median contig length</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               31858558
+running_total:              15931068
+N50_index:                  3927 of 25167
+N50_length:                 2469
+median contig length        647.0</pre>
+</div>
+</div>
+<div class="section" id="analyze-lengths-of-predicted-transcripts">
+<h3>Analyze Lengths Of Predicted Transcripts</h3>
+<div class="section" id="astes1-0">
+<h4>1. AsteS1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteS1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/genome_data/AsteS/Anopheles-stephensi-SDA-500_TRANSCRIPTS_AsteS1.0.fa'</span><span class="p">)</span>
+
+<span class="n">asteS1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteS1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteS1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 4058</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3f2ced0&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_08.png" src="http://movingthelamppost.com/blog/html/_images/_fig_08.png"/>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               25155329
+running_total:              12580251
+N50_index:                  2617 of 13251
+N50_length:                 2838
+median contig length        1344.0</pre>
+</div>
+</div>
+<div class="section" id="astei1-0">
+<h4>2. AsteI1.0</h4>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteI1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/genome_data/AsteI/Anopheles-stephensi-Indian_TRANSCRIPTS_AsteI1.0.fa'</span><span class="p">)</span>
+
+<span class="n">asteI1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">asteI1_0_tx_lengths</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">asteI1_0_lengths</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>The number of different transcript sizes encountered: 5227</pre>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">'g'</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x6d37710&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_13.png" src="http://movingthelamppost.com/blog/html/_images/_fig_13.png"/>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               35859205
+running_total:              17930131
+N50_index:                  3231 of 23287
+N50_length:                 3279
+median contig length        717.0</pre>
+</div>
+</div>
+</div>
+</div>
+</div>]]></description>
+            <category><![CDATA[ My Research ]]></category>
+             <pubDate>Thu, 04 Jul 2013 00:00:00 -0700</pubDate>
+        </item>
+    
         <item>
             <link>http://movingthelamppost.com/blog/html/2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html</link>
             <guid>http://movingthelamppost.com/blog/html/2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html</guid>
