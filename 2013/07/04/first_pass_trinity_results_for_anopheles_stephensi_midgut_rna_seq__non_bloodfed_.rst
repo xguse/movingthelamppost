@@ -1,17 +1,21 @@
 First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)
 ================================================================================
 
+.. attention::
+	I have updated this post.  
 
 
 Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As\_00 lib one)
-********************************************************************************************************************************************************
+**********************************************************************************************************************************************************
 
 
 Analyze Lengths Of Assembled Contigs/Transcripts
 ------------------------------------------------
 
 
-Function to count all transcripts of length *X*:
+Count all transcripts of length *X*:
+
+In[1]:
 
 .. code:: python
 
@@ -32,14 +36,15 @@ Function to count all transcripts of length *X*:
         return tx_lens
 
 
-Now I count and plot the size data.
+Now I will plot the size data in a number of different ways.
 
+In[2]:
 
 .. code:: python
 
     # Prep to plot a Histogram of the numbers of transcripts in each length bin
     
-    trinity_tx_lens = measure_and_count_transcripts('/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta')
+    trinity_tx_lens = measure_and_count_transcripts('/home/gus/Dropbox/common/projects/trinity_As/trinity_As_00_0_test/Trinity.fasta')
     
     trinity_lengths = []
     
@@ -53,35 +58,48 @@ Now I count and plot the size data.
 
     The number of different transcript sizes encountered: 4632
 
+In[3]:
 
 .. code:: python
 
-    
-    hist(trinity_lengths, bins=50, histtype='stepfilled')
+    hist(trinity_lengths, bins=50, histtype='stepfilled',log=1)
     xlabel('transcript length')
     ylabel('number of transcripts')
 
 
 .. parsed-literal::
 
-    <matplotlib.text.Text at 0x645b290>
+    <matplotlib.text.Text at 0x3ecb2d0>
 
 
+.. image:: _fig_03.png
 
-.. image:: /_static/As_midgut_RNAseq_lib_TRINITY_files/_fig_03.png
+In[4]:
+
+.. code:: python
+
+    plot(trinity_lengths)
+    xlabel('Trinity Contigs (sorted by length)')
+    ylabel('Length of Contig')
 
 
-.. more::
+.. parsed-literal::
 
-Now I calculate the N50*length* and N50*index* for the trinity assembly.
+    <matplotlib.text.Text at 0x2ad3290>
 
-**N50*index*:** the number of largest contigs(transcripts) whose summed
+
+.. image:: _fig_06.png
+
+Now I calculate the N50_length and N50_index for the trinity assembly.
+
+**N50_index:** the number of largest contigs(transcripts) whose summed
 lengths equal at least 50% of the sum of **ALL** contigs (smaller
 numbers are 'better')
 
-**N50*length*:** the length of the last added contig from above (larger
+**N50_length:** the length of the last added contig from above (larger
 numbers are 'better')
 
+In[5]:
 
 .. code:: python
 
@@ -107,7 +125,7 @@ numbers are 'better')
         print "N50_length:\t\t%s" % (n50_l)
         print "median contig length\t%s" % (median(lengths))
 
-
+In[6]:
 
 .. code:: python
 
@@ -121,6 +139,9 @@ numbers are 'better')
     N50_index:			3927 of 25167
     N50_length:			2469
     median contig length	647.0
+    
+    
+.. more::
 
 Analyze Lengths Of Predicted Transcripts
 ----------------------------------------
@@ -130,7 +151,7 @@ Analyze Lengths Of Predicted Transcripts
 ~~~~~~~~~~~
 
 
-
+In[7]:
 
 .. code:: python
 
@@ -148,23 +169,39 @@ Analyze Lengths Of Predicted Transcripts
 
     The number of different transcript sizes encountered: 4058
 
-
+In[8]:
 
 .. code:: python
 
-    hist(asteS1_0_lengths, bins=50, histtype='stepfilled',color='c')
+    hist(asteS1_0_lengths, bins=50, histtype='stepfilled',color='c', log=1)
     xlabel('transcript length')
     ylabel('number of transcripts')
 
 
 .. parsed-literal::
 
-    <matplotlib.text.Text at 0x3f2ced0>
+    <matplotlib.text.Text at 0x4e6e0d0>
 
 
-.. image:: /_static/As_midgut_RNAseq_lib_TRINITY_files/_fig_08.png
+.. image:: _fig_11.png
+
+In[9]:
+
+.. code:: python
+
+    plot(range(len(asteS1_0_lengths)), asteS1_0_lengths, color='c')
+    xlabel('SDA-500 strain gene-build AsteS1.0 transcripts (sorted by length)')
+    ylabel('Length of transcripts')
 
 
+.. parsed-literal::
+
+    <matplotlib.text.Text at 0x50f9d10>
+
+
+.. image:: _fig_14.png
+
+In[10]:
 
 .. code:: python
 
@@ -183,6 +220,7 @@ Analyze Lengths Of Predicted Transcripts
 ~~~~~~~~~~~
 
 
+In[11]:
 
 .. code:: python
 
@@ -200,21 +238,39 @@ Analyze Lengths Of Predicted Transcripts
 
     The number of different transcript sizes encountered: 5227
 
+In[12]:
 
 .. code:: python
 
-    hist(asteI1_0_lengths, bins=50, histtype='stepfilled',color='g')
+    hist(asteI1_0_lengths, bins=50, histtype='stepfilled',color='r', log=1)
     xlabel('transcript length')
     ylabel('number of transcripts')
 
 
 .. parsed-literal::
 
-    <matplotlib.text.Text at 0x6d37710>
+    <matplotlib.text.Text at 0x5238450>
 
 
-.. image:: /_static/As_midgut_RNAseq_lib_TRINITY_files/_fig_13.png
+.. image:: _fig_19.png
 
+In[13]:
+
+.. code:: python
+
+    plot(range(len(asteI1_0_lengths)),asteI1_0_lengths, color='r')
+    xlabel('Indian strain gene-build AsteI1.0 transcripts (sorted by length)')
+    ylabel('Length of transcripts')
+
+
+.. parsed-literal::
+
+    <matplotlib.text.Text at 0x55e1350>
+
+
+.. image:: _fig_22.png
+
+In[14]:
 
 .. code:: python
 
@@ -229,10 +285,104 @@ Analyze Lengths Of Predicted Transcripts
     N50_length:			3279
     median contig length	717.0
 
+Combined Figures
+~~~~~~~~~~~~~~~~
+
+
+In[15]:
+
+.. code:: python
+
+    hist(asteS1_0_lengths, bins=50, histtype='stepfilled',color='c', log=1, alpha=0.5, label='AsteS1.0')
+    hist(asteI1_0_lengths, bins=50, histtype='stepfilled',color='r', log=1, alpha=0.5, label='AsteI1.0')
+    hist(trinity_lengths, bins=50, histtype='stepfilled', color='b', log=1, alpha=0.5, label='Trinity Contigs')
+    xlabel('transcript length')
+    ylabel('number of transcripts')
+    title('Comparison of Trinity Assembly to Annotated Gene-Sets of Two Anopheles stephensi strains')
+    legend()
+
+
+.. parsed-literal::
+
+    <matplotlib.legend.Legend at 0x6308550>
+
+
+.. image:: _fig_26.png
+
+In[16]:
+
+.. code:: python
+
+    plot(range(len(asteS1_0_lengths)), asteS1_0_lengths, color='c', label='AsteS1.0')
+    plot(range(len(asteI1_0_lengths)), asteI1_0_lengths, color='r', label='AsteI1.0')
+    plot(range(len(trinity_lengths)),  trinity_lengths,  color='b', label='Trinity Contigs')
+    xlabel('Transcripts (sorted by length)')
+    ylabel('Length of transcripts')
+    legend(loc=0)
+    
+    print "\n'Transcript/Contig' numbers per data-set:\n"
+    print "AsteS1.0\t%s" % len(asteS1_0_lengths)
+    print "AsteI1.0\t%s" % len(asteI1_0_lengths)
+    print "Trinity\t\t%s" % len(trinity_lengths)
+    print ''
+
+
+.. parsed-literal::
 
     
+    'Transcript/Contig' numbers per data-set:
+    
+    AsteS1.0	13251
+    AsteI1.0	23287
+    Trinity	25167
+    
+
+.. image:: _fig_29.png
+
+Observations:
+~~~~~~~~~~~~~
+
+-  Trinity assembly represents only one tissue in one life-stage so it
+   may be expected to be an under-representation of the total possible
+   transcriptome
+
+   -  however, that is **NOT** what is seen.
+
+-  This may indicate, unsurprisingly, that the assembly contains many
+   incomplete and/or incorrect transcript/contigs.
+
+   -  perhaps due to one or more of:
+
+      1. ``Trinity`` settings used (kmer size, etc)
+      2. insufficient read coverage
+      3. RNA quality
+      4. Incomplete/other problems with annotation of gene-sets (both
+         are *pre*-version 1)
+
+         -  but unlikely to cause such large differences as AsteS1 to
+            Trinity.
+
+      5. one idea I wont talk about, that VanMac may be interested in.
 
 
+
+Next Steps:
+~~~~~~~~~~~
+
+1. re-run with full single-stage fastq complement (*in progress*
+   2013-07-05)
+2. run Blat on ``Trinity`` assembly and AsteI and AsteS transcripts to
+   compare
+
+   -  coverage of respective genome assemblies
+   -  overall alignment qualities
+
+      -  help us better understand our strain's relationship to the
+         published strains
+
+   -  agreement with published gene-sets
+
+3. repeat process after completing step 1 with all time-points
 
 
 .. author:: default

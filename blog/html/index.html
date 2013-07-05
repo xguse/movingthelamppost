@@ -89,11 +89,16 @@
         </div>
         <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
 <h1><a href="2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html">First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)</a></h1>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">I have updated this post.</p>
+</div>
 <div class="section" id="exploration-of-the-first-set-of-results-from-a-trinity-run-with-default-settings-on-one-library-of-anopheles-stephensi-midgut-rna-seq-as-00-lib-one">
 <h2>Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As_00 lib one)</h2>
 <div class="section" id="analyze-lengths-of-assembled-contigs-transcripts">
 <h3>Analyze Lengths Of Assembled Contigs/Transcripts</h3>
-<p>Function to count all transcripts of length <em>X</em>:</p>
+<p>Count all transcripts of length <em>X</em>:</p>
+<p>In[1]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">rSeq.utils.files</span> <span class="kn">import</span> <span class="n">ParseFastA</span>
 
@@ -111,10 +116,11 @@
     <span class="k">return</span> <span class="n">tx_lens</span>
 </pre></div>
 </div>
-<p>Now I count and plot the size data.</p>
+<p>Now I will plot the size data in a number of different ways.</p>
+<p>In[2]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Prep to plot a Histogram of the numbers of transcripts in each length bin</span>
 
-<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta'</span><span class="p">)</span>
+<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">'/home/gus/Dropbox/common/projects/trinity_As/trinity_As_00_0_test/Trinity.fasta'</span><span class="p">)</span>
 
 <span class="n">trinity_lengths</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -126,14 +132,64 @@
 </div>
 <div class="highlight-python"><pre>The number of different transcript sizes encountered: 4632</pre>
 </div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">)</span>
+<p>In[3]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">'transcript length'</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">'number of transcripts'</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x645b290&gt;</pre>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3ecb2d0&gt;</pre>
 </div>
 <img alt="../../../_images/_fig_03.png" src="_images/_fig_03.png"/>
+<p>In[4]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">'Trinity Contigs (sorted by length)'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">'Length of Contig'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x2ad3290&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_06.png" src="_images/_fig_06.png"/>
+<p>Now I calculate the N50_length and N50_index for the trinity assembly.</p>
+<p><strong>N50_index:</strong> the number of largest contigs(transcripts) whose summed
+lengths equal at least 50% of the sum of <strong>ALL</strong> contigs (smaller
+numbers are ‘better’)</p>
+<p><strong>N50_length:</strong> the length of the last added contig from above (larger
+numbers are ‘better’)</p>
+<p>In[5]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_N50s</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+    <span class="n">total_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;total_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">total_length</span><span class="p">)</span>
+
+    <span class="n">running_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">collected_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n50_i</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
+        <span class="n">running_total</span> <span class="o">+=</span> <span class="n">length</span>
+        <span class="n">collected_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">running_total</span> <span class="o">&gt;=</span> <span class="n">total_length</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">n50_i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">collected_lengths</span><span class="p">)</span>
+            <span class="n">n50_l</span> <span class="o">=</span> <span class="n">length</span>
+            <span class="k">break</span>
+
+    <span class="k">print</span> <span class="s">&quot;running_total:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">running_total</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;N50_index:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s"> of </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_i</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;N50_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n50_l</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;median contig length</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In[6]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>total_length:               31858558
+running_total:              15931068
+N50_index:                  3927 of 25167
+N50_length:                 2469
+median contig length        647.0</pre>
+</div>
 </div></div><p><a class="readmore" href="2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html#more">Read more...</a></p></div>
         <div class="postmeta">
         <div class="author">

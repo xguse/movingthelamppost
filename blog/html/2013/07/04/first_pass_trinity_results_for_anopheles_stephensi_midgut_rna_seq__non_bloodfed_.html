@@ -89,11 +89,16 @@
         </div>
     <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
 <h1>First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)</h1>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">I have updated this post.</p>
+</div>
 <div class="section" id="exploration-of-the-first-set-of-results-from-a-trinity-run-with-default-settings-on-one-library-of-anopheles-stephensi-midgut-rna-seq-as-00-lib-one">
 <h2>Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As_00 lib one)</h2>
 <div class="section" id="analyze-lengths-of-assembled-contigs-transcripts">
 <h3>Analyze Lengths Of Assembled Contigs/Transcripts</h3>
-<p>Function to count all transcripts of length <em>X</em>:</p>
+<p>Count all transcripts of length <em>X</em>:</p>
+<p>In[1]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">rSeq.utils.files</span> <span class="kn">import</span> <span class="n">ParseFastA</span>
 
@@ -111,10 +116,11 @@
     <span class="k">return</span> <span class="n">tx_lens</span>
 </pre></div>
 </div>
-<p>Now I count and plot the size data.</p>
+<p>Now I will plot the size data in a number of different ways.</p>
+<p>In[2]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="c"># Prep to plot a Histogram of the numbers of transcripts in each length bin</span>
 
-<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/Dropbox/common/projects/trinity_As_one_lib/Trinity.fasta&#39;</span><span class="p">)</span>
+<span class="n">trinity_tx_lens</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/Dropbox/common/projects/trinity_As/trinity_As_00_0_test/Trinity.fasta&#39;</span><span class="p">)</span>
 
 <span class="n">trinity_lengths</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -126,20 +132,31 @@
 </div>
 <div class="highlight-python"><pre>The number of different transcript sizes encountered: 4632</pre>
 </div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">)</span>
+<p>In[3]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x645b290&gt;</pre>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3ecb2d0&gt;</pre>
 </div>
 <img alt="../../../_images/_fig_03.png" src="../../../_images/_fig_03.png" />
-<div id="more"> </div><p>Now I calculate the N50*length* and N50*index* for the trinity assembly.</p>
-<p><strong>N50*index*:</strong> the number of largest contigs(transcripts) whose summed
+<p>In[4]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Trinity Contigs (sorted by length)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Length of Contig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x2ad3290&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_06.png" src="../../../_images/_fig_06.png" />
+<p>Now I calculate the N50_length and N50_index for the trinity assembly.</p>
+<p><strong>N50_index:</strong> the number of largest contigs(transcripts) whose summed
 lengths equal at least 50% of the sum of <strong>ALL</strong> contigs (smaller
 numbers are &#8216;better&#8217;)</p>
-<p><strong>N50*length*:</strong> the length of the last added contig from above (larger
+<p><strong>N50_length:</strong> the length of the last added contig from above (larger
 numbers are &#8216;better&#8217;)</p>
+<p>In[5]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_N50s</span><span class="p">(</span><span class="n">lengths</span><span class="p">):</span>
     <span class="n">total_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
     <span class="k">print</span> <span class="s">&quot;total_length:</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">total_length</span><span class="p">)</span>
@@ -163,6 +180,7 @@ numbers are &#8216;better&#8217;)</p>
     <span class="k">print</span> <span class="s">&quot;median contig length</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>In[6]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -172,11 +190,12 @@ N50_index:                  3927 of 25167
 N50_length:                 2469
 median contig length        647.0</pre>
 </div>
-</div>
+<div id="more"> </div></div>
 <div class="section" id="analyze-lengths-of-predicted-transcripts">
 <h3>Analyze Lengths Of Predicted Transcripts</h3>
 <div class="section" id="astes1-0">
 <h4>1. AsteS1.0</h4>
+<p>In[7]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteS1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/genome_data/AsteS/Anopheles-stephensi-SDA-500_TRANSCRIPTS_AsteS1.0.fa&#39;</span><span class="p">)</span>
 
 <span class="n">asteS1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
@@ -189,14 +208,25 @@ median contig length        647.0</pre>
 </div>
 <div class="highlight-python"><pre>The number of different transcript sizes encountered: 4058</pre>
 </div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<p>In[8]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x3f2ced0&gt;</pre>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x4e6e0d0&gt;</pre>
 </div>
-<img alt="../../../_images/_fig_08.png" src="../../../_images/_fig_08.png" />
+<img alt="../../../_images/_fig_11.png" src="../../../_images/_fig_11.png" />
+<p>In[9]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)),</span> <span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;SDA-500 strain gene-build AsteS1.0 transcripts (sorted by length)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Length of transcripts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x50f9d10&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_14.png" src="../../../_images/_fig_14.png" />
+<p>In[10]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -209,6 +239,7 @@ median contig length        1344.0</pre>
 </div>
 <div class="section" id="astei1-0">
 <h4>2. AsteI1.0</h4>
+<p>In[11]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">asteI1_0_tx_lengths</span> <span class="o">=</span> <span class="n">measure_and_count_transcripts</span><span class="p">(</span><span class="s">&#39;/home/gus/genome_data/AsteI/Anopheles-stephensi-Indian_TRANSCRIPTS_AsteI1.0.fa&#39;</span><span class="p">)</span>
 
 <span class="n">asteI1_0_lengths</span> <span class="o">=</span> <span class="p">[]</span>
@@ -221,14 +252,25 @@ median contig length        1344.0</pre>
 </div>
 <div class="highlight-python"><pre>The number of different transcript sizes encountered: 5227</pre>
 </div>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<p>In[12]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x6d37710&gt;</pre>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x5238450&gt;</pre>
 </div>
-<img alt="../../../_images/_fig_13.png" src="../../../_images/_fig_13.png" />
+<img alt="../../../_images/_fig_19.png" src="../../../_images/_fig_19.png" />
+<p>In[13]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)),</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Indian strain gene-build AsteI1.0 transcripts (sorted by length)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Length of transcripts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.text.Text at 0x55e1350&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_22.png" src="../../../_images/_fig_22.png" />
+<p>In[14]:</p>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="n">calc_N50s</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -238,6 +280,91 @@ N50_index:                  3231 of 23287
 N50_length:                 3279
 median contig length        717.0</pre>
 </div>
+</div>
+<div class="section" id="combined-figures">
+<h4>Combined Figures</h4>
+<p>In[15]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;AsteS1.0&#39;</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;AsteI1.0&#39;</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Trinity Contigs&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;transcript length&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;number of transcripts&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Comparison of Trinity Assembly to Annotated Gene-Sets of Two Anopheles stephensi strains&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.legend.Legend at 0x6308550&gt;</pre>
+</div>
+<img alt="../../../_images/_fig_26.png" src="../../../_images/_fig_26.png" />
+<p>In[16]:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)),</span> <span class="n">asteS1_0_lengths</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;AsteS1.0&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)),</span> <span class="n">asteI1_0_lengths</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;AsteI1.0&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)),</span>  <span class="n">trinity_lengths</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Trinity Contigs&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Transcripts (sorted by length)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Length of transcripts&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&#39;Transcript/Contig&#39; numbers per data-set:</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="k">print</span> <span class="s">&quot;AsteS1.0</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">asteS1_0_lengths</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;AsteI1.0</span><span class="se">\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">asteI1_0_lengths</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Trinity</span><span class="se">\t\t</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">trinity_lengths</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>'Transcript/Contig' numbers per data-set:
+
+AsteS1.0    13251
+AsteI1.0    23287
+Trinity     25167</pre>
+</div>
+<img alt="../../../_images/_fig_29.png" src="../../../_images/_fig_29.png" />
+</div>
+<div class="section" id="observations">
+<h4>Observations:</h4>
+<ul class="simple">
+<li>Trinity assembly represents only one tissue in one life-stage so it
+may be expected to be an under-representation of the total possible
+transcriptome<ul>
+<li>however, that is <strong>NOT</strong> what is seen.</li>
+</ul>
+</li>
+<li>This may indicate, unsurprisingly, that the assembly contains many
+incomplete and/or incorrect transcript/contigs.<ul>
+<li>perhaps due to one or more of:<ol class="arabic">
+<li><span class="docutils literal"><span class="pre">Trinity</span></span> settings used (kmer size, etc)</li>
+<li>insufficient read coverage</li>
+<li>RNA quality</li>
+<li>Incomplete/other problems with annotation of gene-sets (both
+are <em>pre</em>-version 1)<ul>
+<li>but unlikely to cause such large differences as AsteS1 to
+Trinity.</li>
+</ul>
+</li>
+<li>one idea I wont talk about, that VanMac may be interested in.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="next-steps">
+<h4>Next Steps:</h4>
+<ol class="arabic simple">
+<li>re-run with full single-stage fastq complement (<em>in progress</em>
+2013-07-05)</li>
+<li>run Blat on <span class="docutils literal"><span class="pre">Trinity</span></span> assembly and AsteI and AsteS transcripts to
+compare<ul>
+<li>coverage of respective genome assemblies</li>
+<li>overall alignment qualities<ul>
+<li>help us better understand our strain&#8217;s relationship to the
+published strains</li>
+</ul>
+</li>
+<li>agreement with published gene-sets</li>
+</ul>
+</li>
+<li>repeat process after completing step 1 with all time-points</li>
+</ol>
 </div>
 </div>
 </div>
