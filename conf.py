@@ -41,7 +41,7 @@ disqus_shortname = 'movingthelamppost'
 html_favicon = 'tinkerer.ico'           
 
 # Pick another Tinkerer theme or use your own
-html_theme = "modern5"
+html_theme = "flat"
 
 # Theme-specific options, see docs
 html_theme_options = { }                                  
@@ -84,7 +84,7 @@ html_sidebars = {
 }
 
 # choose which pygments style to use for code highlighting
-pygments_style = 'solarizeddark'
+pygments_style = 'perldoc'
 
 
 # **************************************************************

@@ -19,7 +19,7 @@
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/flat.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
             <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
         <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
@@ -31,13 +31,23 @@
         <link rel="next" title="Speak, for the Cup of Hemlock is not yet on Your Lips" href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.2',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             // Adjusts document height if sidebar is taller
@@ -69,9 +79,7 @@
               <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
           </header>
       <nav>
-            <ul><li class="quicklink"><div class="rss">
-        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
-    </div></li><li class="main-nav">
+            <ul><li class="main-nav">
                   <a href="../../../index.html">Home</a>
                 </li>
               <li class="main-nav">
@@ -81,10 +89,7 @@
                   <a href="../../../pages/glossary.html">Glossary</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"></li>
-            <li class="right"><a href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html">Speak, for the Cup of Hemlock is not yet on Your Lips</a> &raquo; </li>
-        </ul><div class="timestamp postmeta">
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
             <span>July 04, 2013</span>
         </div>
     <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
@@ -384,11 +389,10 @@ published strains</li>
                 Tags:
                 <a href="../../../tags/rna_seq.html">RNA-seq</a>, <a href="../../../tags/de_novo_transcriptome_assembly.html">de novo transcriptome assembly</a>, <a href="../../../tags/trinity.html">Trinity</a>, <a href="../../../tags/anopheles_stephensi.html">Anopheles stephensi</a>, <a href="../../../tags/midgut.html">midgut</a>, <a href="../../../tags/non_bloodfed.html">non-bloodfed</a>, <a href="../../../tags/blood_feeding.html">blood feeding</a>, <a href="../../../tags/ipython.html">ipython</a>, <a href="../../../tags/python.html">python</a></span>
         </div>
-        </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+        </div><ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="../../06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html">Speak, for the Cup of Hemlock is not yet on Your Lips</a> &raquo; </li>
-        </ul></article><aside class="sidebar"><section>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section>
 <div class="widget" id="sub_by_email">
     <h1>Subscribe</h1>
     <a href='http://www.feedly.com/home#subscription/feed%2Fhttp%3A%2F%2Ffeeds.feedburner.com%2FMovingTheLamppost'  target='blank'><img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-medium_2x.png' alt='follow us in feedly' width='71' height='28'></a>

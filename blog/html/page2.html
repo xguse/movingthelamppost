@@ -19,7 +19,7 @@
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="_static/main.css" type="text/css">
-            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="_static/flat.css" type="text/css">
             <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
             <link rel="stylesheet" href="_static/webfont.css" type="text/css">
         <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
@@ -31,13 +31,23 @@
         <link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.2',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="_static/disqus.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             // Adjusts document height if sidebar is taller
@@ -69,9 +79,7 @@
               <h1><a href="index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
           </header>
       <nav>
-            <ul><li class="quicklink"><div class="rss">
-        <a href="http://feeds.feedburner.com/MovingTheLamppost" title="Subscribe via RSS"><span class="webfont">B</span></a>
-    </div></li><li class="main-nav">
+            <ul><li class="main-nav">
                   <a href="index.html">Home</a>
                 </li>
               <li class="main-nav">
@@ -81,10 +89,7 @@
                   <a href="pages/glossary.html">Glossary</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="index.html">Newer</a></li>
-            <li class="right"><a href="page3.html">Older</a> &raquo; </li>
-        </ul><div class="timestamp postmeta">
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
             <span>May 13, 2013</span>
         </div>
         <div class="section" id="r-it-thinks-it-s-cooler-than-me-it-s-not-wrong">
@@ -334,7 +339,7 @@ It will set the scene by explaining what a disease-vector is and how our specifi
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/04/19/new_release__blacktie_v0_2_0rc1.html#disqus_thread" data-disqus-identifier="2013/04/19/new_release__blacktie_v0_2_0rc1">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="index.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
