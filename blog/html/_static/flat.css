@@ -315,3 +315,113 @@ table.citation {
 table.citation td {
 	border-bottom: none;
 }
+
+
+/* -- other body styles ----------------------------------------------------- */
+
+ol.arabic {
+	list-style: decimal;
+}
+
+ol.loweralpha {
+	list-style: lower-alpha;
+}
+
+ol.upperalpha {
+	list-style: upper-alpha;
+}
+
+ol.lowerroman {
+	list-style: lower-roman;
+}
+
+ol.upperroman {
+	list-style: upper-roman;
+}
+
+dl {
+	margin-bottom: 15px;
+}
+
+dd p {
+	margin-top: 0px;
+}
+
+dd ul, dd table {
+	margin-bottom: 10px;
+}
+
+dd {
+	margin-top: 3px;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+
+dt:target, .highlighted {
+	background-color: #fbe54e;
+}
+
+dl.glossary dt {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.field-list ul {
+	margin: 0;
+	padding-left: 1em;
+}
+
+.field-list p {
+	margin: 0;
+}
+
+.refcount {
+	color: #060;
+}
+
+.optional {
+	font-size: 1.3em;
+}
+
+.versionmodified {
+	font-style: italic;
+}
+
+.system-message {
+	background-color: #fda;
+	padding: 5px;
+	border: 3px solid red;
+}
+
+.footnote:target  {
+	background-color: #ffa;
+}
+
+.line-block {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.line-block .line-block {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+.guilabel, .menuselection {
+	font-family: sans-serif;
+}
+
+.accelerator {
+	text-decoration: underline;
+}
+
+.classifier {
+	font-style: oblique;
+}
+
+abbr, acronym {
+	border-bottom: dotted 1px;
+	cursor: help;
+}
