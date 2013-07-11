@@ -84,7 +84,7 @@ html_sidebars = {
 }
 
 # choose which pygments style to use for code highlighting
-pygments_style = 'perldoc'
+pygments_style = 'solarizedlight'
 
 
 # **************************************************************

@@ -1,8 +1,6 @@
 First pass Trinity Results for Anopheles stephensi midgut RNA-seq (non-bloodfed)
 ================================================================================
-
-.. attention::
-	I have updated this post.  
+ 
 
 
 Exploration of the first set of results from a Trinity run with default settings on one library of Anopheles stephensi midgut RNA-seq (As\_00 lib one)

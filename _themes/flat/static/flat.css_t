@@ -183,7 +183,7 @@ div.body p.centered {
 /* -- topics ---------------------------------------------------------------- */
 
 div.topic {
-	border: 1px solid #ccc;
+// 	border: 1px solid #ccc;
 	padding: 7px 7px 0 7px;
 	margin: 10px 0 10px 0;
 }
@@ -230,27 +230,28 @@ div.admonition ul, div.admonition ol {
 }
 
 div.note {
-	background-color: #F7FFE5;
-	border: 1px solid #AACC99;
+	background-color: #C8D3CE;
+// 	border: 1px solid #AACC99;
 }
 
 div.attention  {
-	background-color: #FFCD2C;
-	border: 1px solid #93A4AD;
+	background-color: #FED268;
+// 	border: 1px solid #93A4AD;
 }
 
 div.seealso {
-	background-color: #FFFFE5;
-	border: 1px solid #ff6;
+	background-color: #FEFB9F;
+// 	background-color: #FFFFE5;
+// 	border: 1px solid #ff6;
 }
 
 div.topic {
-	background-color: #F8FAFB;
+	background-color: #93B3C5;
 }
 
 div.warning {
 	background-color: #FFF1F1;
-	border: 1px solid #f66;
+// 	border: 1px solid #f66;
 }
 
 p.admonition-title {
@@ -266,7 +267,7 @@ pre {
 	background-color: {{ theme_codebgcolor }};
 	color: {{ theme_codetextcolor }};
 	line-height: 120%;
-	border: 1px solid #ac9;
+// 	border: 1px solid #ac9;
 	border-left: none;
 	border-right: none;
 }
