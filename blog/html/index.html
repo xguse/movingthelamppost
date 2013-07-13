@@ -31,7 +31,7 @@
         <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.2.1',
+        VERSION:     '1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -90,6 +90,112 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>July 12, 2013</span>
+        </div>
+        <div class="section" id="installing-pyqt-because-it-s-too-good-for-pip-or-easy-install">
+<h1><a href="2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_.html">Installing PyQt... because it’s too good for pip or easy_install.</a></h1>
+<p>This is a tutorial on installing <span class="docutils literal"><span class="pre">PyQt</span></span> and its dependency <span class="docutils literal"><span class="pre">SIP</span></span>.
+I am currently working on a Python package to integrate multiple disparate types of Omics data using a graph model.
+Some of my code requires <a class="reference external" href="http://ete.cgenomics.org">ETE: a Python Environment for phylogenetic Tree Exploration</a> which requires <span class="docutils literal"><span class="pre">PyQt</span></span>.</p>
+<p>Normally, I would simply use</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install -U package_name
+</pre></div>
+</div>
+<p>to install <span class="docutils literal"><span class="pre">package_name</span></span> and ensure that all of its dependencies are installed and updated.
+However, <span class="docutils literal"><span class="pre">PyQt</span></span> and <span class="docutils literal"><span class="pre">SIP</span></span> do not use the standard <span class="docutils literal"><span class="pre">setup.py</span></span> file for encoding the installation procedures.
+They use <span class="docutils literal"><span class="pre">configure.py</span></span>.
+So <span class="docutils literal"><span class="pre">pip</span></span> and other <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> installer scripts will locate and download the code, but they will fail during the installation phase and complain that they can not be installed with <span class="docutils literal"><span class="pre">setuptools</span></span>.</p>
+<p>This was infuriating me since I know that I had these installed on my last system.
+I just couldn’t remember how I did it.
+I must have done the whole thing manually.
+In any case, thanks to a <a class="reference external" href="http://problemssol.blogspot.com/2010/12/compile-and-install-pyqt4-for-python27.html">post</a> I found using the google box at <a class="reference external" href="http://problemssol.blogspot.com">http://problemssol.blogspot.com</a>, I found a slightly easier way to get the job done.
+I am posting it here to maybe help others, but also so that I have it documented for myself the next time I have to do this.</p>
+<p>I am borrowing <strong>heavily</strong> from the post above but adding some extras that I ran into on my <a class="reference external" href="https://www.archlinux.org">Arch Linux</a> system.</p>
+<div class="section" id="installing-assorted-dependencies">
+<h2>Installing assorted dependencies</h2>
+<div class="section" id="ubuntu">
+<h3>Ubuntu:</h3>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install python-pip python2.7-dev libxext-dev python-qt4 qt4-dev-tools build-essential
+</pre></div>
+</div>
+</div>
+<div class="section" id="arch">
+<h3>Arch:</h3>
+<p>As far as I can tell you should be pretty close with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo pacman -S base-devel qt4 python2-pip
+</pre></div>
+</div>
+<p>However, you Arch folks are generally a pretty self-sufficient lot, so if there are more things you need, I am sure that you can look at the Ubuntu packages above and figure out what else you should try installing.</p>
+</div>
+</div>
+<div class="section" id="installing-pyqt-and-sip">
+<h2>Installing <span class="docutils literal"><span class="pre">PyQt</span></span> and <span class="docutils literal"><span class="pre">SIP</span></span></h2>
+<p>So we are going to cheat a bit and try to do the install with pip:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install SIP
+
+pip install PyQt
+</pre></div>
+</div>
+<p>These will both fail but the code will have been downloaded and left in the <span class="docutils literal"><span class="pre">build</span></span> location that <span class="docutils literal"><span class="pre">pip</span></span> uses.
+If you are not using <span class="docutils literal"><span class="pre">virtualenv</span></span> (which you should be, btw), then the <span class="docutils literal"><span class="pre">build</span></span> is probably at</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$HOME</span>/build
+</pre></div>
+</div>
+<p>If you <strong>are</strong> using <span class="docutils literal"><span class="pre">virtualenv</span></span> (good for you, btw), then your <span class="docutils literal"><span class="pre">build</span></span> directory will be in the root directory of whichever virtualenv you have activated.</p>
+<p>From here on I will refer to your <span class="docutils literal"><span class="pre">build</span></span> directory as <span class="docutils literal"><span class="pre">$BUILD</span></span>.
+Now <span class="docutils literal"><span class="pre">cd</span></span> into the <span class="docutils literal"><span class="pre">$BUILD/SIP/</span></span> directory and build/install it with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$BUILD</span>/SIP
+python configure.py
+make
+<span class="o">[</span>sudo<span class="o">]</span> make install
+</pre></div>
+</div>
+<p>then</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$BUILD</span>/PyQt
+python configure.py
+make
+<span class="o">[</span>sudo<span class="o">]</span> make install
+</pre></div>
+</div>
+<p>Here is a place that I ran into a difference when doing this in Arch.
+You need to specify the <span class="docutils literal"><span class="pre">qmake</span></span> path to <span class="docutils literal"><span class="pre">configure.py</span></span> since Arch names them based on the version of <span class="docutils literal"><span class="pre">qt</span></span> you are using (<span class="docutils literal"><span class="pre">qmake-qt4</span></span>).
+So in Arch the configure line would look like this if you are using <span class="docutils literal"><span class="pre">qt4</span></span>:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python configure.py -q /usr/bin/qmake-qt4
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><span class="docutils literal"><span class="pre">PyQt</span></span> is a <strong>big</strong> package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or scotch or whatever!</p>
+</div>
+</div>
+<div class="section" id="testing-your-install">
+<h2>Testing your install</h2>
+<p>That <strong>should</strong> be it!
+To make sure it worked fire up your <a class="reference external" href="http://ipython.org">IPython</a> shell (you <strong>are</strong> using IPython aren’t you?) and try to import some stuff!</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+</pre></div>
+</div>
+<p>If there are no errors, then you are all set!</p>
+<p>Happy coding!</p>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/tutorials.html">Tutorials</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python.html">Python</a>, <a href="tags/pyqt.html">PyQt</a>, <a href="tags/pip.html">pip</a>, <a href="tags/setup_py.html">setup.py</a>, <a href="tags/configure_py.html">configure.py</a>, <a href="tags/sip.html">SIP</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_.html#disqus_thread" data-disqus-identifier="2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>July 04, 2013</span>
         </div>
         <div class="section" id="first-pass-trinity-results-for-anopheles-stephensi-midgut-rna-seq-non-bloodfed">
@@ -365,82 +471,8 @@ The legendary description of the double helix by Crick and Watson went a long wa
         </div>
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/05/18/fundamentals_of_gene_expression__the__central_dogma__of_molecular_biology.html#disqus_thread" data-disqus-identifier="2013/05/18/fundamentals_of_gene_expression__the__central_dogma__of_molecular_biology">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>May 15, 2013</span>
-        </div>
-        <div class="section" id="new-release-blacktie-v0-2-1">
-<h1><a href="2013/05/15/new_release__blacktie_v0_2_1.html">NEW RELEASE: Blacktie v0.2.1</a></h1>
-<p>I have released a new version of blacktie (0.2.1) which has a number of minor fixes and <strong>NOW INCLUDES</strong> <a class="reference external" href="http://compbio.mit.edu/cummeRbund">cummeRbund</a> <strong>SUPPORT!!!</strong></p>
-<a class="reference internal image-reference" href="_images/basic_cummerbund_plots.png"><img alt="../../../_images/basic_cummerbund_plots.png" src="_images/basic_cummerbund_plots.png" style="width: 600px;"/></a>
-<ul class="simple">
-<li>github repo: <a class="reference external" href="https://github.com/xguse/blacktie">https://github.com/xguse/blacktie</a></li>
-<li>documentation: <a class="reference external" href="http://xguse.github.io/blacktie">http://xguse.github.io/blacktie/</a></li>
-<li><strong>issue tracking and feature requests:</strong> <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
-</ul>
-<p>Thanks and again <strong>please</strong> let me know what you think.  I need your input to make blacktie better and easier to use.</p>
-<p>Gus</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>One major change was introduced in v0.2.0rc1: the yaml config file was changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
-<p class="last">This is the last time that this warning will be included.</p>
-</div>
-<div class="section" id="news">
-<h2>News</h2>
-<div class="section" id="id1">
-<h3>0.2.1</h3>
-<p><em>Release date: 2013-05-15</em></p>
-<ul class="simple">
-<li>git tag: ‘v0.2.1’</li>
-<li>added new script named blacktie-cummerbund to run cummeRbund</li>
-<li>added new class in calls.py CummerbundCall to use blacktie-cummerbund script to add cummeRbund plots to blacktie script</li>
-<li>checks for R and rpy2 installations</li>
-<li>if cummeRbund R library not found, it walks you through installing it</li>
-<li><span class="docutils literal"><span class="pre">src/blacktie/utils/calls.py</span></span>: - fixed _flag_out_dir() so that if the outdir has not been created yet it gracefully moves on</li>
-<li><span class="docutils literal"><span class="pre">examples/blacktie_config_example.yaml</span></span>: - added cummerbund_options</li>
-<li><span class="docutils literal"><span class="pre">requirements.txt</span></span>: - added rpy2</li>
-<li>updated docs</li>
-</ul>
-</div>
-<div class="section" id="rc1">
-<h3>0.2.0rc1</h3>
-<p><em>Release date: 2013-04-19</em></p>
-<ul>
-<li><p class="first">git tag: ‘v0.2.0rc1’</p>
-</li>
-<li><p class="first">Added support for handling biological replicates in cuffdiff runs.</p>
-</li>
-<li><dl class="first docutils">
-<dt>Major changes to yaml config:</dt>
-<dd><ul class="first last simple">
-<li>condition_queue[index].group_id –&gt; condition_queue[index].experiment_id</li>
-<li>addition of condition_queue[index].replicate_id to track replicate data</li>
-<li>condition_queue[index].name now represents description of an ‘experiemental condition’ and will be shared by replicates.</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</div>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by W Augustine Dunn</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/my_code.html">My Code</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/new_release.html">new release</a>, <a href="tags/blacktie.html">blacktie</a>, <a href="tags/tophat.html">tophat</a>, <a href="tags/cufflinks.html">cufflinks</a>, <a href="tags/cuffmerge.html">cuffmerge</a>, <a href="tags/cuffdiff.html">cuffdiff</a>, <a href="tags/ngs.html">NGS</a>, <a href="tags/rna_seq.html">RNA-seq</a>, <a href="tags/python.html">python</a>, <a href="tags/open_source.html">open source</a>, <a href="tags/open_science.html">open science</a>, <a href="tags/cummerbund.html">cummeRbund</a>, <a href="tags/r.html">R</a>, <a href="tags/bioinformatics.html">bioinformatics</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://movingthelamppost.com/blog/html/2013/05/15/new_release__blacktie_v0_2_1.html#disqus_thread" data-disqus-identifier="2013/05/15/new_release__blacktie_v0_2_1">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
@@ -463,7 +495,7 @@ The legendary description of the double helix by Crick and Watson went a long wa
     </form>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li></ul>
+    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li><li><a href="categories/tutorials.html">Tutorials</a> (1)</li></ul>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
       <a href="tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
@@ -479,6 +511,7 @@ The legendary description of the double helix by Crick and Watson went a long wa
       <a href="tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
       <a href="tags/blood_feeding.html" style="font-size: 8pt">blood feeding</a>&nbsp;&nbsp;
       <a href="tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
+      <a href="tags/configure_py.html" style="font-size: 8pt">configure.py</a>&nbsp;&nbsp;
       <a href="tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
       <a href="tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
       <a href="tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
@@ -518,9 +551,11 @@ The legendary description of the double helix by Crick and Watson went a long wa
       <a href="tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
       <a href="tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
       <a href="tags/open_source.html" style="font-size: 10pt">open source</a>&nbsp;&nbsp;
+      <a href="tags/pip.html" style="font-size: 8pt">pip</a>&nbsp;&nbsp;
       <a href="tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
       <a href="tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
-      <a href="tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
+      <a href="tags/pyqt.html" style="font-size: 8pt">PyQt</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 10pt">Python</a>&nbsp;&nbsp;
       <a href="tags/python.html" style="font-size: 12pt">python</a>&nbsp;&nbsp;
       <a href="tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
@@ -530,6 +565,8 @@ The legendary description of the double helix by Crick and Watson went a long wa
       <a href="tags/science_twitter.html" style="font-size: 8pt">science@twitter</a>&nbsp;&nbsp;
       <a href="tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="tags/setup_py.html" style="font-size: 8pt">setup.py</a>&nbsp;&nbsp;
+      <a href="tags/sip.html" style="font-size: 8pt">SIP</a>&nbsp;&nbsp;
       <a href="tags/the_central_dogma.html" style="font-size: 8pt">the central dogma</a>&nbsp;&nbsp;
       <a href="tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
       <a href="tags/tophat.html" style="font-size: 10pt">tophat</a>&nbsp;&nbsp;

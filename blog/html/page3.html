@@ -31,7 +31,7 @@
         <link rel="prev" title="Newer" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.2.1',
+        VERSION:     '1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -90,6 +90,66 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>April 19, 2013</span>
+        </div>
+        <div class="section" id="new-release-blacktie-v0-2-0rc1">
+<h1><a href="2013/04/19/new_release__blacktie_v0_2_0rc1.html">NEW RELEASE: Blacktie v0.2.0rc1</a></h1>
+<p>I have released a new version of blacktie (0.2.0rc1) which has a number of minor fixes and new features.</p>
+<ul class="simple">
+<li>github repo: <a class="reference external" href="https://github.com/xguse/blacktie">https://github.com/xguse/blacktie</a></li>
+<li>documentation: <a class="reference external" href="http://xguse.github.io/blacktie">http://xguse.github.io/blacktie/</a></li>
+<li>issue tracking and feature requests: <a class="reference external" href="https://github.com/xguse/blacktie/issues">https://github.com/xguse/blacktie/issues</a></li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">One major gotcha will be that the yaml config file has been changed slightly to facilitate the inclusion of biological replicate data.  So please take a look at the demo config file in the docs posted at: <a class="reference external" href="http://xguse.github.io/blacktie/tutorial.html#the-configuration-file">http://xguse.github.io/blacktie/tutorial.html#the-configuration-file</a></p>
+</div>
+<p>Thanks and <strong>please</strong> let me know what you think.  I need your input to make improvements.</p>
+<p>Gus</p>
+<hr class="docutils"/>
+<div class="section" id="news">
+<h2>News</h2>
+<div class="section" id="rc1">
+<h3>0.2.0rc1</h3>
+<p><em>Release date: 2013-04-19</em></p>
+<ul>
+<li><p class="first">git tag: ‘v0.2.0rc1’</p>
+</li>
+<li><p class="first">email_notification is now adjustable for other email servers</p>
+</li>
+<li><p class="first">Added support for handling biological replicates in cuffdiff runs.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Major changes to yaml config:</dt>
+<dd><ul class="first last simple">
+<li>condition_queue[index].group_id –&gt; condition_queue[index].experiment_id</li>
+<li>addition of condition_queue[index].replicate_id to track replicate data</li>
+<li>condition_queue[index].name now represents description of an ‘experimental condition’ and will be shared by replicates.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/my_code.html">My Code</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/new_release.html">new release</a>, <a href="tags/blacktie.html">blacktie</a>, <a href="tags/tophat.html">tophat</a>, <a href="tags/cufflinks.html">cufflinks</a>, <a href="tags/cuffmerge.html">cuffmerge</a>, <a href="tags/cuffdiff.html">cuffdiff</a>, <a href="tags/ngs.html">NGS</a>, <a href="tags/rna_seq.html">RNA-seq</a>, <a href="tags/python.html">python</a>, <a href="tags/open_source.html">open source</a>, <a href="tags/open_science.html">open science</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/04/19/new_release__blacktie_v0_2_0rc1.html#disqus_thread" data-disqus-identifier="2013/04/19/new_release__blacktie_v0_2_0rc1">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>April 16, 2013</span>
         </div>
         <div class="section" id="genome-level-analysis-of-selective-constraint-without-apparent-sequence-conservation">
@@ -231,7 +291,7 @@ course.  It goes something like this:</p>
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/04/04/hello__world_.html#disqus_thread" data-disqus-identifier="2013/04/04/hello__world_">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page2.html">Newer</a></li>
             <li class="right"></li>
@@ -254,7 +314,7 @@ course.  It goes something like this:</p>
     </form>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li></ul>
+    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (2)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li><li><a href="categories/tutorials.html">Tutorials</a> (1)</li></ul>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
       <a href="tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
@@ -270,6 +330,7 @@ course.  It goes something like this:</p>
       <a href="tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
       <a href="tags/blood_feeding.html" style="font-size: 8pt">blood feeding</a>&nbsp;&nbsp;
       <a href="tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
+      <a href="tags/configure_py.html" style="font-size: 8pt">configure.py</a>&nbsp;&nbsp;
       <a href="tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
       <a href="tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
       <a href="tags/cufflinks.html" style="font-size: 10pt">cufflinks</a>&nbsp;&nbsp;
@@ -309,9 +370,11 @@ course.  It goes something like this:</p>
       <a href="tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
       <a href="tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
       <a href="tags/open_source.html" style="font-size: 10pt">open source</a>&nbsp;&nbsp;
+      <a href="tags/pip.html" style="font-size: 8pt">pip</a>&nbsp;&nbsp;
       <a href="tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
       <a href="tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
-      <a href="tags/python.html" style="font-size: 8pt">Python</a>&nbsp;&nbsp;
+      <a href="tags/pyqt.html" style="font-size: 8pt">PyQt</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 10pt">Python</a>&nbsp;&nbsp;
       <a href="tags/python.html" style="font-size: 12pt">python</a>&nbsp;&nbsp;
       <a href="tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
@@ -321,6 +384,8 @@ course.  It goes something like this:</p>
       <a href="tags/science_twitter.html" style="font-size: 8pt">science@twitter</a>&nbsp;&nbsp;
       <a href="tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
       <a href="tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="tags/setup_py.html" style="font-size: 8pt">setup.py</a>&nbsp;&nbsp;
+      <a href="tags/sip.html" style="font-size: 8pt">SIP</a>&nbsp;&nbsp;
       <a href="tags/the_central_dogma.html" style="font-size: 8pt">the central dogma</a>&nbsp;&nbsp;
       <a href="tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
       <a href="tags/tophat.html" style="font-size: 10pt">tophat</a>&nbsp;&nbsp;
