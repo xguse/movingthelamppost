@@ -26,6 +26,8 @@ I am posting it here to maybe help others, but also so that I have it documented
 
 I am borrowing **heavily** from the post above but adding some extras that I ran into on my `Arch Linux <https://www.archlinux.org/>`_ system.  
 
+.. more::
+
 Installing assorted dependencies
 -----------------------------------
 

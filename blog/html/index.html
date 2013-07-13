@@ -111,74 +111,7 @@ I must have done the whole thing manually.
 In any case, thanks to a <a class="reference external" href="http://problemssol.blogspot.com/2010/12/compile-and-install-pyqt4-for-python27.html">post</a> I found using the google box at <a class="reference external" href="http://problemssol.blogspot.com">http://problemssol.blogspot.com</a>, I found a slightly easier way to get the job done.
 I am posting it here to maybe help others, but also so that I have it documented for myself the next time I have to do this.</p>
 <p>I am borrowing <strong>heavily</strong> from the post above but adding some extras that I ran into on my <a class="reference external" href="https://www.archlinux.org">Arch Linux</a> system.</p>
-<div class="section" id="installing-assorted-dependencies">
-<h2>Installing assorted dependencies</h2>
-<div class="section" id="ubuntu">
-<h3>Ubuntu:</h3>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install python-pip python2.7-dev libxext-dev python-qt4 qt4-dev-tools build-essential
-</pre></div>
-</div>
-</div>
-<div class="section" id="arch">
-<h3>Arch:</h3>
-<p>As far as I can tell you should be pretty close with:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo pacman -S base-devel qt4 python2-pip
-</pre></div>
-</div>
-<p>However, you Arch folks are generally a pretty self-sufficient lot, so if there are more things you need, I am sure that you can look at the Ubuntu packages above and figure out what else you should try installing.</p>
-</div>
-</div>
-<div class="section" id="installing-pyqt-and-sip">
-<h2>Installing <span class="docutils literal"><span class="pre">PyQt</span></span> and <span class="docutils literal"><span class="pre">SIP</span></span></h2>
-<p>So we are going to cheat a bit and try to do the install with pip:</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install SIP
-
-pip install PyQt
-</pre></div>
-</div>
-<p>These will both fail but the code will have been downloaded and left in the <span class="docutils literal"><span class="pre">build</span></span> location that <span class="docutils literal"><span class="pre">pip</span></span> uses.
-If you are not using <span class="docutils literal"><span class="pre">virtualenv</span></span> (which you should be, btw), then the <span class="docutils literal"><span class="pre">build</span></span> is probably at</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$HOME</span>/build
-</pre></div>
-</div>
-<p>If you <strong>are</strong> using <span class="docutils literal"><span class="pre">virtualenv</span></span> (good for you, btw), then your <span class="docutils literal"><span class="pre">build</span></span> directory will be in the root directory of whichever virtualenv you have activated.</p>
-<p>From here on I will refer to your <span class="docutils literal"><span class="pre">build</span></span> directory as <span class="docutils literal"><span class="pre">$BUILD</span></span>.
-Now <span class="docutils literal"><span class="pre">cd</span></span> into the <span class="docutils literal"><span class="pre">$BUILD/SIP/</span></span> directory and build/install it with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$BUILD</span>/SIP
-python configure.py
-make
-<span class="o">[</span>sudo<span class="o">]</span> make install
-</pre></div>
-</div>
-<p>then</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$BUILD</span>/PyQt
-python configure.py
-make
-<span class="o">[</span>sudo<span class="o">]</span> make install
-</pre></div>
-</div>
-<p>Here is a place that I ran into a difference when doing this in Arch.
-You need to specify the <span class="docutils literal"><span class="pre">qmake</span></span> path to <span class="docutils literal"><span class="pre">configure.py</span></span> since Arch names them based on the version of <span class="docutils literal"><span class="pre">qt</span></span> you are using (<span class="docutils literal"><span class="pre">qmake-qt4</span></span>).
-So in Arch the configure line would look like this if you are using <span class="docutils literal"><span class="pre">qt4</span></span>:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python configure.py -q /usr/bin/qmake-qt4
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><span class="docutils literal"><span class="pre">PyQt</span></span> is a <strong>big</strong> package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or scotch or whatever!</p>
-</div>
-</div>
-<div class="section" id="testing-your-install">
-<h2>Testing your install</h2>
-<p>That <strong>should</strong> be it!
-To make sure it worked fire up your <a class="reference external" href="http://ipython.org">IPython</a> shell (you <strong>are</strong> using IPython aren’t you?) and try to import some stuff!</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
-</pre></div>
-</div>
-<p>If there are no errors, then you are all set!</p>
-<p>Happy coding!</p>
-</div>
-</div>
+<p><a class="readmore" href="2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_.html#more">Read more...</a></p></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by W Augustine Dunn</span>
