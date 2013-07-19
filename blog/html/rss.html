@@ -5,8 +5,47 @@
         <link>http://movingthelamppost.com/blog/html/</link>
         <description>random musings of a molecular biologist turned code jockey in the era of big data and open science.</description>
         <language>en-us</language>
-        <pubDate>Fri, 12 Jul 2013 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 17 Jul 2013 00:00:00 -0700</pubDate>
         
+        <item>
+            <link>http://movingthelamppost.com/blog/html/2013/07/17/blacktie_bugfix_release__0_2_1_2.html</link>
+            <guid>http://movingthelamppost.com/blog/html/2013/07/17/blacktie_bugfix_release__0_2_1_2.html</guid>
+            <title><![CDATA[Blacktie BUGFIX release: 0.2.1.2]]></title>
+            <description><![CDATA[<div class="section" id="blacktie-bugfix-release-0-2-1-2">
+<h1>Blacktie BUGFIX release: 0.2.1.2</h1>
+<div class="section" id="the-bug">
+<h2>The Bug:</h2>
+<p>In short, on a Mac <span class="docutils literal"><span class="pre">pprocess</span></span> complained:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;AttributeError: 'module' object has no attribute 'poll'&quot;</span>
+</pre></div>
+</div>
+<p>when trying to set up a queue.</p>
+<p>This caused a fatal unhandled exception that was discovered on a Macintosh.
+Version 0.2.1.2 should restore functionality of <span class="docutils literal"><span class="pre">blacktie</span></span> for people experiencing this problem.</p>
+<p>For more detail see github issue: <a class="reference external" href="https://github.com/xguse/blacktie/issues/10">https://github.com/xguse/blacktie/issues/10</a></p>
+</div>
+<div class="section" id="the-fix">
+<h2>The Fix:</h2>
+<p>This is a quick fix that looks for that exception and continues without using <span class="docutils literal"><span class="pre">pprocess</span></span> if it is encountered.
+A more permanent fix will be included once I understand what is going on.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<ul class="last simple">
+<li>It is recommended that all users update to 0.2.1.2 to avoid this issue.</li>
+<li>Anyone with knowledge of this issue is encouraged to comment on the <a class="reference external" href="https://github.com/xguse/blacktie/issues/10">issues thread</a> above or in the Comments section below.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="what-is-blacktie">
+<h2>What is <span class="docutils literal"><span class="pre">blacktie</span></span>?</h2>
+<p><span class="docutils literal"><span class="pre">blacktie</span></span> is a pipeline to streamline the deployment of the popular “Tuxedo Protocol” for RNA-seq analysis.
+Please take a look at the <a class="reference external" href="http://xguse.github.io/blacktie/project.html">Project Summary</a> section of <span class="docutils literal"><span class="pre">blacktie</span></span>‘s documentation for more details.</p>
+</div>
+</div>]]></description>
+            <category><![CDATA[ My Code ]]></category>
+             <pubDate>Wed, 17 Jul 2013 00:00:00 -0700</pubDate>
+        </item>
+    
         <item>
             <link>http://movingthelamppost.com/blog/html/2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_.html</link>
             <guid>http://movingthelamppost.com/blog/html/2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_.html</guid>

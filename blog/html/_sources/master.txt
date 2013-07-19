@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/07/17/blacktie_bugfix_release__0_2_1_2
    2013/07/12/installing_pyqt____because_it_s_too_good_for_pip_or_easy_install_
    2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_
    2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips
