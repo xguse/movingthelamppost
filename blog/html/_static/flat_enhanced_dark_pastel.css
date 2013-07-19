@@ -114,8 +114,8 @@ a, a:visited { font-weight: bold; color: #397B98; text-decoration: none; }
 a:hover { font-weight: bold; color: #397B98; text-decoration: underline; }
 a.footnote-reference { vertical-align: super; }
 div.section h1 a { color: #F6F6E8; text-decoration: none; }
-.docutils.literal {font-family: Nova Mono, monospace, serif;color: #397B98; }
-// .docutils.literal {font-family: Nova Mono, monospace, serif; color: #397B98; background-color: ; border-radius: 1px; padding: 1px 1px; }
+.docutils.literal {font-family: Nova Mono, monospace, serif;color: #6A9A1F; }
+// .docutils.literal {font-family: Nova Mono, monospace, serif; color: #6A9A1F; background-color: ; border-radius: 1px; padding: 1px 1px; }
 
 
 blockquote { border-left: 10px solid #397B98; }

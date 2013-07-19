@@ -116,7 +116,7 @@ footer { margin-bottom: 20px; padding: 20px; text-align: center; }
 {%- set box_color_main = "#ABC763" -%}
 {%- set box_color_secondary = "#ABC763" -%}
 {%- set text_color = "#F6F6E8" -%}
-{%- set inline_code_color = "#397B98" -%}
+{%- set inline_code_color = "#6A9A1F" -%}
 {%- set theme_color_light = "#397B98" -%}
 {%- set highlight_color = "#6A9A1F" -%}
 
