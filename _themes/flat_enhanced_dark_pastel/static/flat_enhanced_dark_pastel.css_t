@@ -249,6 +249,11 @@ div.attention  {
     background-color: #FFB300;
 //     border: 1px solid #0B7DC0;
 }
+}
+.attention a:link, .attention a:active, .attention a:visited {
+    color: #3C6678;
+}
+
 
 div.seealso {
     background-color: #93A4AD;
