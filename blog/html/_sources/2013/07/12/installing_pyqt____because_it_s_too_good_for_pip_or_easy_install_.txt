@@ -18,7 +18,7 @@ However, ``PyQt`` and ``SIP`` do not use the standard ``setup.py`` file for enco
 They use ``configure.py``.
 So ``pip`` and other `PyPI <https://pypi.python.org/pypi>`_ installer scripts will locate and download the code, but they will fail during the installation phase and complain that they can not be installed with ``setuptools``.
 
-This was infuriating me since I know that I had these installed on my last system.
+This was frustrating me since I know that I had these installed on my last system.
 I just couldn't remember how I did it.
 I must have done the whole thing manually.
 In any case, thanks to a `post <http://problemssol.blogspot.com/2010/12/compile-and-install-pyqt4-for-python27.html>`_ I found using the google box at http://problemssol.blogspot.com, I found a slightly easier way to get the job done.
@@ -52,6 +52,10 @@ However, you Arch folks are generally a pretty self-sufficient lot, so if there 
 Installing ``PyQt`` and ``SIP``
 ------------------------------------
 
+.. note:: 
+
+    If you need help installing ``pip``, you can take a look at the installation `instructions <http://www.pip-installer.org/en/latest/installing.html#using-get-pip>`_ provided at the project's `documentation site <http://www.pip-installer.org/en/latest/>`_.  Multiple install methods are explained; hopefully one will get you where you need to be.
+
 So we are going to cheat a bit and try to do the install with pip:
 
 .. code-block:: bash
@@ -67,6 +71,7 @@ If you are not using ``virtualenv`` (which you should be, btw), then the ``build
 
     $HOME/build
 
+    
 If you **are** using ``virtualenv`` (good for you, btw), then your ``build`` directory will be in the root directory of whichever virtualenv you have activated.
 
 From here on I will refer to your ``build`` directory as ``$BUILD``.
@@ -98,7 +103,7 @@ So in Arch the configure line would look like this if you are using ``qt4``:
 
 .. warning::
 
-    ``PyQt`` is a **big** package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or scotch or whatever!
+    ``PyQt`` is a **big** package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or something!
 
 
 Testing your install

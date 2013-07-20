@@ -63,7 +63,7 @@ Some of my code requires <a class="reference external" href="http://ete.cgenomic
 However, <span class="docutils literal"><span class="pre">PyQt</span></span> and <span class="docutils literal"><span class="pre">SIP</span></span> do not use the standard <span class="docutils literal"><span class="pre">setup.py</span></span> file for encoding the installation procedures.
 They use <span class="docutils literal"><span class="pre">configure.py</span></span>.
 So <span class="docutils literal"><span class="pre">pip</span></span> and other <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> installer scripts will locate and download the code, but they will fail during the installation phase and complain that they can not be installed with <span class="docutils literal"><span class="pre">setuptools</span></span>.</p>
-<p>This was infuriating me since I know that I had these installed on my last system.
+<p>This was frustrating me since I know that I had these installed on my last system.
 I just couldn’t remember how I did it.
 I must have done the whole thing manually.
 In any case, thanks to a <a class="reference external" href="http://problemssol.blogspot.com/2010/12/compile-and-install-pyqt4-for-python27.html">post</a> I found using the google box at <a class="reference external" href="http://problemssol.blogspot.com">http://problemssol.blogspot.com</a>, I found a slightly easier way to get the job done.
@@ -88,6 +88,10 @@ I am posting it here to maybe help others, but also so that I have it documented
 </div>
 <div class="section" id="installing-pyqt-and-sip">
 <h2>Installing <span class="docutils literal"><span class="pre">PyQt</span></span> and <span class="docutils literal"><span class="pre">SIP</span></span></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you need help installing <span class="docutils literal"><span class="pre">pip</span></span>, you can take a look at the installation <a class="reference external" href="http://www.pip-installer.org/en/latest/installing.html#using-get-pip">instructions</a> provided at the project’s <a class="reference external" href="http://www.pip-installer.org/en/latest">documentation site</a>.  Multiple install methods are explained; hopefully one will get you where you need to be.</p>
+</div>
 <p>So we are going to cheat a bit and try to do the install with pip:</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install SIP
 
@@ -123,7 +127,7 @@ So in Arch the configure line would look like this if you are using <span class=
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><span class="docutils literal"><span class="pre">PyQt</span></span> is a <strong>big</strong> package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or scotch or whatever!</p>
+<p class="last"><span class="docutils literal"><span class="pre">PyQt</span></span> is a <strong>big</strong> package and a lot of compile/linking has to be done so be prepared to go get a cup of coffee or tea or something!</p>
 </div>
 </div>
 <div class="section" id="testing-your-install">
