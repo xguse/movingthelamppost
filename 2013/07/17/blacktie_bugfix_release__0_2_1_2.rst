@@ -2,6 +2,14 @@ Blacktie BUGFIX release: 0.2.1.2
 ================================
 
 
+.. image:: /_static/figs/basic_cummerbund_plots.png
+    :width: 600px
+
+
+- github repo: https://github.com/xguse/blacktie
+- documentation: https://blacktie.readthedocs.org/en/latest/
+- **issue tracking and feature requests:** https://github.com/xguse/blacktie/issues
+
 
 The Bug:
 ------------------------
