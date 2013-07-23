@@ -5,8 +5,127 @@
         <link>http://movingthelamppost.com/blog/html/</link>
         <description>random musings of a molecular biologist turned code jockey in the era of big data and open science.</description>
         <language>en-us</language>
-        <pubDate>Wed, 17 Jul 2013 00:00:00 -0700</pubDate>
+        <pubDate>Mon, 22 Jul 2013 00:00:00 -0700</pubDate>
         
+        <item>
+            <link>http://movingthelamppost.com/blog/html/2013/07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html</link>
+            <guid>http://movingthelamppost.com/blog/html/2013/07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html</guid>
+            <title><![CDATA[Python Gotcha: generators not always drop-in replacements for lists]]></title>
+            <description><![CDATA[<div class="section" id="python-gotcha-generators-not-always-drop-in-replacements-for-lists">
+<h1>Python Gotcha: generators not always drop-in replacements for lists</h1>
+<p>I was recently bitten <strong>HARD</strong> by this one.</p>
+<div class="section" id="generators-and-lists">
+<h2>Generators and Lists</h2>
+<p>In <a class="reference external" href="http://www.python.org">Python</a>, there is a data construct/concept called a <a class="reference external" href="http://wiki.python.org/moin/Generators">generator</a>.
+In brief it is a special type of function that returns a type of <a class="reference external" href="http://wiki.python.org/moin/Iterator">iterator</a> that in most use cases behaves just like a Python <a class="reference external" href="http://rgruet.free.fr/PQR27/PQR2.7.html#list">list</a>.
+That is, you can do stuff like this to it:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="c"># define a simple generator</span>
+<span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">my_generator</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<span class="gp">   ...:</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<span class="gp">   ...:</span>          <span class="k">yield</span> <span class="n">i</span>
+<span class="gp">   ...:</span> 
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">my_iterator</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">my_iterator</span><span class="p">:</span>
+<span class="gp">   ...:</span>      <span class="k">print</span> <span class="n">each</span>
+<span class="gp">   ...:</span> 
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>The benefit of an <span class="docutils literal"><span class="pre">iterator</span></span> is that it mitigates the memory footprint of the output of something like <span class="docutils literal"><span class="pre">my_generator()</span></span>.
+So when you have an idea that a <span class="docutils literal"><span class="pre">list</span></span> of your resulting data will be very large, it may be wise to use an <span class="docutils literal"><span class="pre">iterator</span></span> rather than a <span class="docutils literal"><span class="pre">list</span></span>.
+They work by generating the data on the fly rather than all at once.</p>
+<p>In our example above, <span class="docutils literal"><span class="pre">my_iterator</span></span> has no length as demonstrated below.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="n">my_iterator</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="nb">len</span><span class="p">(</span><span class="n">my_iterator</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-5-110da8bf0288&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 len(my_iterator)</span>
+
+<span class="go">TypeError: object of type 'generator' has no len()</span>
+</pre></div>
+</div>
+<p>This can bite you if you don’t know (or <strong>remember</strong>) that you are dealing with a dynamically generated <span class="docutils literal"><span class="pre">iterator</span></span>.
+In my case, I was using a function that returns a generator for all unique 2-way combinations of a <span class="docutils literal"><span class="pre">list</span></span> of values.
+I wanted these unique combinations to be used inside a subsequent <span class="docutils literal"><span class="pre">for</span></span> loop.</p>
+</div>
+<div class="section" id="here-was-the-code-that-got-me">
+<h2>Here was the code that got me:</h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if</span>
+<span class="sd">    all edges successfully generated non-None value PTCI results.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c"># dictionary of nodes/edges indexed by gene names</span>
+    <span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
+    <span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">graph</span>
+
+    <span class="n">mean_ptcis</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># calculate all pairwise combinations of indexes</span>
+    <span class="c"># so that each ortho-edge of n-way orthos are obtained</span>
+
+    <span class="c"># !---- look here ----! #</span>
+    <span class="n">index_combos</span> <span class="o">=</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">node_list</span> <span class="ow">in</span> <span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+
+        <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">ortho_edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_combos</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]))</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ortho_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">ptcis</span> <span class="o">=</span> <span class="p">[</span><span class="n">dev</span><span class="o">.</span><span class="n">get_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">ortho_edges</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mean_ptci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ptcis</span><span class="p">)</span>
+            <span class="n">mean_ptcis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_ptci</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">mean_ptcis</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generators-are-consumed-at-the-time-of-access">
+<h2>Generators are consumed at the time of access</h2>
+<p>I expected <span class="docutils literal"><span class="pre">index_combos</span></span> to persist and be re-used in each iteration of the loop.
+However, <span class="docutils literal"><span class="pre">index_combos</span></span> is a generator, so it is actually consumed in that first loop and returns nothing useful in <strong>ANY</strong> of the subsequent loops.
+I did not write <span class="docutils literal"><span class="pre">xuniqueCombinations</span></span> which is how I got bitten; I do host a <a class="reference external" href="https://gist.github.com">gist</a> of it <a class="reference external" href="https://gist.github.com/xguse/6058998">here</a>.
+It’s actually quite useful, and you should check it out.</p>
+<p>The point is that I was expecting a <span class="docutils literal"><span class="pre">list</span></span> and got a <span class="docutils literal"><span class="pre">generator</span></span>.
+The solution was to use a <a class="reference external" href="http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to consume the <span class="docutils literal"><span class="pre">generator</span></span> and store the output in a <span class="docutils literal"><span class="pre">list</span></span>.
+That new <span class="docutils literal"><span class="pre">list</span></span> is of course persistent and fixed the whole problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index_combos</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="final-thoughts">
+<h2>Final thoughts</h2>
+<p>I spend a <strong>VERY</strong> good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
+I hope that others might benefit from my pain by reading this.</p>
+<p>Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a <span class="docutils literal"><span class="pre">list</span></span> in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!</p>
+</div>
+</div>]]></description>
+            <category><![CDATA[ Python Shorts ]]></category>
+            <category><![CDATA[ Tutorials ]]></category>
+             <pubDate>Mon, 22 Jul 2013 00:00:00 -0700</pubDate>
+        </item>
+    
         <item>
             <link>http://movingthelamppost.com/blog/html/2013/07/17/blacktie_bugfix_release__0_2_1_2.html</link>
             <guid>http://movingthelamppost.com/blog/html/2013/07/17/blacktie_bugfix_release__0_2_1_2.html</guid>

@@ -64,7 +64,15 @@ posts_per_page = 5
 
 # Add other Sphinx extensions here
 
-extensions = ['sphinxcontrib.youtube','tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinx.ext.mathjax'] 
+sys.path.append(os.path.abspath('ext'))
+sys.path.append(os.path.abspath('sphinxext'))
+
+extensions = [	'ipython_directive',
+		'ipython_console_highlighting',
+		'sphinxcontrib.youtube',
+		'tinkerer.ext.blog',
+		'tinkerer.ext.disqus',
+		'sphinx.ext.mathjax', ] 
 
 # Add other template paths here
 templates_path = ['_templates']

@@ -90,6 +90,135 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>July 22, 2013</span>
+        </div>
+        <div class="section" id="python-gotcha-generators-not-always-drop-in-replacements-for-lists">
+<h1><a href="2013/07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html">Python Gotcha: generators not always drop-in replacements for lists</a></h1>
+<p>I was recently bitten <strong>HARD</strong> by this one.</p>
+<div class="section" id="generators-and-lists">
+<h2>Generators and Lists</h2>
+<p>In <a class="reference external" href="http://www.python.org">Python</a>, there is a data construct/concept called a <a class="reference external" href="http://wiki.python.org/moin/Generators">generator</a>.
+In brief it is a special type of function that returns a type of <a class="reference external" href="http://wiki.python.org/moin/Iterator">iterator</a> that in most use cases behaves just like a Python <a class="reference external" href="http://rgruet.free.fr/PQR27/PQR2.7.html#list">list</a>.
+That is, you can do stuff like this to it:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="c"># define a simple generator</span>
+<span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">my_generator</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<span class="gp">   ...:</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<span class="gp">   ...:</span>          <span class="k">yield</span> <span class="n">i</span>
+<span class="gp">   ...:</span> 
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">my_iterator</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">my_iterator</span><span class="p">:</span>
+<span class="gp">   ...:</span>      <span class="k">print</span> <span class="n">each</span>
+<span class="gp">   ...:</span> 
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>The benefit of an <span class="docutils literal"><span class="pre">iterator</span></span> is that it mitigates the memory footprint of the output of something like <span class="docutils literal"><span class="pre">my_generator()</span></span>.
+So when you have an idea that a <span class="docutils literal"><span class="pre">list</span></span> of your resulting data will be very large, it may be wise to use an <span class="docutils literal"><span class="pre">iterator</span></span> rather than a <span class="docutils literal"><span class="pre">list</span></span>.
+They work by generating the data on the fly rather than all at once.</p>
+<p>In our example above, <span class="docutils literal"><span class="pre">my_iterator</span></span> has no length as demonstrated below.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="n">my_iterator</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="nb">len</span><span class="p">(</span><span class="n">my_iterator</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-5-110da8bf0288&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 len(my_iterator)</span>
+
+<span class="go">TypeError: object of type 'generator' has no len()</span>
+</pre></div>
+</div>
+<p>This can bite you if you don’t know (or <strong>remember</strong>) that you are dealing with a dynamically generated <span class="docutils literal"><span class="pre">iterator</span></span>.
+In my case, I was using a function that returns a generator for all unique 2-way combinations of a <span class="docutils literal"><span class="pre">list</span></span> of values.
+I wanted these unique combinations to be used inside a subsequent <span class="docutils literal"><span class="pre">for</span></span> loop.</p>
+</div>
+<div class="section" id="here-was-the-code-that-got-me">
+<h2>Here was the code that got me:</h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_mean_ptcis</span><span class="p">(</span><span class="n">graphHandler</span><span class="p">,</span><span class="n">n_way_ortho_table</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if</span>
+<span class="sd">    all edges successfully generated non-None value PTCI results.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c"># dictionary of nodes/edges indexed by gene names</span>
+    <span class="n">node_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">node_dict</span>
+    <span class="n">edge_dict</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">edge_dict</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">graphHandler</span><span class="o">.</span><span class="n">graph</span>
+
+    <span class="n">mean_ptcis</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># calculate all pairwise combinations of indexes</span>
+    <span class="c"># so that each ortho-edge of n-way orthos are obtained</span>
+
+    <span class="c"># !---- look here ----! #</span>
+    <span class="n">index_combos</span> <span class="o">=</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">node_list</span> <span class="ow">in</span> <span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+
+        <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">ortho_edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_combos</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">node_list</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]))</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ortho_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">ptcis</span> <span class="o">=</span> <span class="p">[</span><span class="n">dev</span><span class="o">.</span><span class="n">get_ptci</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">ortho_edges</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mean_ptci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ptcis</span><span class="p">)</span>
+            <span class="n">mean_ptcis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_ptci</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">mean_ptcis</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generators-are-consumed-at-the-time-of-access">
+<h2>Generators are consumed at the time of access</h2>
+<p>I expected <span class="docutils literal"><span class="pre">index_combos</span></span> to persist and be re-used in each iteration of the loop.
+However, <span class="docutils literal"><span class="pre">index_combos</span></span> is a generator, so it is actually consumed in that first loop and returns nothing useful in <strong>ANY</strong> of the subsequent loops.
+I did not write <span class="docutils literal"><span class="pre">xuniqueCombinations</span></span> which is how I got bitten; I do host a <a class="reference external" href="https://gist.github.com">gist</a> of it <a class="reference external" href="https://gist.github.com/xguse/6058998">here</a>.
+It’s actually quite useful, and you should check it out.</p>
+<p>The point is that I was expecting a <span class="docutils literal"><span class="pre">list</span></span> and got a <span class="docutils literal"><span class="pre">generator</span></span>.
+The solution was to use a <a class="reference external" href="http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to consume the <span class="docutils literal"><span class="pre">generator</span></span> and store the output in a <span class="docutils literal"><span class="pre">list</span></span>.
+That new <span class="docutils literal"><span class="pre">list</span></span> is of course persistent and fixed the whole problem.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index_combos</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="final-thoughts">
+<h2>Final thoughts</h2>
+<p>I spend a <strong>VERY</strong> good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
+I hope that others might benefit from my pain by reading this.</p>
+<p>Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a <span class="docutils literal"><span class="pre">list</span></span> in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!</p>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/python_shorts.html">Python Shorts</a>, <a href="categories/tutorials.html">Tutorials</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python_gotcha.html">python gotcha</a>, <a href="tags/python.html">python</a>, <a href="tags/generator.html">generator</a>, <a href="tags/iterator.html">iterator</a>, <a href="tags/list.html">list</a>, <a href="tags/xpermutations_py.html">xpermutations.py</a>, <a href="tags/programming.html">programming</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html#disqus_thread" data-disqus-identifier="2013/07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>July 17, 2013</span>
         </div>
         <div class="section" id="blacktie-bugfix-release-0-2-1-2">
@@ -353,69 +482,6 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
         </div>
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html#disqus_thread" data-disqus-identifier="2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>June 14, 2013</span>
-        </div>
-        <div class="section" id="arthropod-genomics-symposium-2013-notre-dame">
-<h1><a href="2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html">Arthropod Genomics Symposium 2013 – Notre Dame</a></h1>
-<p>My notes on talks from the <a class="reference external" href="http://globalhealth.nd.edu/7th-annual-arthropod-genomics-symposium">7th Annual Arthropod Genomics Symposium</a>  If you are interested, you can follow live tweets from <a class="reference external" href="https://twitter.com/search?q=%2313arthgen&amp;src=typd">#13ArthGen</a>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ol class="arabic simple">
-<li><strong>COMING SOON:</strong> links to or embedded versions of the recorded talks for each section. These will be added as soon as I can get the location of where they will be hosted.</li>
-<li><strong>My Spelling:</strong> Obviously, my spelling is gonna suck on this.  Please don’t hold it against me.</li>
-<li><strong>Linking to Specific Sections:</strong> If you want to link to a specific person’s notes you can use ‘anchor’ notation as illustrated here for <a class="reference internal" href="2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#jennifer-brisson"><em>Jennifer Brisson</em></a>:</li>
-</ol>
-<div class="last highlight-none"><div class="highlight"><pre>http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#jennifer-brisson
-</pre></div>
-</div>
-</div>
-<div class="section" id="general-session">
-<h2>General Session</h2>
-<div class="section" id="dan-lawson-ebi">
-<span id="dan-lawson"/><h3>Dan Lawson (EBI)</h3>
-<ul class="simple">
-<li>Federated curation and hosting of genomes plus standardized best practices and data formats needed for #i5k</li>
-</ul>
-<hr class="docutils"/>
-</div>
-<div class="section" id="steven-fringy-richards-baylor-college-of-medicine">
-<span id="steven-richards"/><h3>Steven “Fringy” Richards (Baylor College of Medicine)</h3>
-<ul class="simple">
-<li>ND50 10kb basic bar to reach for good annotation through Maker</li>
-</ul>
-<hr class="docutils"/>
-</div>
-<div class="section" id="terence-murphy-ncbi">
-<span id="terence-murphy"/><h3>Terence Murphy (NCBI)</h3>
-<p><em>How to annotate 5000 genomes: lessons from NCBI genome annotation pipeline</em></p>
-<hr class="docutils"/>
-</div>
-<div class="section" id="monica-munoz-torres-lawrence-berkeley-national-laboratory">
-<span id="monica-munoz-torres"/><h3>Monica Munoz-Torres (Lawrence Berkeley National Laboratory)</h3>
-<p><em>Web Apollo web based annotation editing platform</em></p>
-<ul class="simple">
-<li>first realtime genome collaborative annotation editor on the web</li>
-<li>MANUAL annotation is NECESSARY not just desirable: without it many downstream experiments will be poisoned</li>
-<li>democratization of genome assembly and annotation require a new model of collaborative annotation</li>
-</ul>
-</div></div><p><a class="readmore" href="2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#more">Read more...</a></p></div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by W Augustine Dunn</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/conferences.html">Conferences</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/arthgen2013.html">ArthGen2013</a>, <a href="tags/genomics.html">genomics</a>, <a href="tags/arthropods.html">arthropods</a>, <a href="tags/transcriptomics.html">transcriptomics</a>, <a href="tags/twitter.html">twitter</a>, <a href="tags/science_twitter.html">science@twitter</a>, <a href="tags/live_blogging.html">live blogging</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://movingthelamppost.com/blog/html/2013/06/14/arthropod_genomics_symposium_2013____notre_dame.html#disqus_thread" data-disqus-identifier="2013/06/14/arthropod_genomics_symposium_2013____notre_dame">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
@@ -440,7 +506,7 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
     </form>
 </div></section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (3)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li><li><a href="categories/tutorials.html">Tutorials</a> (1)</li></ul>
+    <ul><li><a href="categories/background_science.html">Background Science</a> (1)</li><li><a href="categories/conferences.html">Conferences</a> (1)</li><li><a href="categories/journal_club.html">Journal Club</a> (1)</li><li><a href="categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="categories/my_code.html">My Code</a> (3)</li><li><a href="categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="categories/my_research.html">My Research</a> (4)</li><li><a href="categories/python_shorts.html">Python Shorts</a> (1)</li><li><a href="categories/tutorials.html">Tutorials</a> (2)</li></ul>
 </div></section><section><div class="widget">
     <h1>Tags Cloud</h1>
       <a href="tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
@@ -471,6 +537,7 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
       <a href="tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
       <a href="tags/gene_expression.html" style="font-size: 10pt">gene expression</a>&nbsp;&nbsp;
       <a href="tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
+      <a href="tags/generator.html" style="font-size: 8pt">generator</a>&nbsp;&nbsp;
       <a href="tags/genomics.html" style="font-size: 10pt">genomics</a>&nbsp;&nbsp;
       <a href="tags/gmm.html" style="font-size: 10pt">GMM</a>&nbsp;&nbsp;
       <a href="tags/gmo.html" style="font-size: 10pt">GMO</a>&nbsp;&nbsp;
@@ -480,6 +547,8 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
       <a href="tags/injustice.html" style="font-size: 8pt">injustice</a>&nbsp;&nbsp;
       <a href="tags/intolerance.html" style="font-size: 8pt">intolerance</a>&nbsp;&nbsp;
       <a href="tags/ipython.html" style="font-size: 10pt">ipython</a>&nbsp;&nbsp;
+      <a href="tags/iterator.html" style="font-size: 8pt">iterator</a>&nbsp;&nbsp;
+      <a href="tags/list.html" style="font-size: 8pt">list</a>&nbsp;&nbsp;
       <a href="tags/live_blogging.html" style="font-size: 8pt">live blogging</a>&nbsp;&nbsp;
       <a href="tags/midgut.html" style="font-size: 8pt">midgut</a>&nbsp;&nbsp;
       <a href="tags/mohiuddin.html" style="font-size: 8pt">Mohiuddin</a>&nbsp;&nbsp;
@@ -497,11 +566,12 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
       <a href="tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
       <a href="tags/open_source.html" style="font-size: 12pt">open source</a>&nbsp;&nbsp;
       <a href="tags/pip.html" style="font-size: 8pt">pip</a>&nbsp;&nbsp;
-      <a href="tags/programming.html" style="font-size: 8pt">programming</a>&nbsp;&nbsp;
+      <a href="tags/programming.html" style="font-size: 10pt">programming</a>&nbsp;&nbsp;
       <a href="tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
       <a href="tags/pyqt.html" style="font-size: 8pt">PyQt</a>&nbsp;&nbsp;
       <a href="tags/python.html" style="font-size: 10pt">Python</a>&nbsp;&nbsp;
-      <a href="tags/python.html" style="font-size: 14pt">python</a>&nbsp;&nbsp;
+      <a href="tags/python.html" style="font-size: 16pt">python</a>&nbsp;&nbsp;
+      <a href="tags/python_gotcha.html" style="font-size: 8pt">python gotcha</a>&nbsp;&nbsp;
       <a href="tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
       <a href="tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
       <a href="tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
@@ -521,7 +591,8 @@ I am posting a liberally excerpted text from a post by the <a class="reference e
       <a href="tags/translation.html" style="font-size: 8pt">translation</a>&nbsp;&nbsp;
       <a href="tags/trinity.html" style="font-size: 8pt">Trinity</a>&nbsp;&nbsp;
       <a href="tags/twitter.html" style="font-size: 8pt">twitter</a>&nbsp;&nbsp;
-      <a href="tags/vector_control.html" style="font-size: 10pt">vector control</a>
+      <a href="tags/vector_control.html" style="font-size: 10pt">vector control</a>&nbsp;&nbsp;
+      <a href="tags/xpermutations_py.html" style="font-size: 8pt">xpermutations.py</a>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->

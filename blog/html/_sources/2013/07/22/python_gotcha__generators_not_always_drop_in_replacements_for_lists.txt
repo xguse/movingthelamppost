@@ -1,0 +1,117 @@
+Python Gotcha: generators not always drop-in replacements for lists
+===================================================================
+
+I was recently bitten **HARD** by this one.
+
+Generators and Lists
+---------------------------
+
+In `Python <http://www.python.org/>`_, there is a data construct/concept called a `generator <http://wiki.python.org/moin/Generators>`_.
+In brief it is a special type of function that returns a type of `iterator <http://wiki.python.org/moin/Iterator>`_ that in most use cases behaves just like a Python `list <http://rgruet.free.fr/PQR27/PQR2.7.html#list>`_.
+That is, you can do stuff like this to it:
+
+.. ipython:: python
+    
+    # define a simple generator
+    def my_generator(count):
+        for i in range(count):
+            yield i
+    
+.. ipython:: python
+
+    my_iterator = my_generator(3)
+    
+    for each in my_iterator:
+        print each
+
+The benefit of an ``iterator`` is that it mitigates the memory footprint of the output of something like ``my_generator()``.
+So when you have an idea that a ``list`` of your resulting data will be very large, it may be wise to use an ``iterator`` rather than a ``list``.
+They work by generating the data on the fly rather than all at once.
+
+
+In our example above, ``my_iterator`` has no length as demonstrated below.
+
+.. ipython:: python
+
+    my_iterator = my_generator(3)
+    len(my_iterator)
+
+This can bite you if you don't know (or **remember**) that you are dealing with a dynamically generated ``iterator``.
+In my case, I was using a function that returns a generator for all unique 2-way combinations of a ``list`` of values.
+I wanted these unique combinations to be used inside a subsequent ``for`` loop.
+
+Here was the code that got me:
+-------------------------------------
+
+.. code-block:: python
+
+    def calc_mean_ptcis(graphHandler,n_way_ortho_table):
+        """
+        returns list of n-way averaged PTCI values for N-way ortholog subgraphs if and only if 
+        all edges successfully generated non-None value PTCI results.
+        """
+        
+        # dictionary of nodes/edges indexed by gene names
+        node_dict = graphHandler.node_dict
+        edge_dict = graphHandler.edge_dict
+        
+        graph = graphHandler.graph 
+        
+        mean_ptcis = []
+        
+        # calculate all pairwise combinations of indexes
+        # so that each ortho-edge of n-way orthos are obtained
+        
+        # !---- look here ----! #
+        index_combos = xuniqueCombinations(range(len(n_way_ortho_table.columns)),2)
+        
+        for node_list in n_way_ortho_table.itertuples():
+            
+            node_list = node_list[1:]
+            ortho_edges = []
+            for i in index_combos:
+                key = tuple(sorted([node_list[i[0]],node_list[i[1]]]))
+                
+                try:
+                    ortho_edges.append(edge_dict[key])
+                except KeyError:
+                    break
+                    
+            ptcis = [dev.get_ptci(edge) for edge in ortho_edges]
+            
+            try:
+                mean_ptci = np.mean(ptcis)
+                mean_ptcis.append(mean_ptci)
+            except TypeError:
+                pass
+
+        return mean_ptcis
+
+Generators are consumed at the time of access
+-----------------------------------------------
+
+I expected ``index_combos`` to persist and be re-used in each iteration of the loop.
+However, ``index_combos`` is a generator, so it is actually consumed in that first loop and returns nothing useful in **ANY** of the subsequent loops.
+I did not write ``xuniqueCombinations`` which is how I got bitten; I do host a `gist <https://gist.github.com/>`_ of it `here <https://gist.github.com/xguse/6058998>`_.
+It's actually quite useful, and you should check it out.
+
+The point is that I was expecting a ``list`` and got a ``generator``.
+The solution was to use a `list comprehension <http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions>`_ to consume the ``generator`` and store the output in a ``list``.
+That new ``list`` is of course persistent and fixed the whole problem.
+
+.. sourcecode:: python
+
+    index_combos = [ x for x in xuniqueCombinations(range(len(n_way_ortho_table.columns)),2) ]
+    
+Final thoughts
+----------------
+
+I spend a **VERY** good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
+I hope that others might benefit from my pain by reading this.
+
+Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a ``list`` in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!
+
+.. author:: default
+.. categories:: Python Shorts, Tutorials
+.. tags:: python gotcha, python, generator, iterator, list, xpermutations.py, programming
+.. comments::
