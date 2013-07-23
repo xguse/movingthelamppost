@@ -43,7 +43,7 @@ In our example above, ``my_iterator`` has no length as demonstrated below.
     len(my_iterator)
 
 This can bite you if you don't know (or **remember**) that you are dealing with a dynamically generated ``iterator``.
-In my case, I was using a function that returns a generator for all unique 2-way combinations of a ``list`` of values.
+In my case, I was using a generator function that returns an ``iterator`` for all unique 2-way combinations of a ``list`` of values.
 I wanted these unique combinations to be used inside a subsequent ``for`` loop.
 
 Here was the code that got me:
