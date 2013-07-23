@@ -187,14 +187,14 @@ I wanted these unique combinations to be used inside a subsequent <span class="d
 </pre></div>
 </div>
 </div>
-<div class="section" id="generators-are-consumed-at-the-time-of-access">
-<h2>Generators are consumed at the time of access</h2>
+<div class="section" id="iterators-are-consumed-at-the-time-of-access">
+<h2>Iterators are consumed at the time of access</h2>
 <p>I expected <span class="docutils literal"><span class="pre">index_combos</span></span> to persist and be re-used in each iteration of the loop.
-However, <span class="docutils literal"><span class="pre">index_combos</span></span> is a generator, so it is actually consumed in that first loop and returns nothing useful in <strong>ANY</strong> of the subsequent loops.
+However, <span class="docutils literal"><span class="pre">index_combos</span></span> is an <span class="docutils literal"><span class="pre">iterator</span></span>, so it is actually consumed in that first loop and returns nothing useful in <strong>ANY</strong> of the subsequent loops.
 I did not write <span class="docutils literal"><span class="pre">xuniqueCombinations</span></span> which is how I got bitten; I do host a <a class="reference external" href="https://gist.github.com">gist</a> of it <a class="reference external" href="https://gist.github.com/xguse/6058998">here</a>.
 It’s actually quite useful, and you should check it out.</p>
-<p>The point is that I was expecting a <span class="docutils literal"><span class="pre">list</span></span> and got a <span class="docutils literal"><span class="pre">generator</span></span>.
-The solution was to use a <a class="reference external" href="http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to consume the <span class="docutils literal"><span class="pre">generator</span></span> and store the output in a <span class="docutils literal"><span class="pre">list</span></span>.
+<p>The point is that I was expecting a <span class="docutils literal"><span class="pre">list</span></span> and got an <span class="docutils literal"><span class="pre">iterator</span></span>.
+The solution was to use a <a class="reference external" href="http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to consume the <span class="docutils literal"><span class="pre">iterator</span></span> and store the output in a <span class="docutils literal"><span class="pre">list</span></span>.
 That new <span class="docutils literal"><span class="pre">list</span></span> is of course persistent and fixed the whole problem.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">index_combos</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xuniqueCombinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_way_ortho_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
 </pre></div>
@@ -204,7 +204,7 @@ That new <span class="docutils literal"><span class="pre">list</span></span> is 
 <h2>Final thoughts</h2>
 <p>I spent a good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
 I hope that others might benefit from my pain by reading this.</p>
-<p>Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a <span class="docutils literal"><span class="pre">list</span></span> in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!</p>
+<p>Generators and iterators are awesome and help make Python the amazing language that it is, but the fact that they look like a <span class="docutils literal"><span class="pre">list</span></span> in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!</p>
 </div>
 </div>
         <div class="postmeta">

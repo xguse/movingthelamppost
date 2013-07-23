@@ -93,16 +93,16 @@ Here was the code that got me:
 
         return mean_ptcis
 
-Generators are consumed at the time of access
+Iterators are consumed at the time of access
 -----------------------------------------------
 
 I expected ``index_combos`` to persist and be re-used in each iteration of the loop.
-However, ``index_combos`` is a generator, so it is actually consumed in that first loop and returns nothing useful in **ANY** of the subsequent loops.
+However, ``index_combos`` is an ``iterator``, so it is actually consumed in that first loop and returns nothing useful in **ANY** of the subsequent loops.
 I did not write ``xuniqueCombinations`` which is how I got bitten; I do host a `gist <https://gist.github.com/>`_ of it `here <https://gist.github.com/xguse/6058998>`_.
 It's actually quite useful, and you should check it out.
 
-The point is that I was expecting a ``list`` and got a ``generator``.
-The solution was to use a `list comprehension <http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions>`_ to consume the ``generator`` and store the output in a ``list``.
+The point is that I was expecting a ``list`` and got an ``iterator``.
+The solution was to use a `list comprehension <http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions>`_ to consume the ``iterator`` and store the output in a ``list``.
 That new ``list`` is of course persistent and fixed the whole problem.
 
 .. sourcecode:: python
@@ -115,7 +115,7 @@ Final thoughts
 I spent a good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
 I hope that others might benefit from my pain by reading this.
 
-Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a ``list`` in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!
+Generators and iterators are awesome and help make Python the amazing language that it is, but the fact that they look like a ``list`` in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!
 
 .. author:: default
 .. categories:: Python Shorts, Tutorials
