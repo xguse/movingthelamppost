@@ -3,8 +3,8 @@ Python Gotcha: generators not always drop-in replacements for lists
 
 I was recently bitten **HARD** by this one.
 
-Generators and Lists
----------------------------
+Generators, Iterators and Lists
+---------------------------------
 
 In `Python <http://www.python.org/>`_, there is a data construct/concept called a `generator <http://wiki.python.org/moin/Generators>`_.
 In brief it is a special type of function that returns a type of `iterator <http://wiki.python.org/moin/Iterator>`_ that in most use cases behaves just like a Python `list <http://rgruet.free.fr/PQR27/PQR2.7.html#list>`_.
@@ -27,6 +27,12 @@ That is, you can do stuff like this to it:
 The benefit of an ``iterator`` is that it mitigates the memory footprint of the output of something like ``my_generator()``.
 So when you have an idea that a ``list`` of your resulting data will be very large, it may be wise to use an ``iterator`` rather than a ``list``.
 They work by generating the data on the fly rather than all at once.
+
+.. note::
+
+    Though the title mentions generators specifically (sense that's what bit me just now) all of this pertains to all iterators.  I did not mean to imply that generators were special in this regard. 
+    
+    Special thanks to reddit user `Megatron_McLargeHuge <http://www.reddit.com/r/Python/comments/1iurg2/til_generators_not_always_dropin_replacements_for/cb88c09>`_ for pointing out my sin of omission.
 
 
 In our example above, ``my_iterator`` has no length as demonstrated below.
