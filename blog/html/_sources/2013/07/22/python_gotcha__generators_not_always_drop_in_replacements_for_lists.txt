@@ -1,7 +1,7 @@
 Python Gotcha: generators not always drop-in replacements for lists
 ===================================================================
 
-I was recently bitten **HARD** by this one.
+I was recently bitten by this one.
 
 Generators, Iterators and Lists
 ---------------------------------
@@ -112,7 +112,7 @@ That new ``list`` is of course persistent and fixed the whole problem.
 Final thoughts
 ----------------
 
-I spent a **VERY** good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
+I spent a good long time dissecting and re-writing all of the rest of that code before I realized what was happening.
 I hope that others might benefit from my pain by reading this.
 
 Generators are awesome and help make Python the amazing language that it is, but the fact that they look like a ``list`` in many code use-cases can result in some not-so-fun debugging sessions unless you pay close attention!
