@@ -30,7 +30,7 @@ They work by generating the data on the fly rather than all at once.
 
 .. note::
 
-    Though the title mentions generators specifically (sense that's what bit me just now) all of this pertains to all iterators.  I did not mean to imply that generators were special in this regard. 
+    Though the title mentions generators specifically (this is because that's what bit me just now) all of this pertains to all iterators.  I did not mean to imply that generators were special in this regard. 
     
     Special thanks to reddit user `Megatron_McLargeHuge <http://www.reddit.com/r/Python/comments/1iurg2/til_generators_not_always_dropin_replacements_for/cb88c09>`_ for pointing out my sin of omission.
 
