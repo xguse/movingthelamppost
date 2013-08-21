@@ -31,7 +31,7 @@
         <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.2',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -90,6 +90,141 @@
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>August 20, 2013</span>
+        </div>
+        <div class="section" id="lab-meeting-2013-08-21">
+<h1><a href="2013/08/20/lab_meeting_2013_08_21.html">Lab meeting 2013-08-21</a></h1>
+<div class="section" id="introduction">
+<h2>1 Introduction</h2>
+<div class="section" id="purpose">
+<h3>1.1 Purpose</h3>
+<p>Introduce core concepts relating to my project such as:</p>
+<ol class="arabic simple">
+<li>Importance of Dengue and Malaria</li>
+<li>Transmission cycle dependant on Mosquitoes</li>
+<li>Limited effectiveness (medical/finacial) of treatment of the diseases in rural poor human communities</li>
+<li>Vector Control Strategies</li>
+<li>How Transgenesis modifies the vector control landscape</li>
+<li>Elements of Successful Transgenic Vector Control</li>
+<li>Introduction to control of transcription and importance of CRE/CRMs</li>
+</ol>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="review-of-literature-contributions-and-development-of-analytical-approach">
+<h2>2 Review of Literature Contributions and Development of Analytical Approach</h2>
+<div class="section" id="id1">
+<h3>2.1 Purpose</h3>
+<p>Review a selection of my contributions to the literature that have informed the approach used in this project throughout my tenure as a member of the lab and explain the methods that I have used based on the lessons learned.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Sieglaff, D. H., Dunn, W. A., Xie, X. S., Megy, K., Marinotti, O., &amp; James, A. A. (2009). Comparative genomics allows the discovery of cis-regulatory elements in mosquitoes. Proceedings of the National Academy of Sciences of the United States of America, 106(9), 3053–8. doi:10.1073/pnas.0813264106</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Use of comparative genomics to discover putative CREs from orthologous promoter regions in mosquitoes that were able to be correlated with bloodmeal associated transcription control</li>
+<li>For any specific transcription profile, typically a single motif was found to be significantly enriched in the corresponding promoter regions (modules not obvious)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. A., Campbell, C. L., Olson, K. E., Dimon, M. T., Marinotti, O., &amp; James, A. A. (2011). RNA-seq analyses of blood-induced changes in gene expression in the mosquito vector species, Aedes aegypti. BMC genomics, 12(1), 82. doi:10.1186/1471-2164-12-82</strong></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Provided first experience in data handling and analysis of RNA-seq big data</p>
+</li>
+<li><dl class="first docutils">
+<dt>Illustrated challenges to using flanking regions as putative promoters in genomes at this level of annotation completion/quality</dt>
+<dd><ul class="first last simple">
+<li>annotation contains missed first exons and other incorrect feature definitions</li>
+<li>upstream genes sometimes more likely to represent exon of downstream gene</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Nevertheless using SCOPE, putative CRMs were able to be predicted</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. a., Campbell, C. L., Olson, K. E., Marinotti, O., James, a. a., &amp; Kulathinal, R. (2012). Strain Variation in the Transcriptome of the Dengue Fever Vector, Aedes aegypti. G3: Genes|Genomes|Genetics, 2(1), 103–114. doi:10.1534/g3.111.001107</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Provided continued lessons on managing and analyzing RNAseq big data</li>
+<li>Revealed that the transcriptomes of Ae. aegypti mosquitoes from distinct strains vary significantly in complexity and abundance of specific transcripts. This variation is evident in non- blood-fed mosquitoes and is enhanced after a bloodmeal.</li>
+<li>differential use of paralogous genes</li>
+<li>Support the need to take precautions when comparing differences in transcript abundance profiles between species that may have last shared a common ancestor as far back as 200 mya.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. A., Campbell, C. L., Olson, K. E., Marinotti, O., &amp; James, A. A. (2012). Complex Modulation of the Aedes aegypti Transcriptome in Response to Dengue Virus Infection. PloS one, 7(11), e50512. doi:10.1371/journal.pone.0050512</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Example of how results (CRE-discovery in this case) are sensitive to the gene-sets use for analysis.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Functional Genomics can be thought of as a problem of generating meaningful gene-sets</p>
+<blockquote>
+<div><ul class="simple">
+<li>signal-to-noise is major challenge in generating useful gene-sets</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">This project aims to generate meaningful gene-sets through integration of multiple data-types</p>
+<blockquote>
+<div><ul class="simple">
+<li>comparative genomics (N-way 1-to-1 orthologs)</li>
+<li>comparative transcriptomics (identical RNA-seq experiements on divergent Mosquito species with shared trait: bloodfeeding)</li>
+<li>phylogenetics (estimated divergence since last common ancestor)</li>
+<li>existing knowledge about certain bloodmeal related transcriptional control programs (20E interacting TFBS motifs)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">The last item presents analysis challenges that I addressed through custom graph-based analysis model (<span class="docutils literal"><span class="pre">gFunc</span></span>)</p>
+</li>
+</ol>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="software-development-to-support-analytical-approach">
+<h2>3 Software Development to Support Analytical Approach</h2>
+<div class="section" id="id2">
+<h3>3.1 Purpose</h3>
+<p>Illustrate how lessons learned in previous chapter (as well as new lessons introduced here) are addressed through custom software solutions.</p>
+<ol class="arabic simple">
+<li>RNA-seq analysis, reproducibility, updating (<span class="docutils literal"><span class="pre">blacktie</span></span>)</li>
+<li>Integration of multiple disparate Omics scale data types (<span class="docutils literal"><span class="pre">gFunc</span></span>)</li>
+<li>Documentation of exactly how analyses were carried out (IPython notebooks and automated log keeping built in to <span class="docutils literal"><span class="pre">blacktie</span></span>)</li>
+</ol>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="results">
+<h2>Results</h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="http://nbviewer.ipython.org/urls/raw.github.com/xguse/ipy_notebooks/master/PTCI_testing_rsrd_1.0_1.1_new_data_ecr_team.ipynb">PTCI score finalization</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://nbviewer.ipython.org/urls/raw.github.com/xguse/ipy_notebooks/master/Getting_and_using_filtered_gfunc_genes_v2.ipynb">Filtering of high-scoring N-way 1-to-1 ortholog sets</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Motif discovery results with filtered gene-sets using STEME and TOMTOM</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nbcr-222.ucsd.edu/opal-jobs/appTOMTOM_4.9.01377068911103-22439267/tomtom.html">STEME k9 vs JASPAR insect database</a></li>
+<li><a class="reference external" href="http://nbcr-222.ucsd.edu/opal-jobs/appTOMTOM_4.9.01377068109211-275022927/tomtom.html">STEME k13 vs JASPAR insect database</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://movingthelamppost.com/blog/html/2013/08/20/lab_meeting_2013_08_21.html#disqus_thread" data-disqus-identifier="2013/08/20/lab_meeting_2013_08_21">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>July 22, 2013</span>
         </div>
         <div class="section" id="python-gotcha-generators-not-always-drop-in-replacements-for-lists">
@@ -437,58 +572,8 @@ median contig length        647.0</pre>
         </div>
         <div class="comments">
             <a href="http://movingthelamppost.com/blog/html/2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_.html#disqus_thread" data-disqus-identifier="2013/07/04/first_pass_trinity_results_for_anopheles_stephensi_midgut_rna_seq__non_bloodfed_">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>June 29, 2013</span>
-        </div>
-        <div class="section" id="speak-for-the-cup-of-hemlock-is-not-yet-on-your-lips">
-<h1><a href="2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html">Speak, for the Cup of Hemlock is not yet on Your Lips</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>I am not eager to turn this blog toward religious/athiest discussions.
-I want it to avoid the distractions that flame wars and endless volleys of <em>“Nu-Uh!!!”</em> and <em>“Ya-hunh!!”</em> inevitably bring.
-However, this story needs to be told.</p>
-<p>It is the horrible story of Bangladeshi atheist blogger Asif Mohiuddin, and how his government has silenced him for <em>“hurting religious beliefs”</em>.
-He has been detained without formal charges since the 3rd of April, and his blog shutdown.
-His health is failing, and this is a show of solidarity to him and all other voices that dare to risk their freedom and, as you will see, their very lives to speak what they believe to be the truth.</p>
-<p>There has been a call to repost his final entry before being silenced by his government.
-I am participating.
-It is an act that symbolizes the futility of governments silencing dissent in this age.
-The interconnectivity of the internet is, if nothing else, a powerful modern embodiment of <a class="reference external" href="http://en.wikipedia.org/wiki/Lernaean_Hydra">the Lernaean Hydra</a>.
-This is the amplification of the voice they tried to silence.
-This is the failure of containing the situation.
-This is more attention and anger being focused on his complaints rather than less.
-This is what a global distributed network does when a whisper in one tiny corner of its web gets silenced.</p>
-<p class="last"><strong>That barely noticeable whisper gets 10,000 more voices.</strong></p>
-</div>
-<div class="admonition attention">
-<p class="first admonition-title">Attention</p>
-<p class="last">The words that follow <strong>are not my own</strong>.
-I am posting a liberally excerpted text from a post by the <a class="reference external" href="http://iheu.org/story/speak-cup-hemlock-not-yet-your-lips-jailed-atheist-blogger-asif-mohiuddin">International Humanist and Ethical Union</a> that gives some background and includes Mohiuddin’s final post titled: <strong>Speak, for the Cup of Hemlock is not yet on Your Lips</strong>.</p>
-</div>
-<p>Bangladeshi atheist blogger Asif Mohiuddin has been in prison since 3 April for “hurting religious beliefs”.</p>
-<p>The formal charges and a trial are still pending. A court order to release him on bail due to deteriorating health has at last been issued, but not yet enacted.</p>
-<p>Below, we republish one of Asif’s final blog posts before his imprisonement.</p>
-<div class="figure">
-<a class="reference internal image-reference" href="_images/asif-mohiuddin.jpg"><img alt="../../../_images/asif-mohiuddin.jpg" src="_images/asif-mohiuddin.jpg" style="width: 300px;"/></a>
-<p class="caption"><strong>Asif Mohiuddin</strong></p>
-</div>
-<p>The blog was published originally in Bangla at Mukto-Mona.com, who have also provided this English translation by Allachalaina. Mukto-Mona describes Asif Mohiuddin as being known “as one of the most outspoken atheist and humanist bloggers of Bangladesh. His writing—which was heavily critical of religious dogma, bigotry and superstition—and his political activism including the Jagannath University protests angered the government, marked the beginning of the threats he received from fundamentalists.”</p>
-<p>Published on March 8, 2013 this was his last post at Mukto-Mona Banglablog under the title ... “Speak, for the cup of hemlock is not yet on your lips”. The post contains some graphic images below.</p>
-<p><a class="readmore" href="2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html#more">Read more...</a></p></div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by W Augustine Dunn</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/human_rights.html">human rights</a>, <a href="tags/intolerance.html">intolerance</a>, <a href="tags/government.html">government</a>, <a href="tags/freedom.html">freedom</a>, <a href="tags/free_expression.html">free expression</a>, <a href="tags/asif_mohiuddin.html">Asif Mohiuddin</a>, <a href="tags/asif.html">Asif</a>, <a href="tags/mohiuddin.html">Mohiuddin</a>, <a href="tags/injustice.html">injustice</a>, <a href="tags/bangladesh.html">Bangladesh</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://movingthelamppost.com/blog/html/2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips.html#disqus_thread" data-disqus-identifier="2013/06/29/speak__for_the_cup_of_hemlock_is_not_yet_on_your_lips">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>

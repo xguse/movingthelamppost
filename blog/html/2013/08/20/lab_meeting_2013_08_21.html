@@ -1,0 +1,344 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="random musings of a molecular biologist turned code jockey in the era of big data and open science.">
+        <meta name="viewport" content="width=device-width">
+        <title>Lab meeting 2013-08-21 &mdash; moving the lamppost</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/flat_enhanced_dark_pastel.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Python Gotcha: generators not always drop-in replacements for lists" href="../../07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/MovingTheLamppost" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:i|Noto+Sans:i|Titillium+Web|Titillium+Web:i"></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">moving the lamppost</a></h1><h2>random musings of a molecular biologist turned code jockey in the era of big data and open science.</h2></hgroup>
+          </header>
+      <nav>
+            <ul><li class="main-nav">
+                  <a href="../../../index.html">Home</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/about.html">About</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/glossary.html">Glossary</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
+            <span>August 20, 2013</span>
+        </div>
+    <div class="section" id="lab-meeting-2013-08-21">
+<h1>Lab meeting 2013-08-21</h1>
+<div class="section" id="introduction">
+<h2>1 Introduction</h2>
+<div class="section" id="purpose">
+<h3>1.1 Purpose</h3>
+<p>Introduce core concepts relating to my project such as:</p>
+<ol class="arabic simple">
+<li>Importance of Dengue and Malaria</li>
+<li>Transmission cycle dependant on Mosquitoes</li>
+<li>Limited effectiveness (medical/finacial) of treatment of the diseases in rural poor human communities</li>
+<li>Vector Control Strategies</li>
+<li>How Transgenesis modifies the vector control landscape</li>
+<li>Elements of Successful Transgenic Vector Control</li>
+<li>Introduction to control of transcription and importance of CRE/CRMs</li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="review-of-literature-contributions-and-development-of-analytical-approach">
+<h2>2 Review of Literature Contributions and Development of Analytical Approach</h2>
+<div class="section" id="id1">
+<h3>2.1 Purpose</h3>
+<p>Review a selection of my contributions to the literature that have informed the approach used in this project throughout my tenure as a member of the lab and explain the methods that I have used based on the lessons learned.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Sieglaff, D. H., Dunn, W. A., Xie, X. S., Megy, K., Marinotti, O., &amp; James, A. A. (2009). Comparative genomics allows the discovery of cis-regulatory elements in mosquitoes. Proceedings of the National Academy of Sciences of the United States of America, 106(9), 3053–8. doi:10.1073/pnas.0813264106</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Use of comparative genomics to discover putative CREs from orthologous promoter regions in mosquitoes that were able to be correlated with bloodmeal associated transcription control</li>
+<li>For any specific transcription profile, typically a single motif was found to be significantly enriched in the corresponding promoter regions (modules not obvious)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. A., Campbell, C. L., Olson, K. E., Dimon, M. T., Marinotti, O., &amp; James, A. A. (2011). RNA-seq analyses of blood-induced changes in gene expression in the mosquito vector species, Aedes aegypti. BMC genomics, 12(1), 82. doi:10.1186/1471-2164-12-82</strong></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Provided first experience in data handling and analysis of RNA-seq big data</p>
+</li>
+<li><dl class="first docutils">
+<dt>Illustrated challenges to using flanking regions as putative promoters in genomes at this level of annotation completion/quality</dt>
+<dd><ul class="first last simple">
+<li>annotation contains missed first exons and other incorrect feature definitions</li>
+<li>upstream genes sometimes more likely to represent exon of downstream gene</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Nevertheless using SCOPE, putative CRMs were able to be predicted</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. a., Campbell, C. L., Olson, K. E., Marinotti, O., James, a. a., &amp; Kulathinal, R. (2012). Strain Variation in the Transcriptome of the Dengue Fever Vector, Aedes aegypti. G3: Genes|Genomes|Genetics, 2(1), 103–114. doi:10.1534/g3.111.001107</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Provided continued lessons on managing and analyzing RNAseq big data</li>
+<li>Revealed that the transcriptomes of Ae. aegypti mosquitoes from distinct strains vary significantly in complexity and abundance of specific transcripts. This variation is evident in non- blood-fed mosquitoes and is enhanced after a bloodmeal.</li>
+<li>differential use of paralogous genes</li>
+<li>Support the need to take precautions when comparing differences in transcript abundance profiles between species that may have last shared a common ancestor as far back as 200 mya.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Bonizzoni, M., Dunn, W. A., Campbell, C. L., Olson, K. E., Marinotti, O., &amp; James, A. A. (2012). Complex Modulation of the Aedes aegypti Transcriptome in Response to Dengue Virus Infection. PloS one, 7(11), e50512. doi:10.1371/journal.pone.0050512</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Example of how results (CRE-discovery in this case) are sensitive to the gene-sets use for analysis.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Functional Genomics can be thought of as a problem of generating meaningful gene-sets</p>
+<blockquote>
+<div><ul class="simple">
+<li>signal-to-noise is major challenge in generating useful gene-sets</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">This project aims to generate meaningful gene-sets through integration of multiple data-types</p>
+<blockquote>
+<div><ul class="simple">
+<li>comparative genomics (N-way 1-to-1 orthologs)</li>
+<li>comparative transcriptomics (identical RNA-seq experiements on divergent Mosquito species with shared trait: bloodfeeding)</li>
+<li>phylogenetics (estimated divergence since last common ancestor)</li>
+<li>existing knowledge about certain bloodmeal related transcriptional control programs (20E interacting TFBS motifs)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">The last item presents analysis challenges that I addressed through custom graph-based analysis model (<span class="docutils literal"><span class="pre">gFunc</span></span>)</p>
+</li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="software-development-to-support-analytical-approach">
+<h2>3 Software Development to Support Analytical Approach</h2>
+<div class="section" id="id2">
+<h3>3.1 Purpose</h3>
+<p>Illustrate how lessons learned in previous chapter (as well as new lessons introduced here) are addressed through custom software solutions.</p>
+<ol class="arabic simple">
+<li>RNA-seq analysis, reproducibility, updating (<span class="docutils literal"><span class="pre">blacktie</span></span>)</li>
+<li>Integration of multiple disparate Omics scale data types (<span class="docutils literal"><span class="pre">gFunc</span></span>)</li>
+<li>Documentation of exactly how analyses were carried out (IPython notebooks and automated log keeping built in to <span class="docutils literal"><span class="pre">blacktie</span></span>)</li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="results">
+<h2>Results</h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="http://nbviewer.ipython.org/urls/raw.github.com/xguse/ipy_notebooks/master/PTCI_testing_rsrd_1.0_1.1_new_data_ecr_team.ipynb">PTCI score finalization</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://nbviewer.ipython.org/urls/raw.github.com/xguse/ipy_notebooks/master/Getting_and_using_filtered_gfunc_genes_v2.ipynb">Filtering of high-scoring N-way 1-to-1 ortholog sets</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Motif discovery results with filtered gene-sets using STEME and TOMTOM</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nbcr-222.ucsd.edu/opal-jobs/appTOMTOM_4.9.01377068911103-22439267/tomtom.html">STEME k9 vs JASPAR insect database</a></li>
+<li><a class="reference external" href="http://nbcr-222.ucsd.edu/opal-jobs/appTOMTOM_4.9.01377068109211-275022927/tomtom.html">STEME k13 vs JASPAR insect database</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by W Augustine Dunn</span>
+        </div>
+        
+        
+        </div><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../07/22/python_gotcha__generators_not_always_drop_in_replacements_for_lists.html">Python Gotcha: generators not always drop-in replacements for lists</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "movingthelamppost";    var disqus_identifier = "2013/08/20/lab_meeting_2013_08_21";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section>
+<div class="widget" id="sub_by_email">
+    <h1>Subscribe</h1>
+    <a href='http://www.feedly.com/home#subscription/feed%2Fhttp%3A%2F%2Ffeeds.feedburner.com%2FMovingTheLamppost'  target='blank'><img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-medium_2x.png' alt='follow us in feedly' width='71' height='28'></a>
+    <br>
+    <a href="http://feeds.feedburner.com/MovingTheLamppost">via feedburner</a>
+    <br>
+    <a href="http://feedburner.google.com/fb/a/mailverify?uri=MovingTheLamppost&amp;loc=en_US">via email</a>
+    
+</div>
+
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Categories</h1>
+    <ul><li><a href="../../../categories/background_science.html">Background Science</a> (1)</li><li><a href="../../../categories/conferences.html">Conferences</a> (1)</li><li><a href="../../../categories/journal_club.html">Journal Club</a> (1)</li><li><a href="../../../categories/journal_club__shorts_.html">Journal Club (shorts)</a> (1)</li><li><a href="../../../categories/my_code.html">My Code</a> (3)</li><li><a href="../../../categories/my_dissertation.html">My Dissertation</a> (3)</li><li><a href="../../../categories/my_presentations.html">My Presentations</a> (1)</li><li><a href="../../../categories/my_research.html">My Research</a> (4)</li><li><a href="../../../categories/python_shorts.html">Python Shorts</a> (1)</li><li><a href="../../../categories/tutorials.html">Tutorials</a> (2)</li></ul>
+</div></section><section><div class="widget">
+    <h1>Tags Cloud</h1>
+      <a href="../../../tags/amino_acids.html" style="font-size: 8pt">amino acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/anopheles_stephensi.html" style="font-size: 8pt">Anopheles stephensi</a>&nbsp;&nbsp;
+      <a href="../../../tags/arthgen2013.html" style="font-size: 8pt">ArthGen2013</a>&nbsp;&nbsp;
+      <a href="../../../tags/arthropods.html" style="font-size: 8pt">arthropods</a>&nbsp;&nbsp;
+      <a href="../../../tags/asif.html" style="font-size: 8pt">Asif</a>&nbsp;&nbsp;
+      <a href="../../../tags/asif_mohiuddin.html" style="font-size: 8pt">Asif Mohiuddin</a>&nbsp;&nbsp;
+      <a href="../../../tags/background.html" style="font-size: 10pt">background</a>&nbsp;&nbsp;
+      <a href="../../../tags/bangladesh.html" style="font-size: 8pt">Bangladesh</a>&nbsp;&nbsp;
+      <a href="../../../tags/bioinformatics.html" style="font-size: 8pt">bioinformatics</a>&nbsp;&nbsp;
+      <a href="../../../tags/blacktie.html" style="font-size: 14pt">blacktie</a>&nbsp;&nbsp;
+      <a href="../../../tags/blogging.html" style="font-size: 8pt">blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/blood_feeding.html" style="font-size: 8pt">blood feeding</a>&nbsp;&nbsp;
+      <a href="../../../tags/cell.html" style="font-size: 8pt">cell</a>&nbsp;&nbsp;
+      <a href="../../../tags/configure_py.html" style="font-size: 8pt">configure.py</a>&nbsp;&nbsp;
+      <a href="../../../tags/conservation.html" style="font-size: 8pt">conservation</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffdiff.html" style="font-size: 10pt">cuffdiff</a>&nbsp;&nbsp;
+      <a href="../../../tags/cufflinks.html" style="font-size: 12pt">cufflinks</a>&nbsp;&nbsp;
+      <a href="../../../tags/cuffmerge.html" style="font-size: 10pt">cuffmerge</a>&nbsp;&nbsp;
+      <a href="../../../tags/cummerbund.html" style="font-size: 12pt">cummeRbund</a>&nbsp;&nbsp;
+      <a href="../../../tags/de_novo_transcriptome_assembly.html" style="font-size: 8pt">de novo transcriptome assembly</a>&nbsp;&nbsp;
+      <a href="../../../tags/dissertation__chapter_one__background_.html" style="font-size: 10pt">Dissertation: Chapter One (Background)</a>&nbsp;&nbsp;
+      <a href="../../../tags/dna.html" style="font-size: 8pt">DNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/evolution.html" style="font-size: 8pt">evolution</a>&nbsp;&nbsp;
+      <a href="../../../tags/free_expression.html" style="font-size: 8pt">free expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/freedom.html" style="font-size: 8pt">freedom</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_drive.html" style="font-size: 8pt">gene drive</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_expression.html" style="font-size: 10pt">gene expression</a>&nbsp;&nbsp;
+      <a href="../../../tags/gene_regulation.html" style="font-size: 8pt">gene regulation</a>&nbsp;&nbsp;
+      <a href="../../../tags/generator.html" style="font-size: 8pt">generator</a>&nbsp;&nbsp;
+      <a href="../../../tags/genomics.html" style="font-size: 10pt">genomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmm.html" style="font-size: 10pt">GMM</a>&nbsp;&nbsp;
+      <a href="../../../tags/gmo.html" style="font-size: 10pt">GMO</a>&nbsp;&nbsp;
+      <a href="../../../tags/government.html" style="font-size: 8pt">government</a>&nbsp;&nbsp;
+      <a href="../../../tags/gripes.html" style="font-size: 8pt">gripes</a>&nbsp;&nbsp;
+      <a href="../../../tags/human_rights.html" style="font-size: 8pt">human rights</a>&nbsp;&nbsp;
+      <a href="../../../tags/injustice.html" style="font-size: 8pt">injustice</a>&nbsp;&nbsp;
+      <a href="../../../tags/intolerance.html" style="font-size: 8pt">intolerance</a>&nbsp;&nbsp;
+      <a href="../../../tags/ipython.html" style="font-size: 10pt">ipython</a>&nbsp;&nbsp;
+      <a href="../../../tags/iterator.html" style="font-size: 8pt">iterator</a>&nbsp;&nbsp;
+      <a href="../../../tags/list.html" style="font-size: 8pt">list</a>&nbsp;&nbsp;
+      <a href="../../../tags/live_blogging.html" style="font-size: 8pt">live blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/midgut.html" style="font-size: 8pt">midgut</a>&nbsp;&nbsp;
+      <a href="../../../tags/mohiuddin.html" style="font-size: 8pt">Mohiuddin</a>&nbsp;&nbsp;
+      <a href="../../../tags/mosquitoes.html" style="font-size: 10pt">mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_dissertation.html" style="font-size: 8pt">My Dissertation</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">My Research</a>&nbsp;&nbsp;
+      <a href="../../../tags/my_research.html" style="font-size: 8pt">my research</a>&nbsp;&nbsp;
+      <a href="../../../tags/namespace.html" style="font-size: 8pt">namespace</a>&nbsp;&nbsp;
+      <a href="../../../tags/new_release.html" style="font-size: 10pt">new release</a>&nbsp;&nbsp;
+      <a href="../../../tags/ngs.html" style="font-size: 12pt">NGS</a>&nbsp;&nbsp;
+      <a href="../../../tags/non_bloodfed.html" style="font-size: 8pt">non-bloodfed</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleic_acids.html" style="font-size: 8pt">nucleic acids</a>&nbsp;&nbsp;
+      <a href="../../../tags/nucleus.html" style="font-size: 8pt">nucleus</a>&nbsp;&nbsp;
+      <a href="../../../tags/object_oriented_programming.html" style="font-size: 8pt">object oriented programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_science.html" style="font-size: 20pt">open science</a>&nbsp;&nbsp;
+      <a href="../../../tags/open_source.html" style="font-size: 12pt">open source</a>&nbsp;&nbsp;
+      <a href="../../../tags/pip.html" style="font-size: 8pt">pip</a>&nbsp;&nbsp;
+      <a href="../../../tags/programming.html" style="font-size: 10pt">programming</a>&nbsp;&nbsp;
+      <a href="../../../tags/protein.html" style="font-size: 8pt">protein</a>&nbsp;&nbsp;
+      <a href="../../../tags/pyqt.html" style="font-size: 8pt">PyQt</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 10pt">Python</a>&nbsp;&nbsp;
+      <a href="../../../tags/python.html" style="font-size: 16pt">python</a>&nbsp;&nbsp;
+      <a href="../../../tags/python_gotcha.html" style="font-size: 8pt">python gotcha</a>&nbsp;&nbsp;
+      <a href="../../../tags/r.html" style="font-size: 10pt">R</a>&nbsp;&nbsp;
+      <a href="../../../tags/research.html" style="font-size: 8pt">research</a>&nbsp;&nbsp;
+      <a href="../../../tags/research_blogging.html" style="font-size: 8pt">Research Blogging</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna.html" style="font-size: 10pt">RNA</a>&nbsp;&nbsp;
+      <a href="../../../tags/rna_seq.html" style="font-size: 18pt">RNA-seq</a>&nbsp;&nbsp;
+      <a href="../../../tags/science_twitter.html" style="font-size: 8pt">science@twitter</a>&nbsp;&nbsp;
+      <a href="../../../tags/selection.html" style="font-size: 8pt">selection</a>&nbsp;&nbsp;
+      <a href="../../../tags/sequence_analysis.html" style="font-size: 8pt">sequence analysis</a>&nbsp;&nbsp;
+      <a href="../../../tags/setup_py.html" style="font-size: 8pt">setup.py</a>&nbsp;&nbsp;
+      <a href="../../../tags/sip.html" style="font-size: 8pt">SIP</a>&nbsp;&nbsp;
+      <a href="../../../tags/the_central_dogma.html" style="font-size: 8pt">the central dogma</a>&nbsp;&nbsp;
+      <a href="../../../tags/tinkerer.html" style="font-size: 8pt">tinkerer</a>&nbsp;&nbsp;
+      <a href="../../../tags/tophat.html" style="font-size: 12pt">tophat</a>&nbsp;&nbsp;
+      <a href="../../../tags/transcription.html" style="font-size: 8pt">transcription</a>&nbsp;&nbsp;
+      <a href="../../../tags/transcriptomics.html" style="font-size: 8pt">transcriptomics</a>&nbsp;&nbsp;
+      <a href="../../../tags/transgenic_mosquitoes.html" style="font-size: 10pt">transgenic mosquitoes</a>&nbsp;&nbsp;
+      <a href="../../../tags/translation.html" style="font-size: 8pt">translation</a>&nbsp;&nbsp;
+      <a href="../../../tags/trinity.html" style="font-size: 8pt">Trinity</a>&nbsp;&nbsp;
+      <a href="../../../tags/twitter.html" style="font-size: 8pt">twitter</a>&nbsp;&nbsp;
+      <a href="../../../tags/vector_control.html" style="font-size: 10pt">vector control</a>&nbsp;&nbsp;
+      <a href="../../../tags/xpermutations_py.html" style="font-size: 8pt">xpermutations.py</a>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2013, W Augustine Dunn. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
