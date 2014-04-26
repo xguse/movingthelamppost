@@ -40,12 +40,13 @@ Review a selection of my contributions to the literature that have informed the 
 
     - Provided continued lessons on managing and analyzing RNAseq big data
     - Revealed that the transcriptomes of Ae. aegypti mosquitoes from distinct strains vary significantly in complexity and abundance of specific transcripts. This variation is evident in non- blood-fed mosquitoes and is enhanced after a bloodmeal.
-    - differential use of paralogous genes
+    - differential transcript abundance profiles of paralogous genes
     - Support the need to take precautions when comparing differences in transcript abundance profiles between species that may have last shared a common ancestor as far back as 200 mya.
 
 #. **Bonizzoni, M., Dunn, W. A., Campbell, C. L., Olson, K. E., Marinotti, O., & James, A. A. (2012). Complex Modulation of the Aedes aegypti Transcriptome in Response to Dengue Virus Infection. PloS one, 7(11), e50512. doi:10.1371/journal.pone.0050512**
 
     - Example of how results (CRE-discovery in this case) are sensitive to the gene-sets use for analysis.
+
 #. Functional Genomics can be thought of as a problem of generating meaningful gene-sets
 
     - signal-to-noise is major challenge in generating useful gene-sets
